@@ -1,0 +1,7 @@
+;; (batch loads)
+
+(clear)
+(load ./mod_idm.clp)
+(load ./Knowledge_Base_PROVA.clp)
+(load ./my-actions.clp)
+(reset)
