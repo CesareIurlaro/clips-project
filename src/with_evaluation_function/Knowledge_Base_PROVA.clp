@@ -4,13 +4,13 @@
 )
 
 (deffacts MAIN::init_transports
-    (status 0 transport plane 10 MI vehicle8)
+    (status 0 transport van 10 MI vehicle8)
 )
 
 
 (deffacts MAIN::init_distances
     (distance MI  276 VE)
-    (distance VE  276 MI) ;; da correggere
+    (distance VE  276 MI)
 )
 
 

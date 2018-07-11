@@ -1,3 +1,20 @@
+(deffunction EXPAND::salience_value(?type ?d)
+    (if (eq (str-compare ?type "van") 0)
+    then
+        (bind ?*shift* (* -1 ?d))
+    )
+
+    (if (eq (str-compare ?type "ship") 0)
+    then
+        (bind ?*shift* (* -1 (div (* 2 ?d) 3)))
+    )
+
+    (if (eq (str-compare ?type "plane") 0)
+    then
+        (bind ?*shift* (* -1 (+ ?d (div (* 25 ?d) 100))))
+    )
+)
+
 (defrule EXPAND::load
     "Se un mezzo con capienza > 0 transita da una città
      che ha prodotti da esportare, allora il mezzo li carica"
@@ -142,13 +159,13 @@
     (status ?s city ?l  $?x)
     (status ?s city ?l2 $?y)
     (test (neq (str-compare ?l ?l2) 0))
-    ?f1 <- (distance ?l  ?d ?l2)
+    ?f1 <- (distance ?l ?d ?l2)
     ;;(distance ?l2 ?q ?l)
 =>
 
     (if (eq ?*shift* 2)
     then
-        (bind ?*shift* (* -1 (+ ?d (div (* 25 ?d) 100))))
+        (salience_value ?t ?d)
         (retract ?f1)
         (assert (distance ?l  ?d ?l2))
     else

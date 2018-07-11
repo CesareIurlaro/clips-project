@@ -1,23 +1,6 @@
 (defmodule MAIN (export ?ALL))
 
 
-
-(deffunction salience_value(?op ?int)
-    (if (eq (str-compare ?op "load") 0)
-    then
-        return (+ (div (* 10 ?int) 1000) 3)
-    )
-
-    (if (eq (str-compare ?op "unload") 0)
-    then
-        return (+ (div (* 10 ?int) 1000) 2)
-    )
-
-    (if (eq (str-compare ?op "shift") 0)
-    then
-        return (+ (div (* 10 ?int) 1000) 1)
-    )
-)
 (deftemplate solution (slot value (default no)))
 (deftemplate maxdepth (slot max))
 (deffacts parameters
