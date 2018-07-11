@@ -158,6 +158,7 @@
     (status ?s transport ?t ?c ?l ?id)
     (status ?s city ?l  $?x)
     (status ?s city ?l2 $?y)
+    (path ?t ?l ?l2)
     (test (neq (str-compare ?l ?l2) 0))
     ?f1 <- (distance ?l ?d ?l2)
     ;;(distance ?l2 ?q ?l)

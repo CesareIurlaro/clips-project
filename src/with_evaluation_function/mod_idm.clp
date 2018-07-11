@@ -1,6 +1,5 @@
 (defmodule MAIN (export ?ALL))
 
-
 (deftemplate solution (slot value (default no)))
 (deftemplate maxdepth (slot max))
 (deffacts parameters
