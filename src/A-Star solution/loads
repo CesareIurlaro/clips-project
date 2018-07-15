@@ -1,0 +1,12 @@
+(clear)
+
+(load ./domain/templates.clp)
+(load ./domain/knowledge_base.clp)
+(load ./domain/utils/utils_functions.clp)
+(load ./domain/utils/utils_rules.clp)
+(load ./algorithm/Main.clp)
+(load ./algorithm/Expand.clp)
+;; (load ./algorithm/Check.clp)
+;; (load ./algorithm/New.clp)
+
+(reset)
