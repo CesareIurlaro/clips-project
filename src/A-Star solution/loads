@@ -6,7 +6,7 @@
 (load ./domain/utils/utils_rules.clp)
 (load ./algorithm/Main.clp)
 (load ./algorithm/Expand.clp)
-;; (load ./algorithm/Check.clp)
-;; (load ./algorithm/New.clp)
+(load ./algorithm/Check.clp)
+(load ./algorithm/New.clp)
 
 (reset)

@@ -36,7 +36,7 @@
 
     ?f1 <- (exports ?from1 ?quantity_a ?obj)
     ?f2 <- (imports ?to ?quantity_b ?obj)
-    ?f3 <- (distance ?from1 ?length1 ?to ?type1)
+    (distance ?from1 ?length1 ?to ?type1)
     (not (and
         (exports ?from2 ? ?obj)
         (imports ?to ? ?obj)
@@ -50,7 +50,7 @@
     then (assert (min_distance_export_to
             (to ?to) (quantity ?quantity_a) (obj ?obj) (length ?length1) (type ?type1))))
 
-    (retract ?f1) (retract ?f2) (retract ?f3))
+    (retract ?f1) (retract ?f2))
 
 
 

@@ -5,7 +5,8 @@
 (defrule shift-apply (declare (salience 50))
     (current ?curr)
     (node (ident ?curr) (open yes))
-    (status (id ?curr)
+    (status
+        (id ?curr)
         (A_TO ?A_TO) (B_TO ?B_TO) (C_TO ?C_TO)
         (A_MI ?A_MI) (B_MI ?B_MI) (C_MI ?C_MI)
         (A_VE ?A_VE) (B_VE ?B_VE) (C_VE ?C_VE)
@@ -17,14 +18,14 @@
         (A_RC ?A_RC) (B_RC ?B_RC) (C_RC ?C_RC)
         (A_PA ?A_PA) (B_PA ?B_PA) (C_PA ?C_PA)
 
-        (type_1 ?type_1) (capacity_1 ?capacity_1) (location_1 ?location_1)
-        (type_2 ?type_2) (capacity_2 ?capacity_2) (location_2 ?location_2)
-        (type_3 ?type_3) (capacity_3 ?capacity_3) (location_3 ?location_3)
-        (type_4 ?type_4) (capacity_4 ?capacity_4) (location_4 ?location_4)
-        (type_5 ?type_5) (capacity_5 ?capacity_5) (location_5 ?location_5)
-        (type_6 ?type_6) (capacity_6 ?capacity_6) (location_6 ?location_6)
-        (type_7 ?type_7) (capacity_7 ?capacity_7) (location_7 ?location_7)
-        (type_8 ?type_8) (capacity_8 ?capacity_8) (location_8 ?location_8))
+        (type_1 ?type_1) (capacity_1 ?capacity_1) (location_1 ?location_1)    ;; transport_1
+        (type_2 ?type_2) (capacity_2 ?capacity_2) (location_2 ?location_2)    ;; transport_2
+        (type_3 ?type_3) (capacity_3 ?capacity_3) (location_3 ?location_3)    ;; transport_3
+        (type_4 ?type_4) (capacity_4 ?capacity_4) (location_4 ?location_4)    ;; transport_4
+        (type_5 ?type_5) (capacity_5 ?capacity_5) (location_5 ?location_5)    ;; transport_5
+        (type_6 ?type_6) (capacity_6 ?capacity_6) (location_6 ?location_6)    ;; transport_6
+        (type_7 ?type_7) (capacity_7 ?capacity_7) (location_7 ?location_7)    ;; transport_7
+        (type_8 ?type_8) (capacity_8 ?capacity_8) (location_8 ?location_8))   ;; transport_8
 
    (distance ?location_1 ?length1 ?to1 ?type_1)
    (distance ?location_2 ?length2 ?to2 ?type_2)
