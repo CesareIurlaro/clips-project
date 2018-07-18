@@ -10,6 +10,7 @@
 (defrule change-current (declare (salience 25))
     ?f1 <-(current ?curr)
     ?f2 <-(node (ident ?curr))
+	
     (node (ident ?best&:(neq ?best ?curr)) (fcost ?bestcost) (open yes))
     (not (node
         (ident ?id&:(neq ?id ?curr)) (fcost ?gg&:(< ?gg ?bestcost)) (open yes)))

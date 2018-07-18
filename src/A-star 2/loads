@@ -1,7 +1,8 @@
 (clear)
 
 (load ./domain/templates.clp)
-(load ./domain/knowledge_base.clp)
+;;(load ./domain/knowledge_base.clp)
+(load ./domain/kb_prova.clp)
 (load ./domain/utils/functions.clp)
 (load ./algorithm/Main.clp)
 (load ./algorithm/Expand.clp)
