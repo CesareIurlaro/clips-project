@@ -1,4 +1,4 @@
-(defrule EXPAND::load-prod
+(defrule EXPAND::apply-load-prod
     "Se un mezzo con capienza > 0 transita da una città
      che ha prodotti da esportare, allora il mezzo li carica"
     (declare (salience 50))
@@ -17,7 +17,7 @@
             city ?location ?quantity ?obj $?y)))
 
 
-(defrule EXPAND::apply-load-prod (declare (salience 50))
+(defrule EXPAND::exec-load-prod (declare (salience 50))
     (current ?curr)
     (node (ident ?curr) (gcost ?g))
 
@@ -56,7 +56,7 @@
         (assert (status (ident ?new) (subject city)      (data ?location 0 ?objP ?quantityN ?objN ?quantityS ?objS)))
         (assert (status (ident ?new) (subject carries)   (data ?id ?quantityP ?objP))))
 
-    (assert (gcost ?gcost) (old_gcost ?g) (new ?new) (find_heuristic_wares_cost) (load-prod))
+    (assert (gcost ?gcost) (old_gcost ?g) (new ?new) (find_heuristic_wares_costs) (find_heuristic_travel_costs) (load-prod))
     (assert (exec ?curr ?new load-prod ?gcost
              transport ?type ?capacity ?location ?id
              city ?location ?quantityP ?objP ?quantityN ?objN ?quantityS ?objS)
@@ -64,19 +64,20 @@
             (prev_next (ident ?new))))
 
 
-(defrule EXPAND::load-prod_01 (declare (salience 50))
+(defrule EXPAND::load-prod_newnode (declare (salience 50))
     (current ?curr)
     ?dummy <- (load-prod)
-    ?h_w <- (computed_heuristic_wares_cost ?wcost)
+    ?h_w <- (computed_heuristic_wares_cost (cost ?wcost))
     ?h_t <- (find_heuristic_travel_costs)
+    ?h_fw <- (find_heuristic_wares_costs)
     ?n <- (new ?new)
     ?m <- (gcost ?gcost)
     ?o <- (old_gcost ?g)
 
 =>
-    (retract ?h_w ?h_t ?dummy)
+    (retract ?h_w ?h_t ?h_fw ?dummy)
     (retract ?n ?m ?o)
-    (bind ?tcost (find_overall_travel_costs))
+    (bind ?tcost (find_heuristic_costs))
     (bind ?fcost (+ ?wcost ?tcost))
     (assert (newnode
                 (ident ?new)
@@ -86,7 +87,7 @@
 
 ;; ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~
 
-(defrule EXPAND::load-store
+(defrule EXPAND::apply-load-store
     "Se un mezzo con capienza > 0 transita da una città
      che ha prodotti immaganizzati, allora il mezzo li carica"
     (declare (salience 50))
@@ -105,7 +106,7 @@
             city ?location $?y ?quantity ?obj)))
 
 
-(defrule EXPAND::apply-load-store (declare (salience 50))
+(defrule EXPAND::exec-load-store (declare (salience 50))
     (current ?curr)
     (node (ident ?curr) (gcost ?g))
 
@@ -145,7 +146,7 @@
         (assert (status (ident ?new) (subject city) (data ?location ?quantityP ?objP ?quantityN ?objN 0 ?objS)))
         (assert (status (ident ?new) (subject carries) (data ?id ?quantityS ?objS))))    ;; può essere messo fuori
 
-    (assert (gcost ?gcost) (old_gcost ?g) (new ?new) (find_heuristic_wares_cost) (load-store))
+    (assert (gcost ?gcost) (old_gcost ?g) (new ?new) (find_heuristic_wares_costs) (find_heuristic_travel_costs) (load-store))
     (assert (exec ?curr ?new load-store ?gcost
              transport ?type ?capacity ?location ?id
              city ?location ?quantityP ?objP ?quantityN ?objN ?quantityS ?objS)
@@ -154,11 +155,11 @@
 )
 
 
-(defrule EXPAND::load-store_01 (declare (salience 50))
-    ;; (exec ? ? load-store $datas)
-    ?dummy <- (load-store)
+(defrule EXPAND::load-store_newnode (declare (salience 50))
     (current ?curr)
-    ?h_w <- (computed_heuristic_wares_cost ?wcost)
+    ?dummy <- (load-store)
+    ?h_fw <- (find_heuristic_wares_costs)
+    ?h_w <- (computed_heuristic_wares_cost  (cost ?wcost))
     ?h_t <- (find_heuristic_travel_costs)
     ?n <- (new ?new)
     ?m <- (gcost ?gcost)
@@ -166,9 +167,9 @@
 
 =>
 
-    (retract ?h_w ?h_t ?dummy)
+    (retract ?h_w ?h_t ?h_fw ?dummy)
     (retract ?n ?m ?o)
-    (bind ?tcost (find_overall_travel_costs))
+    (bind ?tcost (find_heuristic_costs))
     (bind ?fcost (+ ?wcost ?tcost))
     (assert (newnode
                 (ident ?new)
@@ -178,7 +179,7 @@
 
 ;; ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~
 
-(defrule EXPAND::unload-need
+(defrule EXPAND::apply-unload-need
     "Se un mezzo che trasporta un oggetto transita da una città
      che lo importa, allora il mezzo lo scarica"
     (declare (salience 50))
@@ -199,7 +200,7 @@
             carries ?id ?quantityN2 ?objN)))
 
 
-(defrule EXPAND::apply-unload-need (declare (salience 50))
+(defrule EXPAND::exec-unload-need (declare (salience 50))
 
     (current ?curr)
     (node (ident ?curr) (gcost ?g))
@@ -254,7 +255,7 @@
     ) ;; no carries
 
 
-    (assert (gcost ?gcost) (old_gcost ?g) (new ?new) (find_heuristic_wares_cost) (unload-need))
+    (assert (gcost ?gcost) (old_gcost ?g) (new ?new) (find_heuristic_wares_costs) (find_heuristic_travel_costs) (unload-need))
     (assert (exec ?curr ?new unload-need ?gcost
              transport ?type ?capacity ?location ?id
              city ?location ?quantityP ?objP ?quantityN1 ?objN ?quantityS ?objS
@@ -264,20 +265,21 @@
 
 
 
-(defrule EXPAND::unload-need_01 (declare (salience 50))
+(defrule EXPAND::unload-need_newnode (declare (salience 50))
     (current ?curr)
     ?dummy <- (unload-need)
-    ?h_w <- (computed_heuristic_wares_cost ?wcost)
+    ?h_w <- (computed_heuristic_wares_cost  (cost ?wcost))
     ?h_t <- (find_heuristic_travel_costs)
+    ?h_fw <- (find_heuristic_wares_costs)
     ?n <- (new ?new)
     ?m <- (gcost ?gcost)
     ?o <- (old_gcost ?g)
 
 =>
-    (retract ?h_w ?h_t ?dummy)
+    (retract ?h_w ?h_t ?h_fw ?dummy)
     (retract ?n ?m ?o)
 
-    (bind ?tcost (find_overall_travel_costs))
+    (bind ?tcost (find_heuristic_costs))
     (bind ?fcost (+ ?wcost ?tcost))
     (assert (newnode
         (ident ?new)
@@ -288,7 +290,7 @@
 
 ;; ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~
 
-(defrule EXPAND::unload-store
+(defrule EXPAND::apply-unload-store
     "Se un mezzo che trasporta un oggetto transita da una città
      che lo immagazzina, allora il mezzo lo scarica"
     (declare (salience 50))
@@ -309,7 +311,7 @@
             carries ?id ?quantity2 ?obj)))
 
 
-(defrule EXPAND::apply-unload-store (declare (salience 50))
+(defrule EXPAND::exec-unload-store (declare (salience 50))
 
     (current ?curr)
     (node (ident ?curr) (gcost ?g))
@@ -342,7 +344,7 @@
 
     (bind ?gcost (* 10 ?quantityS2))
 
-    (assert (gcost ?gcost) (old_gcost ?g) (new ?new) (find_heuristic_wares_cost) (unload-store))
+    (assert (gcost ?gcost) (old_gcost ?g) (new ?new) (find_heuristic_wares_costs) (find_heuristic_travel_costs) (unload-store))
     (assert (exec ?curr ?new unload-store ?gcost
              transport ?type ?capacity ?location ?id
              city ?location ?quantityP ?objP ?quantityN ?objN ?quantityS1 ?objS
@@ -354,19 +356,20 @@
 
 
 
-(defrule EXPAND::unload-store_01 (declare (salience 50))
+(defrule EXPAND::unload-store_newnode (declare (salience 50))
     (current ?curr)
     ?dummy <- (unload-store)
-    ?h_w <- (computed_heuristic_wares_cost ?wcost)
+    ?h_w <- (computed_heuristic_wares_cost (cost ?wcost))
     ?h_t <- (find_heuristic_travel_costs)
+    ?h_fw <- (find_heuristic_wares_costs)
     ?n <- (new ?new)
     ?m <- (gcost ?gcost)
     ?o <- (old_gcost ?g)
 
 =>
-    (retract ?h_w ?h_t ?dummy)
+    (retract ?h_w ?h_t ?h_fw ?dummy)
     (retract ?n ?m ?o)
-    (bind ?tcost (find_overall_travel_costs))
+    (bind ?tcost (find_heuristic_costs))
     (bind ?fcost (+ ?wcost ?tcost))
     (assert (newnode
         (ident ?new)
@@ -377,7 +380,7 @@
 
 ;; ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~
 
-(defrule EXPAND::shift (declare (salience 50))
+(defrule EXPAND::apply-shift (declare (salience 50))
 
     (current ?curr)
     (node (ident ?curr) (open yes))
@@ -399,7 +402,7 @@
             distance ?location1 ?length ?location2 ?type)))
 
 
-(defrule EXPAND::apply-shift (declare (salience 50))
+(defrule EXPAND::exec-shift (declare (salience 50))
 
     (current ?curr)
     (node (ident ?curr) (gcost ?g))
@@ -429,7 +432,7 @@
 
     (bind ?gcost (travel_cost_evaluation ?type ?length))
 
-    (assert (gcost ?gcost) (old_gcost ?g) (new ?new) (find_heuristic_wares_cost) (shift))
+    (assert (gcost ?gcost) (old_gcost ?g) (new ?new) (find_heuristic_wares_costs) (find_heuristic_travel_costs) (shift))
     (assert (exec ?curr ?new shift ?gcost
              transport ?type ?capacity ?location1 ?id
              city ?location1 $?x
@@ -438,20 +441,21 @@
              (prev_next (ident ?curr))
              (prev_next (ident ?new))))
 
-(defrule EXPAND::shift_01 (declare (salience 50))
+(defrule EXPAND::shift_newnode (declare (salience 50))
 
     (current ?curr)
     ?dummy <- (shift)
-    ?h_w <- (computed_heuristic_wares_cost ?wcost)
+    ?h_fw <- (find_heuristic_wares_costs)
+    ?h_w <- (computed_heuristic_wares_cost  (cost ?wcost))
     ?h_t <- (find_heuristic_travel_costs)
     ?n <- (new ?new)
     ?m <- (gcost ?gcost)
     ?o <- (old_gcost ?g)
 
 =>
-    (retract ?h_w ?h_t ?dummy)
+    (retract ?h_w ?h_t ?h_fw ?dummy)
     (retract ?n ?m ?o)
-    (bind ?tcost (find_overall_travel_costs))
+    (bind ?tcost (find_heuristic_costs))
     (bind ?fcost (+ ?wcost ?tcost))
     (assert (newnode
         (ident ?new)

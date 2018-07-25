@@ -1,5 +1,6 @@
 (deftemplate MAIN::computed_heuristic_travel_cost (slot cost))
 
+(deftemplate MAIN::computed_heuristic_wares_cost  (slot city) (slot cost))
 
 (deftemplate MAIN::state
     (slot name_1)  (slot qtyProd_TO) (slot objProd_TO) (slot qtyNeed_TO) (slot objNeed_TO) (slot qtyStore_TO) (slot objStore_TO)

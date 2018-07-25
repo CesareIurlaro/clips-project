@@ -23,14 +23,11 @@
     ?d2 <- (dummy_string (ident ?old) (string $?string))
 
 =>
-    ;;(printout t "check-closed " crlf ?s1_facts crlf ?s2_facts crlf "-----" crlf)
 
         (assert (alreadyclosed (+ ?a 1)))
         (retract ?f1 ?f2)
-
-        ;;(printout t "open-close" crlf)
         (pop-focus)
-        (pop-focus) ;; prima erano fuori
+        (pop-focus)
 )
 
 
@@ -46,19 +43,15 @@
 
     ?f2 <- (open-worse ?a)
 
-    (bind ?s1_facts "") (bind ?s2_facts "")
-
     ?d1 <- (dummy_string (ident ?id) (string $?string))
     ?d2 <- (dummy_string (ident ?old) (string $?string))
 
 =>
-    ;;(printout t "open-worse " crlf ?s1_facts crlf ?s2_facts crlf "-----" crlf)
 
     (assert (open-worse (+ ?a 1)))
     (retract ?f1)
     (retract ?f2)
-    ;;(printout t "open-worse" crlf)
-    (pop-focus) ;; prima era fuori
+    (pop-focus)
     )
 
 
@@ -82,9 +75,8 @@
     (assert (node (ident ?id) (gcost ?g) (fcost ?f) (father ?anc) (open yes)))
     (assert (open-better (+ ?a 1)))
     (retract ?f1 ?f2 ?f3 ?f4)
-    ;;(printout t "open-better" crlf)
     (pop-focus)
-    (pop-focus) ;; prima erano fuori
+    (pop-focus)
     )
 
 

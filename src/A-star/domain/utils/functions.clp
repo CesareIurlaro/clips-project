@@ -11,11 +11,18 @@
 
     (return ?result))
 
-(deffunction MAIN::find_overall_travel_costs()
-    (bind ?total_cost 0)
+(deffunction MAIN::find_heuristic_costs()
+    (bind ?total_travel_cost 0)
     (do-for-all-facts ((?f computed_heuristic_travel_cost)) TRUE
-        (bind ?total_cost (+ ?total_cost ?f:cost)))
+        (bind ?total_travel_cost (+ ?total_travel_cost ?f:cost))
+        (retract ?f))
 
+    (bind ?total_wares_cost 0)
+    (do-for-all-facts ((?f computed_heuristic_wares_cost)) TRUE
+        (bind ?total_wares_cost (+ ?total_wares_cost ?f:cost))
+        (retract ?f))
+
+    (bind ?total_cost (+ ?total_wares_cost ?total_travel_cost))
     (return ?total_cost))
 
 
