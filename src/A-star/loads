@@ -2,11 +2,14 @@
 
 (load ./domain/templates.clp)
 (load ./domain/utils/cf_distances.clp)
-;;(load ./domain/knowledge_base_TO.clp)
-;;(load ./domain/knowledge_base_MI_a.clp)
-;;(load ./domain/knowledge_base_MI_b.clp)
-(load ./domain/knowledge_base_MI_c.clp)
-;;(load ./domain/knowledge_base_MI_d.clp)
+
+;;(load ./knowledge_bases/1_TO/kb_TO.clp)
+
+;;(load ./knowledge_bases/2_MI/kb_MI_a.clp)
+;;(load ./knowledge_bases/2_MI/kb_MI_b.clp)
+;;(load ./knowledge_bases/2_MI/kb_MI_c.clp)
+
+
 (load ./domain/utils/functions.clp)
 (load ./algorithm/Main.clp)
 (load ./algorithm/Expand.clp)

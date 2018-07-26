@@ -54,12 +54,39 @@
 ?f <- (state
      (name_2 ?city_2)  (qtyProd_MI ?qtyProd_2)  (objProd_MI ?objProd_2)  (qtyNeed_MI ?qtyNeed_2)  (objNeed_MI ?objNeed_2)  (qtyStore_MI ?qtyStore_2)  (objStore_MI ?objStore_2)
      (name_7 ?city_7)  (qtyProd_NA ?qtyProd_7)  (objProd_NA ?objProd_7)  (qtyNeed_NA ?qtyNeed_7)  (objNeed_NA ?objNeed_7)  (qtyStore_NA ?qtyStore_7)  (objStore_NA ?objStore_7)
-     ;;(name_8 ?city_8)  (qtyProd_BA ?qtyProd_8)  (objProd_BA ?objProd_8)  (qtyNeed_BA ?qtyNeed_8)  (objNeed_BA ?objNeed_8)  (qtyStore_BA ?qtyStore_8)  (objStore_BA ?objStore_8)
+     (name_8 ?city_8)  (qtyProd_BA ?qtyProd_8)  (objProd_BA ?objProd_8)  (qtyNeed_BA ?qtyNeed_8)  (objNeed_BA ?objNeed_8)  (qtyStore_BA ?qtyStore_8)  (objStore_BA ?objStore_8)
 
      (vehicle_7 ?type_7 ?capacity_7 ?location_7 ?id7))
 
+?f1 <- (MI_b)
+
 =>
-    (retract ?f)
+    (retract ?f ?f1)
+    (bind ?id (gensym*))
+    (assert
+        (find_heuristic_wares_costs) (find_heuristic_travel_costs)
+
+        (status (ident ?id) (subject city) (data ?city_2 ?qtyProd_2 ?objProd_2 ?qtyNeed_2 ?objNeed_2 ?qtyStore_2 ?objStore_2))
+        (status (ident ?id) (subject city) (data ?city_7 ?qtyProd_7 ?objProd_7 ?qtyNeed_7 ?objNeed_7 ?qtyStore_7 ?objStore_7))
+        (status (ident ?id) (subject city) (data ?city_8 ?qtyProd_8 ?objProd_8 ?qtyNeed_8 ?objNeed_8 ?qtyStore_8 ?objStore_8))
+
+        (status (ident ?id) (subject transport) (data ?type_7 ?capacity_7 ?location_7 ?id7))
+
+        (current ?id))
+)
+
+(defrule start_MI_c (declare (salience 5))
+
+?f <- (state
+     (name_2 ?city_2)  (qtyProd_MI ?qtyProd_2)  (objProd_MI ?objProd_2)  (qtyNeed_MI ?qtyNeed_2)  (objNeed_MI ?objNeed_2)  (qtyStore_MI ?qtyStore_2)  (objStore_MI ?objStore_2)
+     (name_7 ?city_7)  (qtyProd_NA ?qtyProd_7)  (objProd_NA ?objProd_7)  (qtyNeed_NA ?qtyNeed_7)  (objNeed_NA ?objNeed_7)  (qtyStore_NA ?qtyStore_7)  (objStore_NA ?objStore_7)
+
+     (vehicle_7 ?type_7 ?capacity_7 ?location_7 ?id7))
+
+?f1 <- (MI_c)
+
+=>
+    (retract ?f ?f1)
     (bind ?id (gensym*))
     (assert
         (find_heuristic_wares_costs) (find_heuristic_travel_costs)
