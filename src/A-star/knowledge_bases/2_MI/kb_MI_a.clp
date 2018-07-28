@@ -1,3 +1,9 @@
+;; Sottografo con tre città: Roma (RM), Napoli (NA) e Reggio Calabria (RC).
+;; Soddisfiamo le necessità di MI attraverso l'utilizzo di tre sottoobiettivi:
+;; 1. Trasferimento delle merci di tipo A da RC verso NA,
+;; 2. Trasferimento parziale di 10 A verso MI,
+;; 3. Trasferimento delle rimanenti 20 A verso MI.
+
 (deffacts MAIN::state
     (state
         (name_6 RM)  (qtyProd_RM 0) (objProd_RM A) (qtyNeed_RM 5 ) (objNeed_RM C) (qtyStore_RM 0) (objStore_RM B)

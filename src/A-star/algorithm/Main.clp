@@ -100,6 +100,32 @@
         (current ?id))
 )
 
+
+(defrule start_VE (declare (salience 5))
+
+?f <- (state
+     (name_2 ?city_2) (qtyProd_MI ?qtyProd_2) (objProd_MI ?objProd_2) (qtyNeed_MI ?qtyNeed_2) (objNeed_MI ?objNeed_2) (qtyStore_MI ?qtyStore_2) (objStore_MI ?objStore_2)
+     (name_5 ?city_5) (qtyProd_BO ?qtyProd_5) (objProd_BO ?objProd_5) (qtyNeed_BO ?qtyNeed_5) (objNeed_BO ?objNeed_5) (qtyStore_BO ?qtyStore_5) (objStore_BO ?objStore_5)
+
+     (vehicle_3 ?type_3 ?capacity_3 ?location_3 ?id3))
+
+?f1 <- (VE)
+
+=>
+    (retract ?f ?f1)
+    (bind ?id (gensym*))
+    (assert
+        (find_heuristic_wares_costs) (find_heuristic_travel_costs)
+
+        (status (ident ?id) (subject city) (data ?city_2 ?qtyProd_2 ?objProd_2 ?qtyNeed_2 ?objNeed_2 ?qtyStore_2 ?objStore_2))
+        (status (ident ?id) (subject city) (data ?city_5 ?qtyProd_5 ?objProd_5 ?qtyNeed_5 ?objNeed_5 ?qtyStore_5 ?objStore_5))
+
+        (status (ident ?id) (subject transport) (data ?type_3 ?capacity_3 ?location_3 ?id3))
+
+        (current ?id))
+)
+
+
 (defrule start_GE (declare (salience 5))
 
 ?f <- (state
@@ -126,27 +152,57 @@
         (current ?id))
 )
 
-(defrule start_VE_b (declare (salience 5))
+(defrule start_BA_a (declare (salience 5))
 
 ?f <- (state
-     (name_3 ?city_3) (qtyProd_VE ?qtyProd_3) (objProd_VE ?objProd_3) (qtyNeed_VE ?qtyNeed_3) (objNeed_VE ?objNeed_3) (qtyStore_VE ?qtyStore_3) (objStore_VE ?objStore_3)
-     (name_5 ?city_5) (qtyProd_BO ?qtyProd_5) (objProd_BO ?objProd_5) (qtyNeed_BO ?qtyNeed_5) (objNeed_BO ?objNeed_5) (qtyStore_BO ?qtyStore_5) (objStore_BO ?objStore_5)
+      (name_2 ?city_2) (qtyProd_MI ?qtyProd_2) (objProd_MI ?objProd_2) (qtyNeed_MI ?qtyNeed_2) (objNeed_MI ?objNeed_2) (qtyStore_MI ?qtyStore_2) (objStore_MI ?objStore_2)
+      (name_5 ?city_5) (qtyProd_BO ?qtyProd_5) (objProd_BO ?objProd_5) (qtyNeed_BO ?qtyNeed_5) (objNeed_BO ?objNeed_5) (qtyStore_BO ?qtyStore_5) (objStore_BO ?objStore_5)
+      (name_8 ?city_8) (qtyProd_BA ?qtyProd_8) (objProd_BA ?objProd_8) (qtyNeed_BA ?qtyNeed_8) (objNeed_BA ?objNeed_8) (qtyStore_BA ?qtyStore_8) (objStore_BA ?objStore_8)
 
-     (vehicle_2 ?type_2 ?capacity_2 ?location_2 ?id2))
+      (vehicle_3 ?type_3 ?capacity_3 ?location_3 ?id3))
+
+?f1 <- (BA_a)
 
 =>
-    (retract ?f)
+    (retract ?f ?f1)
     (bind ?id (gensym*))
     (assert
         (find_heuristic_wares_costs) (find_heuristic_travel_costs)
 
-        (status (ident ?id) (subject city) (data ?city_3 ?qtyProd_3 ?objProd_3 ?qtyNeed_3 ?objNeed_3 ?qtyStore_3 ?objStore_3))
+        (status (ident ?id) (subject city) (data ?city_2 ?qtyProd_2 ?objProd_2 ?qtyNeed_2 ?objNeed_2 ?qtyStore_2 ?objStore_2))
         (status (ident ?id) (subject city) (data ?city_5 ?qtyProd_5 ?objProd_5 ?qtyNeed_5 ?objNeed_5 ?qtyStore_5 ?objStore_5))
+        (status (ident ?id) (subject city) (data ?city_8 ?qtyProd_8 ?objProd_8 ?qtyNeed_8 ?objNeed_8 ?qtyStore_8 ?objStore_8))
 
-        (status (ident ?id) (subject transport) (data ?type_2 ?capacity_2 ?location_2 ?id2))
+        (status (ident ?id) (subject transport) (data ?type_3 ?capacity_3 ?location_3 ?id3))
 
         (current ?id))
 )
+
+
+(defrule start_BA_b (declare (salience 5))
+
+?f <- (state
+      (name_2 ?city_2) (qtyProd_MI ?qtyProd_2) (objProd_MI ?objProd_2) (qtyNeed_MI ?qtyNeed_2) (objNeed_MI ?objNeed_2) (qtyStore_MI ?qtyStore_2) (objStore_MI ?objStore_2)
+      (name_8 ?city_8) (qtyProd_BA ?qtyProd_8) (objProd_BA ?objProd_8) (qtyNeed_BA ?qtyNeed_8) (objNeed_BA ?objNeed_8) (qtyStore_BA ?qtyStore_8) (objStore_BA ?objStore_8)
+
+      (vehicle_7 ?type_7 ?capacity_7 ?location_7 ?id7))
+
+?f1 <- (BA_b)
+
+=>
+    (retract ?f ?f1)
+    (bind ?id (gensym*))
+    (assert
+        (find_heuristic_wares_costs) (find_heuristic_travel_costs)
+
+        (status (ident ?id) (subject city) (data ?city_2 ?qtyProd_2 ?objProd_2 ?qtyNeed_2 ?objNeed_2 ?qtyStore_2 ?objStore_2))
+        (status (ident ?id) (subject city) (data ?city_8 ?qtyProd_8 ?objProd_8 ?qtyNeed_8 ?objNeed_8 ?qtyStore_8 ?objStore_8))
+
+        (status (ident ?id) (subject transport) (data ?type_7 ?capacity_7 ?location_7 ?id7))
+
+        (current ?id))
+)
+
 
 (defrule start_RC (declare (salience 5))
 

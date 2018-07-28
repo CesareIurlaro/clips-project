@@ -1,3 +1,8 @@
+;; Sottografo con quattro città: Torino (TO), Genova (GE), Bologna (Bo) e
+;; Firenze (FI).
+;; Soddisfiamo le necessità di GE attraverso l'obiettivo che prevede l'utilizzo
+;; di un van (vehicle_1) fermo a BO per il trasporto delle merci di tipo B.
+
 (deffacts MAIN::state
     (state
         (name_1 TO)  (qtyProd_TO 10) (objProd_TO B) (qtyNeed_TO 0) (objNeed_TO A) (qtyStore_TO 0) (objStore_TO C)

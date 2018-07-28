@@ -1,3 +1,7 @@
+;; Sottografo con tre città: Torino (TO), Roma (RM) e Palermo (PA).
+;; Soddisfiamo le necessità di TO attraverso l'obiettivo che prevede l'utilizzo
+;; di un aereo (vehicle_6) fermo a PA per il trasporto delle merci di tipo A
+
 (deffacts MAIN::state
     (state
         (name_1 TO)  (qtyProd_TO 10) (objProd_TO B) (qtyNeed_TO 20) (objNeed_TO A) (qtyStore_TO 0) (objStore_TO C)

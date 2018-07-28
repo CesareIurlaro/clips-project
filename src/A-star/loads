@@ -9,11 +9,12 @@
 ;;(load ./knowledge_bases/2_MI/kb_MI_b.clp)
 ;;(load ./knowledge_bases/2_MI/kb_MI_c.clp)
 
-(load ./knowledge_bases/3_VE/kb_VE_a.clp)
-;;(load ./knowledge_bases/3_VE/kb_VE_a.clp)
-;;(load ./knowledge_bases/3_VE/kb_VE_a.clp)
+;;(load ./knowledge_bases/3_VE/kb_VE.clp)
 
 ;;(load ./knowledge_bases/4_GE/kb_GE.clp)
+
+;;(load ./knowledge_bases/8_BA/kb_BA_a.clp)
+;;(load ./knowledge_bases/8_BA/kb_BA_b.clp)
 
 ;;(load ./knowledge_bases/9_RC/kb_RC.clp)
 
