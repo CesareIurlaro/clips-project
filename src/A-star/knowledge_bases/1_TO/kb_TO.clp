@@ -10,7 +10,7 @@
 
         (vehicle_6 plane 7 PA 6))
 
-
+        (TO)
         (open-worse 0)
         (open-better 0)
         (alreadyclosed 0)
