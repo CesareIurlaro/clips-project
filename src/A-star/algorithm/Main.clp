@@ -42,7 +42,7 @@
     (numberofnodes ?n)
     (total_cost ?c)
 =>
-    (printout t crlf " ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~ " crlf "Esiste soluzione con costo " ?c crlf)
+    (printout t crlf " ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~ " crlf " Esiste soluzione con costo " ?c crlf)
     (printout t crlf " stati espansi " ?n crlf)
     (printout t " stati generati gia` in closed " ?closed crlf)
     (printout t " stati generati gia` in (open-worse) " ?worse crlf)

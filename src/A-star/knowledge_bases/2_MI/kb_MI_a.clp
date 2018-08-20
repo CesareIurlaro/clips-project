@@ -1,5 +1,5 @@
 ;; Sottografo con tre città: Roma (RM), Napoli (NA) e Reggio Calabria (RC).
-;; Soddisfiamo le necessità di MI attraverso l'utilizzo di tre sottoobiettivi:
+;; Soddisfiamo le necessità di MI attraverso l'utilizzo di tre sotto-obiettivi:
 ;; 1. Trasferimento delle merci di tipo A da RC verso NA,
 ;; 2. Trasferimento parziale di 10 A verso MI,
 ;; 3. Trasferimento delle rimanenti 20 A verso MI.
