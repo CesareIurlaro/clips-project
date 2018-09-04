@@ -38,3 +38,12 @@
 
     (assert (dummy_string (ident ?id) (string (implode$ ?s_facts))))
 )
+
+(deffunction sum_up_costs ()
+  (load-facts "projectCosts.fct")
+  (bind ?tc 0)
+  (do-for-all-facts ((?f file_total_cost)) TRUE
+    (bind ?tc (+ ?tc ?f:f_total_cost))
+  )
+  (printout t crlf " Il costo totale è : " ?tc crlf)
+)

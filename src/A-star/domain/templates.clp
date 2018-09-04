@@ -54,6 +54,9 @@
     (slot to)
 )
 
+(deftemplate MAIN::file_total_cost
+    (slot f_total_cost))
+
 
 (deftemplate min_distance_export_to
     (slot to) (slot quantity) (slot obj) (slot length) (slot type))

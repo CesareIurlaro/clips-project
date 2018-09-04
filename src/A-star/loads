@@ -105,3 +105,15 @@
 (load ./knowledge_bases/5_BO/kb_BO.clp)
 (reset)
 (run)
+
+;; ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~
+
+(reset)
+(load ./knowledge_bases/9_RC/kb_RC.clp)
+(reset)
+(run)
+
+;; ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~
+
+(reset)
+(sum_up_costs)

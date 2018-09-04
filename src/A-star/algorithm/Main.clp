@@ -42,6 +42,9 @@
     (numberofnodes ?n)
     (total_cost ?c)
 =>
+    (load-facts "projectCosts.fct")
+    (assert (file_total_cost (f_total_cost ?c)))
+    (save-facts "projectCosts.fct" visible file_total_cost)
     (printout t crlf " ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~ " crlf " Esiste soluzione con costo " ?c crlf)
     (printout t crlf " stati espansi " ?n crlf)
     (printout t " stati generati gia` in closed " ?closed crlf)
