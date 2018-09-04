@@ -13,6 +13,7 @@
         (vehicle_1 van 4 TO 1)
     )
 
+    (GE_b)
 
         (open-worse 0)
         (open-better 0)

@@ -413,8 +413,17 @@
            city ?location2 $?y
            distance ?location1 ?length ?location2 ?type)
 
-    (goal (subject city) (data ?name $?goal))
-    (status (ident ?curr) (subject city) (data ?name ?quantityProd ?objProd ?quantityNeed ?objNeed ?quantityS ?objS))
+    (or
+      (and
+        (goal (subject city) (data ?name $?goal))
+        (status (ident ?curr) (subject city) (data ?name ?quantityProd ?objProd ?quantityNeed ?objNeed ?quantityS ?objS))
+      )
+
+      (and
+        (goal (subject transport) (data ?typeTransport $?goalTransport))
+        (status (ident ?curr) (subject transport) (data ?typeTransport ?capacityTransport ?locationTransport ?idTransport))
+      )
+    )
 
 =>
 

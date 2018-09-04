@@ -13,13 +13,15 @@
         (vehicle_1 van 4 BO 1)
     )
 
+    (GE_a)
 
-        (open-worse 0)
-        (open-better 0)
-        (alreadyclosed 0)
-        (numberofnodes 0))
+
+    (open-worse 0)
+    (open-better 0)
+    (alreadyclosed 0)
+    (numberofnodes 0))
 
 
 (deffacts MAIN::goal
-  (goal (subject transport) (data van 4 BO 1))
+  (goal (subject transport) (data van 4 TO 1))
 )

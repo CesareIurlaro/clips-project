@@ -126,30 +126,32 @@
 )
 
 
-;;(defrule start_GE_a (declare (salience 5))
-;;
-;;?f <- (state
-;;     (name_1 ?city_1) (qtyProd_TO ?qtyProd_1) (objProd_TO ?objProd_1) (qtyNeed_TO ?qtyNeed_1) (objNeed_TO ?objNeed_1) (qtyStore_TO ?qtyStore_1) (objStore_TO ?objStore_1)
-;;     (name_2 ?city_2) (qtyProd_MI ?qtyProd_2) (objProd_MI ?objProd_2) (qtyNeed_MI ?qtyNeed_2) (objNeed_MI ?objNeed_2) (qtyStore_MI ?qtyStore_2) (objStore_MI ?objStore_2)
-;;     (name_5 ?city_5) (qtyProd_BO ?qtyProd_5) (objProd_BO ?objProd_5) (qtyNeed_BO ?qtyNeed_5) (objNeed_BO ?objNeed_5) (qtyStore_BO ?qtyStore_5) (objStore_BO ?objStore_5)
-;;
-;;
-;;     (vehicle_1 ?type_1 ?capacity_1 ?location_1 ?id1))
-;;
-;;=>
-;;    (retract ?f)
-;;    (bind ?id (gensym*))
-;;    (assert
-;;        (find_heuristic_wares_costs) (find_heuristic_travel_costs)
-;;
-;;        (status (ident ?id) (subject city) (data ?city_1 ?qtyProd_1 ?objProd_1 ?qtyNeed_1 ?objNeed_1 ?qtyStore_1 ?objStore_1))
-;;        (status (ident ?id) (subject city) (data ?city_2 ?qtyProd_2 ?objProd_2 ?qtyNeed_2 ?objNeed_2 ?qtyStore_2 ?objStore_2))
-;;        (status (ident ?id) (subject city) (data ?city_5 ?qtyProd_5 ?objProd_5 ?qtyNeed_5 ?objNeed_5 ?qtyStore_5 ?objStore_5))
-;;
-;;        (status (ident ?id) (subject transport) (data ?type_1 ?capacity_1 ?location_1 ?id1))
-;;
-;;        (current ?id))
-;;)
+(defrule start_GE_a (declare (salience 5))
+
+?f <- (state
+     (name_1 ?city_1) (qtyProd_TO ?qtyProd_1) (objProd_TO ?objProd_1) (qtyNeed_TO ?qtyNeed_1) (objNeed_TO ?objNeed_1) (qtyStore_TO ?qtyStore_1) (objStore_TO ?objStore_1)
+     (name_2 ?city_2) (qtyProd_MI ?qtyProd_2) (objProd_MI ?objProd_2) (qtyNeed_MI ?qtyNeed_2) (objNeed_MI ?objNeed_2) (qtyStore_MI ?qtyStore_2) (objStore_MI ?objStore_2)
+     (name_5 ?city_5) (qtyProd_BO ?qtyProd_5) (objProd_BO ?objProd_5) (qtyNeed_BO ?qtyNeed_5) (objNeed_BO ?objNeed_5) (qtyStore_BO ?qtyStore_5) (objStore_BO ?objStore_5)
+
+
+     (vehicle_1 ?type_1 ?capacity_1 ?location_1 ?id1))
+
+?f1 <- (GE_a)
+
+=>
+    (retract ?f ?f1)
+    (bind ?id (gensym*))
+    (assert
+        (find_heuristic_wares_costs) (find_heuristic_travel_costs)
+
+        (status (ident ?id) (subject city) (data ?city_1 ?qtyProd_1 ?objProd_1 ?qtyNeed_1 ?objNeed_1 ?qtyStore_1 ?objStore_1))
+        (status (ident ?id) (subject city) (data ?city_2 ?qtyProd_2 ?objProd_2 ?qtyNeed_2 ?objNeed_2 ?qtyStore_2 ?objStore_2))
+        (status (ident ?id) (subject city) (data ?city_5 ?qtyProd_5 ?objProd_5 ?qtyNeed_5 ?objNeed_5 ?qtyStore_5 ?objStore_5))
+
+        (status (ident ?id) (subject transport) (data ?type_1 ?capacity_1 ?location_1 ?id1))
+
+        (current ?id))
+)
 
 (defrule MAIN::start_GE_b (declare (salience 5))
 
@@ -159,8 +161,10 @@
 
      (vehicle_1 ?type_1 ?capacity_1 ?location_1 ?id1))
 
+?f1 <- (GE_b)
+
 =>
-    (retract ?f)
+    (retract ?f ?f1)
     (bind ?id (gensym*))
     (assert
         (find_heuristic_wares_costs) (find_heuristic_travel_costs)

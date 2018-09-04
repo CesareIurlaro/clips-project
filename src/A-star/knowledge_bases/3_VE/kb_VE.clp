@@ -2,7 +2,6 @@
 ;; Soddisfiamo le necessità di VE attraverso l'obiettivo che prevede l'utilizzo
 ;; di un van (vehicle_2) fermo a BO per il trasporto delle merci di tipo B.
 
-;; Ho messo 5B a BO altrimenti succede un pastrocchio (RICORDATI DI AGGIUSTARE).
 (deffacts MAIN::state
     (state
       (name_3 VE) (qtyProd_VE 10) (objProd_VE C) (qtyNeed_VE 5 ) (objNeed_VE B) (qtyStore_VE 0) (objStore_VE A)

@@ -4,6 +4,7 @@
 ;;    di un van (vehicle_3) fermo a MI,
 ;; 2. Trasferimento delle merci precedentemente trattate verso RM con l'utilizzo
 ;;    di un plane (vehicle_6) fermo a TO,
+
 (deffacts MAIN::state
     (state
       (name_1 TO)  (qtyProd_TO 0) (objProd_TO B) (qtyNeed_TO 0) (objNeed_TO A) (qtyStore_TO 0) (objStore_TO C)
