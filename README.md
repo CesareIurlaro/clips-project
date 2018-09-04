@@ -5,7 +5,10 @@ This CLIPS project has been written for the exam of Artificial Intelligence Labo
 Il progetto consiste nel cercare di soddisfare le necessità di varie città italiane che producono ed utilizzano alcune
 merci (tipo A, B, C). Per semplicità è assunto che ognuna delle città produca e consumi un solo tipo di prodotto.
 
-Riportiamo le modalità di produzione e consumo di ogni città: metti img.
+Riportiamo le modalità di produzione e consumo di ogni città: 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/beppe95/clips-project/master/stuff/initCities.png"/>
+</p>
 
 A disposizione abbiamo vari veicoli di cui: 5 furgoni con capacità 4,
 2 aerei con capacità 7 e due navi con capacità 11 (dove capacità è il numero massimo di merci trasportabili da ciascun veicolo).
@@ -15,12 +18,17 @@ Un aereo è fermo a Palermo, l'altro a Milano.
 
 Ciascuno dei mezzi può compiere tre azioni basilari: load (prendere merce), unload (droppare merce) e shift (muoversi tra città).
 Ciascuna di queste azioni possiede un costo dipendente da uno o più parametri; nel caso di load ed unload il parametro è la quantità
-di merce che viene trattata dall'azione scelta mentre il costo della shift dipende dal mezzo che la compie (van 1/1, ship 2/3, plane 5/4)
-e dalla distanza tra le due città tra cui viene
-applicata. Alcuni tragitti non sono percorribili da tutti i mezzi di trasporto e perciò non tutte le città 
+di merce che viene trattata dall'azione scelta mentre il costo della shift dipende dal mezzo che la compie (van 1/1, ship 2/3, plane 5/4) e dalla distanza tra le due città tra cui viene applicata. Alcuni tragitti non sono percorribili da tutti i mezzi di trasporto e perciò non tutte le città 
 sono collegate direttamente tra loro.
+Di seguito i tragitti percorribili con i vari tipi di veicoli (presenti nella legenda):
+<p align="center">
+  <img src="https://raw.githubusercontent.com/beppe95/clips-project/master/stuff/route.png"/>
+</p>
 
-Sono note le distanze in linea d'aria tra le diverse città prese in esame: metti img.
+Sono note le distanze in linea d'aria tra le diverse città prese in esame: 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/beppe95/clips-project/master/stuff/crow_flies_distances.png"/>
+</p>
 
 # Gestione file
 Il progetto, contenuto all'interno della cartella 'A-star', è stato suddiviso in tre parti principali:
