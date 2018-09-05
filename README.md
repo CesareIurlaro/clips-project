@@ -7,7 +7,7 @@ merci (tipo A, B, C). Per semplicità è assunto che ognuna delle città produca
 
 Riportiamo le modalità di produzione e consumo di ogni città: 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/beppe95/clips-project/master/stuff/initCities.png"/>
+  <img src="https://raw.githubusercontent.com/CesareIurlaro/clips-project/master/stuff/initCities.png"/>
 </p>
 
 A disposizione abbiamo vari veicoli di cui: 5 furgoni con capacità 4,
@@ -22,12 +22,12 @@ di merce che viene trattata dall'azione scelta mentre il costo della shift dipen
 sono collegate direttamente tra loro.
 Di seguito i tragitti percorribili con i vari tipi di veicoli (presenti nella legenda):
 <p align="center">
-  <img src="https://raw.githubusercontent.com/beppe95/clips-project/master/stuff/route.png"/>
+  <img src="https://raw.githubusercontent.com/CesareIurlaro/clips-project/master/stuff/route.png"/>
 </p>
 
 Sono note le distanze in linea d'aria tra le diverse città prese in esame: 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/beppe95/clips-project/master/stuff/crow_flies_distances.png"/>
+  <img src="https://raw.githubusercontent.com/CesareIurlaro/clips-project/master/stuff/crow_flies_distances.png"/>
 </p>
 
 # Gestione file
@@ -94,6 +94,18 @@ utilizzabili solamente con fatti ordinati. Ove non siano stati ritenuti necessar
 tali costrutti sono stati utilizzati fatti non ordinati.
 
 ## Implementazione A* CLIPS
+L'implementazione di A* nel linguaggio CLIPS è stata effettuata tramite la suddivione
+in moduli:
+- Main che si occupa di instanziare il nodo iniziale e di stampare il costo totale
+  e i costi delle singole azioni della soluzione 
+- Expand che si assicura della aciclicità del grafo ovvero che non vi siano
+più percorsi che portino a stati uguali tra loro. Nel caso in cui ciò non fosse 
+rispettato allora il nodo del percorso più costoso viene chiuso.
+- Check che si occupa di verificare se all'interno dei vari fatti 'status'
+sia contenuto il goal desiderato
+- New che si occupa sia di aggiornare le statistiche (closed, worse, better) relative
+all'algoritmo sia di aggiungere nodi al percorso preso in esame.
+
 Per la creazione delle strutture dati di base per l'implementazione 
 dell'algoritmo A* sono stati utilizzati dei fatti ordinati. Essi sono:
 - 'node' utilizzato per rappresentare il nodo corrente preso in esame,
@@ -110,14 +122,61 @@ le città e l'altro riguardante i mezzi di trasporto.
 Le basi di conoscenza contengono le città ed i veicoli necessari al soddisfacimento
 dei vari sottobiettivi. Esse risultano contenute, come descritto in precedenza, in un fatto ordinato chiamato 'state'
 che rappresenta la radice del grafo su cui effettuiamo la ricerca nello spazio degli
-stati. Il fatto denominato 'state' fa scattare una delle regole contenute all'interno di
-'cities_rules.clp' che produrrà gli 'status' iniziali su cui il nostro programma
-"girerà".
+stati. 
 
 Una prima suddivisione è stata quella di produrre un numero di 
 sottobiettivi pari al numero di città menzionate nella traccia del problema (eccetto
 Firenze). Successivamente, per necessità e comodità, si è deciso di apportare un'
 ulteriore suddivisione ad alcune basi di conoscenza.
+
+## Sottobiettivi
+I sottobiettivi prodotti sono:
+- ;; Sottografo con tre città: Torino (TO), Roma (RM) e Palermo (PA).
+;; Soddisfiamo le necessità di TO attraverso l'obiettivo che prevede l'utilizzo
+;; di un aereo (vehicle_6) fermo a PA per il trasporto delle merci di tipo A
+
+- ;; Sottografo con tre città: Roma (RM), Napoli (NA) e Reggio Calabria (RC).
+;; Soddisfiamo le necessità di MI attraverso l'utilizzo di tre sotto-obiettivi:
+;; 1. Trasferimento delle merci di tipo A da RC verso NA,
+;; 2. Trasferimento parziale di 10 A verso MI,
+;; 3. Trasferimento delle rimanenti 20 A verso MI.
+
+
+- ;; Sottografo con due città: Venezia (VE) e Bologna (BO).
+;; Soddisfiamo le necessità di VE attraverso l'obiettivo che prevede l'utilizzo
+;; di un van (vehicle_2) fermo a BO per il trasporto delle merci di tipo B.
+
+- ;; Sottografo con tre città: Torino (TO), Milano (MI) e Bologna (BO).
+;; Soddisfiamo le necessità di GE attraverso l'utilizzo di due sottoobiettivi:
+;; 1. Trasferimento di un van (vehicle_1) da BO a TO,
+;; 2. Trasferimento delle merci di tipo B con l'utilizzo del van (vehicle_1) da
+;;    TO verso GE.
+
+- ;; Sottografo con due città: Venezia (VE) e Bologna (BO).
+;; Soddisfiamo le necessità di BO attraverso l'obiettivo che prevede l'utilizzo
+;; di un van (vehicle_2) fermo a VE per il trasporto delle merci di tipo C
+
+- ;; Sottografo con due città: Torino (TO), Milano (MI) e Roma (RM).
+;; Soddisfiamo le necessità di RM attraverso l'utilizzo di due sotto-obiettivi:
+;; 1. Trasferimento delle merci di tipo C da MI verso TO con l'utilizzo
+;;    di un van (vehicle_3) fermo a MI,
+;; 2. Trasferimento delle merci precedentemente trattate verso RM con l'utilizzo
+;;    di un plane (vehicle_6) fermo a TO,
+
+- ;; Sottografo con tre città: Genova (GE), Napoli (NA) e Palermo (PA).
+;; Soddisfiamo le necessità di NA e PA attraverso l'utilizzo di una nave
+;; (vehicle_8).
+
+- ;; Sottografo con tre città: Milano (MI), Bologna (BO) e Bari (BA).
+;; Soddisfiamo le necessità di BA attraverso l'utilizzo di due sottoobiettivi:
+;; 1. Trasferimento delle merci di tipo A da BO verso MI con l'utilizzo
+;;    di un van (vehicle_3) fermo a BO,
+;; 2. Trasferimento delle merci precedentemente trattate verso BA con l'utilizzo
+;;    di un van (vehicle_7) fermo a MI,
+
+- ;; Sottografo con duce città: Napoli (NA) e Reggio Calabria (RC).
+;; Soddisfiamo le necessità di RC attraverso l'obiettivo che prevede l'utilizzo
+;; di un van (vehicle_5) fermo a NA per il trasporto delle merci di tipo B
 
 ## Azioni del dominio
 Le azioni del dominio, contenute nel file 'domain_rules.clp', sono state modellate
@@ -143,6 +202,28 @@ utilizzando come soggetto i mezzi di trasporto a nostra disposizione. Esse sono:
 - shift_newnode 
 
 # Funzioni e utils
+Contenute all'interno della cartella 'utils'.
+
+Le funzioni utilizzate sono contenute all'interno del file 'functions.clp'.
+Esse sono:
+- travel_cost_evaluation che calcola, dato il mezzo di trasporto e la distanza da 
+percorrere, il costo dello spostamento
+- find_heuristic_costs che si occupa di calcolare il valore dell'euristica utilizzata
+- string_comparator utilizzata per confrontare due stringhe passate come parametro
+- prepare_string utilizzata per produrre una stringa che concatena tutti gli 
+'status' aventi lo stesso valore dello slot 'ident'. La stringa risultante è
+rappresentativa della configurazione di quello stato.
+- sum_up_costs che si occupa di calcolare il costo totale della soluzione dati 
+i costi delle soluzioni dei sottobiettivi.
+
+Le regole utilizzate sono contenute all'interno del file 'rules.clp'.
+Queste producono fatti ed eseguono calcoli di supporto al calcolo dell'euristica.
+
+Infine, il file 'cf_distances.clp' contiene:
+- 'h_distance', fatto ordinato, che rappresenta la distanza in linea d'aria utilizzata
+per il calcolo dell'euristica
+- 'distance', fatto non ordinato, che rappresenta la distanza in linea d'aria
+dei tragitti possibili dai mezzi di trasporto utilizzati nel problema.
 
 # Conclusioni
 
