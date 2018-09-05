@@ -218,7 +218,7 @@ The **rules** are contained within the 'rules.clp' file, responsible of producin
 
 The `cf_distances.clp` file contains:
 - `h_distance`, ordered fact which represents the crow flies distance; used for the calculation of the heuristic
-- `distance`, not ordered facts which represents the crow flies distance that can actually be traveled and the specific means of transport which can be used to do it.
+- `distance`, not ordered facts which represents the crow flies distance that can actually be traveled and the specific means of transport which can be used to do it. 
 
 # Conclusions
 
