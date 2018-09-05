@@ -60,7 +60,7 @@ They are:
 - `projectCosts`, on which they are saved progressively the partial costs of the solution
 - `run`, used to open the CLIPS shell where to run the program.
 
-```To run the program open 'run.bat' file (or use the tool 'CLIPSIDE') and type '(batch loads)' command .```
+To run the program open `run.bat` file (or use the tool **CLIPSIDE**) and type `(batch loads)` command .
 
 # Planning Algorithm
 The suggested algorithms for solving the problem have been **Iterative Deepening** and **A***. 
@@ -70,15 +70,15 @@ Both have been implemented and applied to perform the research on a graph in the
 drastically reducing the size of the problem it was possible to conclude the computation in a short time.
 However, the addition of only a few facts to the knowledge base worsened of much the performances. 
 
-His implementation is contained within the `no_evaluation` folder.
+His implementation is contained within the `no_evaluation_function` folder.
 
 Because of this, we opted for the **A*** algorithm implementation.
-This one has a better behavior than the previous algorithm, either because
+**A*** This one has a better behavior than the previous algorithm, either because
 - of the linear spatial complexity in the depth of the deepest optimal solution
 - it is helped by a heuristic
 **If the heuristic is admissible, then the algorithm is optimal.**
 
-Despite this, **even A* can not find a solution quickly.**
+Despite this, **even A\* can not find a solution quickly.**
 
 ## Heuristic
 We have implemented an **admissible heuristic**, which means that it is *never wrong for excess* and that it is *consistent* (or *monotonic*) for graph search applications. [Artificial Intelligence: A Modern Approach, S.J. Russel & P. Norvig]
