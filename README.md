@@ -225,7 +225,39 @@ The sub-problems were satitisfied with the following actions:
 
 **2. MI**
 
+ Eseguo azione unload-need con costo 60 (transport plane 1 TO 6 city TO 10 B 6 A 0 C carries 6 6 A)
+ Eseguo azione shift con costo 836 (transport plane 1 RM 6 city RM 0 A 5 C 0 B city TO 10 B 6 A 0 C)
+ Eseguo azione load-prod con costo 60 (transport plane 7 RM 6 city RM 6 A 5 C 0 B)
+ Eseguo azione shift con costo 836 (transport plane 7 TO 6 city TO 10 B 6 A 0 C city RM 6 A 5 C 0 B)
+ Eseguo azione unload-need con costo 40 (transport plane 3 TO 6 city TO 10 B 10 A 0 C carries 6 4 A)
+ Eseguo azione unload-need con costo 30 (transport plane 0 TO 6 city TO 10 B 13 A 0 C carries 6 3 A)
+ Eseguo azione shift con costo 836 (transport plane 0 RM 6 city RM 6 A 5 C 0 B city TO 10 B 13 A 0 C)
+ Eseguo azione load-prod con costo 40 (transport plane 4 RM 6 city RM 10 A 5 C 0 B)
+ Eseguo azione shift con costo 836 (transport plane 4 TO 6 city TO 10 B 13 A 0 C city RM 10 A 5 C 0 B)
+ Eseguo azione shift con costo 745 (transport plane 4 PA 6 city PA 0 A 5 C 0 B city TO 10 B 13 A 0 C)
+ Eseguo azione load-prod con costo 30 (transport plane 7 PA 6 city PA 3 A 5 C 0 B)
+ Eseguo azione shift con costo 1995 (transport plane 7 TO 6 city TO 10 B 13 A 0 C city PA 3 A 5 C 0 B)
+ Eseguo azione unload-need con costo 70 (transport plane 0 TO 6 city TO 10 B 20 A 0 C carries 6 7 A)
+ Eseguo azione shift con costo 745 (transport plane 0 PA 6 city PA 3 A 5 C 0 B city TO 10 B 20 A 0 C)
+ Eseguo azione load-prod con costo 70 (transport plane 7 PA 6 city PA 10 A 5 C 0 B)
+
 **3. VE**
+
+ ```Eseguo azione unload-need con costo 60 (transport plane 1 TO 6 city TO 10 B 6 A 0 C carries 6 6 A)
+ Eseguo azione shift con costo 836 (transport plane 1 RM 6 city RM 0 A 5 C 0 B city TO 10 B 6 A 0 C)
+ Eseguo azione load-prod con costo 60 (transport plane 7 RM 6 city RM 6 A 5 C 0 B)
+ Eseguo azione shift con costo 836 (transport plane 7 TO 6 city TO 10 B 6 A 0 C city RM 6 A 5 C 0 B)
+ Eseguo azione unload-need con costo 40 (transport plane 3 TO 6 city TO 10 B 10 A 0 C carries 6 4 A)
+ Eseguo azione unload-need con costo 30 (transport plane 0 TO 6 city TO 10 B 13 A 0 C carries 6 3 A)
+ Eseguo azione shift con costo 836 (transport plane 0 RM 6 city RM 6 A 5 C 0 B city TO 10 B 13 A 0 C)
+ Eseguo azione load-prod con costo 40 (transport plane 4 RM 6 city RM 10 A 5 C 0 B)
+ Eseguo azione shift con costo 836 (transport plane 4 TO 6 city TO 10 B 13 A 0 C city RM 10 A 5 C 0 B)
+ Eseguo azione shift con costo 745 (transport plane 4 PA 6 city PA 0 A 5 C 0 B city TO 10 B 13 A 0 C)
+ Eseguo azione load-prod con costo 30 (transport plane 7 PA 6 city PA 3 A 5 C 0 B)
+ Eseguo azione shift con costo 1995 (transport plane 7 TO 6 city TO 10 B 13 A 0 C city PA 3 A 5 C 0 B)
+ Eseguo azione unload-need con costo 70 (transport plane 0 TO 6 city TO 10 B 20 A 0 C carries 6 7 A)
+ Eseguo azione shift con costo 745 (transport plane 0 PA 6 city PA 3 A 5 C 0 B city TO 10 B 20 A 0 C)
+ Eseguo azione load-prod con costo 70 (transport plane 7 PA 6 city PA 10 A 5 C 0 B)```
 
 **4. GE**
 
