@@ -87,7 +87,7 @@ His implementation is contained within the `no_evaluation_function` folder.
 
 Because of this, we opted for the **A*** algorithm implementation.
 
-**A*:** This one has a better behavior than the previous algorithm, either because
+**A\*:** This one has a better behavior than the previous algorithm, either because
 - of the linear spatial complexity in the depth of the deepest optimal solution
 - it is helped by a heuristic
 **If the heuristic is admissible, then the algorithm is optimal.**
@@ -147,7 +147,6 @@ They are contained, as described above, in an ordered fact called `state`, which
 Our sub-problems were divided into:
 
 **1. TO**: subgraph with Turin (TO), Rome (RM) and Palermo (PA). 
-
 We meet Turin object A needs by plane (`vehicle_6`) which is located in PA.
 
 **2. MI**: subgraph with Milan (MI), Rome (RM), Naples (NA), Bari (BA) and Reggio Calabria (RC). 
