@@ -7,7 +7,7 @@ merci (tipo A, B, C). Per semplicità è assunto che ognuna delle città produca
 
 Riportiamo le modalità di produzione e consumo di ogni città: 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/CesareIurlaro/clips-project/master/stuff/initCities.png"/>
+  <img src="https://github.com/CesareIurlaro/clips-project/blob/master/stuff/initCIties.PNG"/>
 </p>
 
 A disposizione abbiamo vari veicoli di cui: 5 furgoni con capacità 4,
