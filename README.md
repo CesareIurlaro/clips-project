@@ -2,10 +2,8 @@
 This CLIPS project has been written for the exam of Artificial Intelligence Laboratory at the University of Turin.
 
 # Project Description
-Il progetto consiste nel cercare di soddisfare le necessità di varie città italiane che producono ed utilizzano alcune
-merci (tipo A, B, C). Per semplicità è assunto che ognuna delle città produca e consumi un solo tipo di prodotto.
 
-The project consists in trying to meet the needs of various Italian cities goods (product type A, B, C). 
+The project consists in trying to meet the needs of various Italian cities wares (product type can be A, B, C). 
 For simplicity it is assumed that each of the cities produces and considers only one type of product.
 
 The following image report the methods of production and consumption of each city: 
