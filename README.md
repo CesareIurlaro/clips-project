@@ -444,7 +444,7 @@ The total cost is calculated by a function named `sum_up_costs` contained in `fu
 The overall cost is obtained in this way:
 
 <p align="center">
-  <img src="http://latex.codecogs.com/gif.latex?cities%20%3D%20%5Cleft%20%5C%7B%20TO%2C%20MI%2C%20VE%2C%20GE%2C%20BO%2C%20RM%2C%20NA%2C%20PA%2C%20BA%2C%20RC%20%5Cright%20%5C%7D%20%5C%5C%20%5C%5C"/>
+  <img src="http://latex.codecogs.com/gif.latex?cities%20%3D%20%5Cleft%20%5C%7BTO%2C%20%5C%3A%20MI%2C%5C%3A%20VE%2C%5C%3A%20GE%2C%5C%3A%20BO%2C%5C%3A%20RM%2C%5C%3A%20NA%2C%5C%3A%20PA%2C%5C%3A%20BA%2C%5C%3A%20RC%20%5Cright%20%5C%7D%20%5C%5C%20%5C%5C"/>
 </p>
 
 <p align="center">
