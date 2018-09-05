@@ -27,7 +27,7 @@ Di seguito i tragitti percorribili con i vari tipi di veicoli (presenti nella le
 
 Sono note le distanze in linea d'aria tra le diverse città prese in esame: 
 <p align="center">
-  <img src="https://githubusercontent.com/CesareIurlaro/clips-project/master/stuff/crow_flies_distances.png"/>
+  <img src="https://github.com/CesareIurlaro/clips-project/blob/master/stuff/crow_flies_distances.PNG"/>
 </p>
 
 # Gestione file
