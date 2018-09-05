@@ -188,7 +188,7 @@ The original subproblem was divided into:
 **9. RC**: subgraph with Reggio Calabria (RC) and Naples (NA). We meet Reggio Calabria object B needs by van (`vehicle_5`) located in NA.
 
 ## Domain rules
-The domain rules are contained in the `domain_rules.clp` file. The basic actions, previously showed, are `load`, `unload` and `shift`.
+The domain rules are contained in the `domain_rules.clp` file.
 
 In practice, we divided each of them in the following way:
 - `load-prod` and `load-store` are the rules involved in the **load** action. 
