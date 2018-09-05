@@ -2,7 +2,6 @@
 This CLIPS project has been written for the exam of Artificial Intelligence Laboratory at the University of Turin.
 
 # Project Description
-
 The project consists in trying to meet the needs of various Italian cities wares (product type can be A, B, C).
 
 For simplicity it is assumed that each of the cities produces and needs only one type of product.
@@ -13,21 +12,21 @@ The following image reports the methods of production and consumption of each ci
 </p>
 
 We have several vehicles available: 
-- 5 *vans* with capacity 4
-- 2 *aircraft* with capacity 7 
+- 5 *vans* with capacity 4,
+- 2 *aircraft* with capacity 7,
 - 2 *ships* with capacity 11 
 (where capacity is the maximum number of wares transportable from each vehicle).
 
 Each vehicle is located in a prior known location: 
-- 3 *vans* are in Bologna and 2 are in Rome
-- 1 *ship* is in Genoa and the other is in Venice
+- 3 *vans* are in Bologna and 2 are in Rome,
+- 1 *ship* is in Genoa and the other is in Venice,
 - 1 *plane* is in Palermo, the other in Milan.
 
 
 Each of the means can perform three basic actions: 
-- *load* (take goods) 
-- *unload* (drop goods) 
-- *shift* (move between linked cities)
+- *load* (take goods),
+- *unload* (drop goods), 
+- *shift* (move between linked cities).
 
 Each of these actions has a cost dependent on one or more parameters: 
 - **loads and unloads**, the parameter is the *quantity of goods* that is treated by the action chosen, 
@@ -60,7 +59,6 @@ The following image represents the crow flies distances between the different ci
 </p>
 
 # Project management
-
 The project, contained within the 'A-star' folder, has been divided into three main parts:
 - `algorithm`, which contains all the CLIPS modules related to the algorithm used,
 - `domain`, that contains functions, facts, rules and templates used specifically for the domain,
@@ -69,11 +67,11 @@ The project, contained within the 'A-star' folder, has been divided into three m
 
 There are also three other files necessary for the correct execution of the program.
 They are:
-- `loads`, which contains the instructions necessary to configure the execution environment
-- `projectCosts`, on which they are saved progressively the partial costs of the solution
+- `loads`, which contains the instructions necessary to configure the execution environment,
+- `projectCosts`, on which they are saved progressively the partial costs of the solution,
 - `run`, used to open the CLIPS shell where to run the program.
 
-To run the program open `run.bat` file (or use the tool **CLIPSIDE**) and type `(batch loads)` command .
+To run the program open `run.bat` file (or use the tool **CLIPSIDE**) and type `(batch loads)` command.
 
 # Planning Algorithm
 The suggested algorithms for solving the problem have been **Iterative Deepening** and **A***. 
@@ -88,8 +86,8 @@ His implementation is contained within the `no_evaluation_function` folder.
 Because of this, we opted for the **A*** algorithm implementation.
 
 **A\*:** this algorithm has a better behavior than the previous one, either because
-- of the **linear spatial complexity** in the depth of the deepest optimal solution
-- it is helped by a **heuristic**
+- of the **linear spatial complexity** in the depth of the deepest optimal solution,
+- it is helped by a **heuristic**.
 **If the heuristic is admissible, then the algorithm is optimal.**
 
 Despite this, **even A\* can not find a solution quickly.**
@@ -112,17 +110,17 @@ equal to the number of cities to be met; some of them were further subdivided in
 This has precluded the possibility of finding the optimal solution of the whole problem but it guaranteed us the optimality of the sub-solutions. Therefore, the solution proposed by us turns out to be sub-optimal.
 
 # Modeling the problem
-The problem was modeled using, in combination, both ordered facts and unordered facts, contained within the `templates.clp` file, with prevalence of the first kind. The reason for this is to be found in the varied number of constructs usable only with ordered facts made available by CLIPS itself.
+The problem was modeled using, in combination, both ordered facts and non-ordered facts, contained within the `templates.clp` file, with prevalence of the first kind. The reason for this is to be found in the varied number of constructs usable only with ordered facts made available by CLIPS itself.
 
-Where we have not considered necessary such constructs, we used not ordered facts.
+Where we have not considered necessary such constructs, we used non-ordered facts.
 
 ## The A* implementation in CLIPS
 The A* implementation in the CLIPS language was done through the subdivision in the following modules:
 
-- **Main**, which is responsible for instantiating the initial node and printing the total cost and the costs of the individual actions of the solution
+- **Main**, which is responsible for instantiating the initial node and printing the total cost and the costs of the individual actions of the solution,
 - **Expand**, that ensures the aciclicity of the graph and that there is not more than one path that leads to equal open nodes. 
-In case this was not respected, then the node of the most expensive path in terms of costs, is closed
-- **Check**, which deals with checking whether within the various facts `status` the desired goal is contained
+In case this was not respected, then the node of the most expensive path in terms of costs, is closed,
+- **Check**, which deals with checking whether within the various facts `status` the desired goal is contained,
 - **New**, that deals both with updating the statistics (closed, worse, better) related to the algorithm and with adding nodes to the path taken into consideration.
 
 
@@ -130,9 +128,9 @@ Basic data structures are needed to implement the A* algorithm.
 To realize them in CLIPS, ordered facts has been used.
 
 They are:
-- `node`, which represent the node currently examined
-- `newnode`, which expand, after making a action, the new nodes
-- `state`, which configure the environment through the a priori knowledge bases
+- `node`, which represent the node currently examined,
+- `newnode`, which expand, after making a action, the new nodes,
+- `state`, which configure the environment through the a priori knowledge bases,
 - `status`, which maintain informations about cities and means of transport. 
 A precise configuration of a state of the state space is represented by the set of ordered facts `status` having the same value as the `ident` slot.
 
@@ -171,7 +169,7 @@ The original subproblem was divided into:
 The original subproblem was divided into:
 
 - Transfer of type C goods from MI to TO with van (`vehicle_3`),
-- Transfer by plane (`vehicle_6`) of previously displaced goods from TO to RM
+- Transfer by plane (`vehicle_6`) of previously displaced goods from TO to RM.
 
 **7. NA_PA**: subgraph with Naples (NA), Palermo (PA) and Genoa (GE). We meet both Naples and Genoa object needs by ship (`vehicle_8`) which is located in GE.
 
@@ -184,28 +182,19 @@ The original subproblem was divided into:
 
 **9. RC**: subgraph with Reggio Calabria (RC) and Naples (NA). We meet Reggio Calabria object B needs by van (`vehicle_5`) located in NA.
 
-## Domain actions
-The domain actions are contained in the `domain_rules.clp` file. 
-They have been modeled using the means of transport as the subject. They are:
-- apply-load-prod
-- exec-load-prod 
-- load-prod_newnode
+## Domain rules
+The domain rules are contained in the `domain_rules.clp` file. The basic actions, previously showed, are `load`, `unload` and `shift`.
 
-- apply-load-store
-- exec-load-store
-- load-store_newnode
-
-- apply-unload-need
-- exec-unload-need 
-- unload-need_newnode
-
-- apply-unload-store
-- exec-unload-store
-- unload-store_newnode
-
-- apply-shift 
-- exec-shift
-- shift_newnode 
+In practice, we divided each of them in the following way:
+- `load-prod` and `load-store` are the rules involved in the **load** action. 
+  - `load-prod` is used to load any of the object **produced** by the cities into any means of transport which is located in those cities,
+  - `load-store` is used to load any of the object **stored** by the cities into any means of transport which is located in those cities.
+  
+- `unload-need` and `unload-store` are the rules involved in the **unload** action.
+  - `unload-need` is used to unload any of the object **needed** by each cities referred by our goals, 
+  - `unload-store` is used to unload any of the object **not produced** and **not needed** by the cities to store them.
+  
+- `shift` is the rule involved in the **shift** action which is used to change the location of any means of transport. 
 
 # Utilities
 They are contained within the `utils` folder.
