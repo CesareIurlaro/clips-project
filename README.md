@@ -1,139 +1,138 @@
 # CLIPS-project
 This CLIPS project has been written for the exam of Artificial Intelligence Laboratory at the University of Turin.
 
-# Traccia progetto
+# Project Description
 Il progetto consiste nel cercare di soddisfare le necessità di varie città italiane che producono ed utilizzano alcune
 merci (tipo A, B, C). Per semplicità è assunto che ognuna delle città produca e consumi un solo tipo di prodotto.
 
-Riportiamo le modalità di produzione e consumo di ogni città: 
+The project consists in trying to meet the needs of various Italian cities goods (product type A, B, C). 
+For simplicity it is assumed that each of the cities produces and considers only one type of product.
+
+The following image report the methods of production and consumption of each city: 
 <p align="center">
   <img src="https://github.com/CesareIurlaro/clips-project/blob/master/stuff/initCIties.PNG"/>
 </p>
 
-A disposizione abbiamo vari veicoli di cui: 5 furgoni con capacità 4,
-2 aerei con capacità 7 e due navi con capacità 11 (dove capacità è il numero massimo di merci trasportabili da ciascun veicolo).
+We have several vehicles available: 
+- 5 vans with capacity 4
+- 2 aircraft with capacity 7 
+- 2 ships with capacity 11 
+(where capacity is the maximum number of wares transportable from each vehicle).
 
-Ogni mezzo è posizionato in una locazione nota a priori: 3 furgoni sono a Bologna, 2 sono a Roma, 1 nave è a Genova e l'altra è a Venezia.
-Un aereo è fermo a Palermo, l'altro a Milano.
+Each vehicle is located in a prior known location: 
+- 3 vans are in Bologna and 2 are in Rome
+- 1 ship is in Genoa and the other is in Venice
+- 1 plane is in Palermo, the other in Milan.
 
-Ciascuno dei mezzi può compiere tre azioni basilari: load (prendere merce), unload (droppare merce) e shift (muoversi tra città).
-Ciascuna di queste azioni possiede un costo dipendente da uno o più parametri; nel caso di load ed unload il parametro è la quantità
-di merce che viene trattata dall'azione scelta mentre il costo della shift dipende dal mezzo che la compie (van 1/1, ship 2/3, plane 5/4) e dalla distanza tra le due città tra cui viene applicata. Alcuni tragitti non sono percorribili da tutti i mezzi di trasporto e perciò non tutte le città 
-sono collegate direttamente tra loro.
-Di seguito i tragitti percorribili con i vari tipi di veicoli (presenti nella legenda):
+
+Each of the means can perform three basic actions: 
+- load (take goods) 
+- unload (drop goods) 
+- shift (move between linked cities)
+
+Each of these actions has a cost dependent on one or more parameters; in the case of loads and unloads the parameter is the quantity
+of goods that is treated by the action chosen, while the cost of the shifts depend on both the vehicle that performs it (van 1/1, ship 2/3, plane 5/4) and the distance between the two cities. Some journeys are not viable by all means of transport and therefore not all cities are directly connected to each other.
+
+
+Following image rapresent the routes that can be traveled with the various types of vehicles (can also be found in the legend):
 <p align="center">
   <img src="https://github.com/CesareIurlaro/clips-project/blob/master/stuff/route.PNG"/>
 </p>
 
-Sono note le distanze in linea d'aria tra le diverse città prese in esame: 
+The following image rapresent the crow flies distances between the different cities:
 <p align="center">
   <img src="https://github.com/CesareIurlaro/clips-project/blob/master/stuff/crow_flies_distances.PNG"/>
 </p>
 
-# Gestione file
-Il progetto, contenuto all'interno della cartella 'A-star', è stato suddiviso in tre parti principali:
-- alghorithm che contiene tutti i moduli CLIPS relativi all'algoritmo utilizzato,
-- domain che contiene funzioni, fatti, regole e template utilizzati appositamente per il dominio in questione,
-- knowledge_bases che contiene le basi di conoscenza utilizzate per il progetto.
+# Project management
 
-Sono anche contenuti altri tre file necessari per la corretta esecuzione del programma. 
-Essi sono: 'loads' che contiene le istruzioni necessarie per configurare l'ambiente d'esecuzione, 'projectCosts' su cui vengono salvati
-progressivamente i costi parziali della soluzione e 'run' utilizzato per aprire la shell dove eseguire il programma.
-
-To run the program open 'run.bat' file (or use CLIPSIDE) and type '(batch loads)' command .
-
-# Algoritimi di pianificazione
-Gli algoritmi consigliati per la risoluzione del problema sono stati Iterative 
-Deepening ed A*. Entrambi sono stati implementati ed applicati per effettuare 
-la ricerca su grafo nello spazio degli stati.
-
-Iterative Deepening: l'algoritmo si è dimostrato non adatto alla risoluzione del
-problema in quanto incapace di trovare una soluzione in tempi ragionevoli. É stato
-possibile però fare alcune osservazioni: riducendo drasticamente la
-dimensione del problema era possibile concludere la computazione in tempi brevi.
-Tuttavia, l'aggiunta anche di solo pochi fatti alla base di conoscenza peggiorava
-di molto le prestazioni. Esso è contenuto all'interno della cartella 'no_evaluation'.
-
-In virtù di ciò abbiamo optato per l'implementazione dell'algoritmo A*.
-Quest'ultimo ha un comportamento migliore rispetto al precedente algoritmo sia
-alla complessità spaziale lineare nella profondità della più profonda soluzione ottima
-sia poichè affiancato da un euristica. 
-Se l'euristica è ammissibile l'algoritmo allora risulta ottimo.
-
-Nonostante ciò, nemmeno A* riesce a trovare una soluzione in tempi brevi.
-
-## Euristiche
-Abbiamo implementato un'euristica ammissibile, ossia che non sbaglia mai per eccesso 
-e che sia consistente (o monotona) per applicazioni di ricerca su grafo.
-
-La nostra euristica associa ad ogni nodo un costo che dipende dalla somma di:
-- costo delle operazioni (load o unload) sulle merci,
-- costo del viaggio in linea d'aria nel caso di uno spostamento.
-
-L'algoritmo sceglierà sulla base di questa euristica il percorso ottimo.
-
-## Suddivisione in sottoproblemi
-Per risolvere il problema della mancata terminazione dovuta alla grande complessità
-del problema, è stato necessario suddividerlo in svariati sottoproblemi ognuno dei quali
-si occupa di soddisfare una delle città precedentemente menzionate.
-
-Il numero di sottobiettivi in cui è stato suddiviso il problema originario risulta essere
-pari al numero di città da soddisfare; alcuni di essi sono stati ulteriormente
-suddivisi in modo tale da contenere il 'branching factor'.
-
-Questo ha precluso la possibilità di trovare la soluzione ottima
-dell'intero problema ma ci garantisce l'ottimalità delle sottosoluzioni.
-Perciò la soluzione da noi proposta risulta essere SUBOTTIMA.
+The project, contained within the 'A-star' folder, has been divided into three main parts:
+- 'alghorithm' which contains all the CLIPS modules related to the algorithm used,
+- 'domain' that contains functions, facts, rules and templates used specifically for the domain,
+- 'knowledge_bases' that contains the knowledge bases used for the project.
 
 
-# Modellazione del problema
-Il problema è stato modellato utilizzando, in combinazione, sia fatti ordinati che
-fatti non ordinati, contenuti all'interno del file 'templates.clp', con prevalenza
-dei primi. La motivazione di ciò è da ricercarsi allo svariato numero di costrutti messi a disposizione da CLIPS stesso
-utilizzabili solamente con fatti ordinati. Ove non siano stati ritenuti necessari
-tali costrutti sono stati utilizzati fatti non ordinati.
+There are also three other files necessary for the correct execution of the program.
+They are:
+- 'loads', which contains the instructions necessary to configure the execution environment
+- 'projectCosts', on which they are saved progressively the partial costs of the solution
+- 'run', used to open the CLIPS shell where to run the program.
 
-## Implementazione A* CLIPS
-L'implementazione di A* nel linguaggio CLIPS è stata effettuata tramite la suddivione
-in moduli:
-- Main che si occupa di instanziare il nodo iniziale e di stampare il costo totale
-  e i costi delle singole azioni della soluzione 
-- Expand che si assicura della aciclicità del grafo ovvero che non vi siano
-più percorsi che portino a stati uguali tra loro. Nel caso in cui ciò non fosse 
-rispettato allora il nodo del percorso più costoso viene chiuso.
-- Check che si occupa di verificare se all'interno dei vari fatti 'status'
-sia contenuto il goal desiderato
-- New che si occupa sia di aggiornare le statistiche (closed, worse, better) relative
-all'algoritmo sia di aggiungere nodi al percorso preso in esame.
+```To run the program open 'run.bat' file (or use the tool 'CLIPSIDE') and type '(batch loads)' command .```
 
-Per la creazione delle strutture dati di base per l'implementazione 
-dell'algoritmo A* sono stati utilizzati dei fatti ordinati. Essi sono:
-- 'node' utilizzato per rappresentare il nodo corrente preso in esame,
-- 'newnode' utilizzato per espandere, dopo aver effettuato una mossa, i nuovi nodi,
-- 'state' utilizzato per configurare l'ambiente tramite le basi di conoscenza a priori e
-- 'status' utilizzato per mantere le informazioni relative a città e mezzi di trasporto. Una precisa configurazione dello spazio degli stati è rappresentata dall'insieme dei fatti ordinati 'status' 
-aventi lo stesso valore dello slot 'ident'.
+# Planning Algorithm
+The suggested algorithms for solving the problem have been **Iterative Deepening** and **A***. 
+Both have been implemented and applied to perform the research on a graph in the space of the states.
 
-Per la modellazione dei goal è stato utilizzato un fatto ordinato denominato 'goal'.
-Per necessità sono stati modellati, nelle varie azioni, due goal: uno riguardante 
-le città e l'altro riguardante i mezzi di trasporto.
+**Iterative Deepening**: the algorithm proved to be unsuitable for the resolution of the problem, as it is unable to find a solution within a reasonable time. However, it was possible to make some observations:
+drastically reducing the size of the problem it was possible to conclude the computation in a short time.
+However, the addition of only a few facts to the knowledge base worsened of much the performances. 
 
-## Basi di conoscenza 
-Le basi di conoscenza contengono le città ed i veicoli necessari al soddisfacimento
-dei vari sottobiettivi. Esse risultano contenute, come descritto in precedenza, in un fatto ordinato chiamato 'state'
-che rappresenta la radice del grafo su cui effettuiamo la ricerca nello spazio degli
-stati. 
+His implementation is contained within the 'no_evaluation' folder.
 
-Una prima suddivisione è stata quella di produrre un numero di 
-sottobiettivi pari al numero di città menzionate nella traccia del problema (eccetto
-Firenze). Successivamente, per necessità e comodità, si è deciso di apportare un'
-ulteriore suddivisione ad alcune basi di conoscenza.
+Because of this, we opted for the **A*** algorithm implementation.
+This one has a better behavior than the previous algorithm, either because
+- of the linear spatial complexity in the depth of the deepest optimal solution
+- it is helped by a heuristic
+If the heuristic is admissible, then the algorithm is optimal.
+
+Despite this, even A * can not find a solution quickly.
+
+## Heuristics
+We have implemented an admissible heuristic, which means that it is never wrong for excess and that it is consistent (or monotonic) for graph search applications.
+
+Our heuristic associates to each node a cost that depends on the sum of:
+- cost of operations (load or unload) on wares,
+- cost of the journey as the crow flies in the case of a move.
+
+The algorithm will choose the optimal path based on this heuristic.
+
+## Sub-problems
+To solve the non-termination due to the great complexity of the problem, it was necessary to divide it into several sub-problems, each of which deals with satisfying one of the previously mentioned cities.
+
+The number of sub-problems into which the original problem has been divided appears to be
+equal to the number of cities to be met; some of them were further subdivided in such a way as to contain the 'branching factor'.
+
+This has precluded the possibility of finding the optimal solution of the whole problem but it guaranteed us the optimality of the sub-solutions. Therefore, the solution proposed by us turns out to be sub-optimal.
+
+# Modeling the problem
+The problem was modeled using, in combination, both ordered facts and unordered facts, contained within the 'templates.clp' file, with prevalence of the first kind. The reason for this is to be found in the varied number of constructs usable only with ordered facts made available by CLIPS itself.
+
+Where we have not considered necessary such constructs, we used not ordered facts.
+
+## The A* implementation in CLIPS
+The A* implementation in the CLIPS language was done through the subdivision in the following modules:
+
+- **Main**, which is responsible for instantiating the initial node and printing the total cost
+   and the costs of the individual actions of the solution
+- **Expand**, that ensures the aciclicity of the graph and that there is not more than one path that leads to equal open nodes. 
+In case this was not respected, then the node of the most expensive path in terms of costs, is closed
+- **Check**, which deals with checking whether within the various facts 'status' the desired goal is contained
+- **New**, that deals both with updating the statistics (closed, worse, better) related to the algorithm and with adding nodes to the path taken into consideration.
+
+
+Basic data structures are needed to implement the A* algorithm. 
+To realize them in CLIPS, ordered facts has been used.
+
+They are:
+- 'node', which represent the node currently examined
+- 'newnode', which expand, after making a action, the new nodes
+- 'been', which configure the environment through the a priori knowledge bases
+- 'status', which maintain informations about cities and means of transport. 
+A precise configuration of a state of the state space is represented by the set of ordered facts 'status' having the same value as the 'ident' slot.
+
+For goal modeling purpose, an ordered fact called 'goal' was used.
+By necessity, two goals have been modeled: one concerning cities and the other concerning means of transport.
+
+## Knowledge Bases
+The knowledge bases contain the cities and the vehicles necessary for satisfaction of the various sub-elements. 
+They are contained, as described above, in an ordered fact called 'state', which represents the root of the graph on which we perform the search in the states space.
 
 ## Sottobiettivi
 I sottobiettivi prodotti sono:
-- ;; Sottografo con tre città: Torino (TO), Roma (RM) e Palermo (PA).
-;; Soddisfiamo le necessità di TO attraverso l'obiettivo che prevede l'utilizzo
-;; di un aereo (vehicle_6) fermo a PA per il trasporto delle merci di tipo A
+- Sottografo con tre città: Torino (TO), Roma (RM) e Palermo (PA). 
+  Soddisfiamo le necessità di TO attraverso l'obiettivo che prevede l'utilizzo
+ di un aereo (vehicle_6) fermo a PA per il trasporto delle merci di tipo A
 
 - ;; Sottografo con tre città: Roma (RM), Napoli (NA) e Reggio Calabria (RC).
 ;; Soddisfiamo le necessità di MI attraverso l'utilizzo di tre sotto-obiettivi:
@@ -178,9 +177,9 @@ I sottobiettivi prodotti sono:
 ;; Soddisfiamo le necessità di RC attraverso l'obiettivo che prevede l'utilizzo
 ;; di un van (vehicle_5) fermo a NA per il trasporto delle merci di tipo B
 
-## Azioni del dominio
-Le azioni del dominio, contenute nel file 'domain_rules.clp', sono state modellate
-utilizzando come soggetto i mezzi di trasporto a nostra disposizione. Esse sono:
+## Domain actions
+The domain actions are contained in the 'domain_rules.clp' file. 
+They have been modeled using the means of transport as the subject. They are:
 - apply-load-prod
 - exec-load-prod 
 - load-prod_newnode
@@ -201,31 +200,25 @@ utilizzando come soggetto i mezzi di trasporto a nostra disposizione. Esse sono:
 - exec-shift
 - shift_newnode 
 
-# Funzioni e utils
-Contenute all'interno della cartella 'utils'.
+# Utilities
+They are contained within the 'utils' folder.
 
-Le funzioni utilizzate sono contenute all'interno del file 'functions.clp'.
-Esse sono:
-- travel_cost_evaluation che calcola, dato il mezzo di trasporto e la distanza da 
-percorrere, il costo dello spostamento
-- find_heuristic_costs che si occupa di calcolare il valore dell'euristica utilizzata
-- string_comparator utilizzata per confrontare due stringhe passate come parametro
-- prepare_string utilizzata per produrre una stringa che concatena tutti gli 
-'status' aventi lo stesso valore dello slot 'ident'. La stringa risultante è
-rappresentativa della configurazione di quello stato.
-- sum_up_costs che si occupa di calcolare il costo totale della soluzione dati 
-i costi delle soluzioni dei sottobiettivi.
+The **functions** are contained within the 'functions.clp' file.
+They are:
+- travel_cost_evaluation calculates, given the means of transport used and the distance from travel, the cost of the shift
+- find_heuristic_costs takes care of calculating the value of the heuristic used
+- string_comparator compares two strings passed as parameters
+- prepare_string produces a string that concatenates all of their 'status' having the same value as the 'ident' slot. 
+The resulting string is representative of the configuration of that state.
+- sum_up_costs is responsible for calculating the total cost of the solution and the costs of the sub-solutions.
 
-Le regole utilizzate sono contenute all'interno del file 'rules.clp'.
-Queste producono fatti ed eseguono calcoli di supporto al calcolo dell'euristica.
+The **rules** are contained within the 'rules.clp' file, responsible of producing facts and performing calculations, supporting the calculation of the heuristic.
 
-Infine, il file 'cf_distances.clp' contiene:
-- 'h_distance', fatto ordinato, che rappresenta la distanza in linea d'aria utilizzata
-per il calcolo dell'euristica
-- 'distance', fatto non ordinato, che rappresenta la distanza in linea d'aria
-dei tragitti possibili dai mezzi di trasporto utilizzati nel problema.
+The 'cf_distances.clp' file contains:
+- 'h_distance', ordered fact which represents the crow flies distance; used for the calculation of the heuristic
+- 'distance', not ordered facts which represents the crow flies distance that can actually be traveled and the specific means of transport which can be used to do it.
 
-# Conclusioni
+# Conclusions
 
 ## Authors
 
