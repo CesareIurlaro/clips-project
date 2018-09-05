@@ -143,53 +143,25 @@ The knowledge bases contain the cities and the vehicles necessary for satisfacti
 They are contained, as described above, in an ordered fact called `state`, which represents the **root** of the graph on which we perform the search in the states space.
 
 ## Modeling sub-problems
-I sottobiettivi prodotti sono:
-- Sottografo con tre città: Torino (TO), Roma (RM) e Palermo (PA). 
-  Soddisfiamo le necessità di TO attraverso l'obiettivo che prevede l'utilizzo
- di un aereo (vehicle_6) fermo a PA per il trasporto delle merci di tipo A
-
-- ;; Sottografo con tre città: Roma (RM), Napoli (NA) e Reggio Calabria (RC).
-;; Soddisfiamo le necessità di MI attraverso l'utilizzo di tre sotto-obiettivi:
-;; 1. Trasferimento delle merci di tipo A da RC verso NA,
-;; 2. Trasferimento parziale di 10 A verso MI,
-;; 3. Trasferimento delle rimanenti 20 A verso MI.
-
-
-- ;; Sottografo con due città: Venezia (VE) e Bologna (BO).
-;; Soddisfiamo le necessità di VE attraverso l'obiettivo che prevede l'utilizzo
-;; di un van (vehicle_2) fermo a BO per il trasporto delle merci di tipo B.
-
-- ;; Sottografo con tre città: Torino (TO), Milano (MI) e Bologna (BO).
-;; Soddisfiamo le necessità di GE attraverso l'utilizzo di due sottoobiettivi:
-;; 1. Trasferimento di un van (vehicle_1) da BO a TO,
-;; 2. Trasferimento delle merci di tipo B con l'utilizzo del van (vehicle_1) da
-;;    TO verso GE.
-
-- ;; Sottografo con due città: Venezia (VE) e Bologna (BO).
-;; Soddisfiamo le necessità di BO attraverso l'obiettivo che prevede l'utilizzo
-;; di un van (vehicle_2) fermo a VE per il trasporto delle merci di tipo C
-
-- ;; Sottografo con due città: Torino (TO), Milano (MI) e Roma (RM).
-;; Soddisfiamo le necessità di RM attraverso l'utilizzo di due sotto-obiettivi:
-;; 1. Trasferimento delle merci di tipo C da MI verso TO con l'utilizzo
-;;    di un van (vehicle_3) fermo a MI,
-;; 2. Trasferimento delle merci precedentemente trattate verso RM con l'utilizzo
-;;    di un plane (vehicle_6) fermo a TO,
-
-- ;; Sottografo con tre città: Genova (GE), Napoli (NA) e Palermo (PA).
-;; Soddisfiamo le necessità di NA e PA attraverso l'utilizzo di una nave
-;; (vehicle_8).
-
-- ;; Sottografo con tre città: Milano (MI), Bologna (BO) e Bari (BA).
-;; Soddisfiamo le necessità di BA attraverso l'utilizzo di due sottoobiettivi:
-;; 1. Trasferimento delle merci di tipo A da BO verso MI con l'utilizzo
-;;    di un van (vehicle_3) fermo a BO,
-;; 2. Trasferimento delle merci precedentemente trattate verso BA con l'utilizzo
-;;    di un van (vehicle_7) fermo a MI,
-
-- ;; Sottografo con duce città: Napoli (NA) e Reggio Calabria (RC).
-;; Soddisfiamo le necessità di RC attraverso l'obiettivo che prevede l'utilizzo
-;; di un van (vehicle_5) fermo a NA per il trasporto delle merci di tipo B
+Our sub-problems were divided into:
+**1. TO**: subgraph with Turin (TO), Rome (RM) and Palermo (PA). We meet Turin object A needs by plane (vehicle_6) which is located in PA.
+**2. MI**: subgraph with Milan (MI), Rome (RM), Naples (NA), Bari (BA) and Reggio Calabria (RC). We meet Milan object A needs using two vans (vehicle_4 and vehicle_5) which are located in RM and by plane (vehicle_7) located in MI. The original subproblem was divided into:
+** - a.** Transfer of type A goods from RC to NA,
+** - b.** Transfer of 10 A goods to MI,
+** - c.** Transfer of remaining 20 A goods to MI.
+**3. VE**: subgraph with Venice (VE) and Bologna (BO). We meet Venice object B needs by van (vehicle_2) located in BO. 
+**4. GE**: subgraph with Genoa (GE), Turin (TO), Milan (MI) and Bologna (BO). We meet Genoa object B need by van (vehicle_1) located in BO. The original subproblem was divided into:
+** - a.** Shift of van (vehicle_1) from BO to TO,
+** - b.** Transfer of B goods with vehicle_1 from TO to GE.
+**5. BO**: subgraph with Bologna (BO) and Venice (VE). We meet Bologna object C needs by van (vehicle_2) located in VE. 
+**6. RM**: subgraph with Rome (RM), Turin (TO) and Milan (MI). We meet Rome object C needs by plane (vehicle_6) which is located in TO. The original subproblem was divided into:
+** - a.** Transfer of type C goods from MI to TO with van (vehicle_3),
+** - b.** Transfer by plane (vehicle_6) of previously displaced goods from TO to RM
+**7. NA_PA**: subgraph with Naples (NA), Palermo (PA) and Genoa (GE). We meet both Naples and Genoa object needs by ship (vehicle_8) which is located in GE.
+**8. BA**: subgraph with Bari (BA), Milano (MI) and Bologna (BO). We meet Bari object B needs by van (vehicle_3) located in BO and by plane (vehicle_7) located in MI. The original subproblem was divided into:
+** - a.** Transfer of type B goods from BO to MI with van (vehicle_3),
+** - b.** Transfer by plane (vehicle_7) of previously displaced goods from MI to BA.
+**9. RC**: subgraph with Reggio Calabria (RC) and Naples (NA). We meet Reggio Calabria object B needs by van (vehicle_5) located in NA.
 
 ## Domain actions
 The domain actions are contained in the `domain_rules.clp` file. 
