@@ -3,7 +3,8 @@ This CLIPS project has been written for the exam of Artificial Intelligence Labo
 
 # Project Description
 
-The project consists in trying to meet the needs of various Italian cities wares (product type can be A, B, C). 
+The project consists in trying to meet the needs of various Italian cities wares (product type can be A, B, C).
+
 For simplicity it is assumed that each of the cities produces and considers only one type of product.
 
 The following image report the methods of production and consumption of each city: 
@@ -29,10 +30,14 @@ Each of the means can perform three basic actions:
 - *shift* (move between linked cities)
 
 Each of these actions has a cost dependent on one or more parameters; in the case of loads and unloads the parameter is the quantity
-of goods that is treated by the action chosen, while the cost of the shifts depend on both the vehicle that performs it (van 1/1, ship 2/3, plane 5/4) and the distance between the two cities. Some journeys are not viable by all means of transport and therefore not all cities are directly connected to each other.
+of goods that is treated by the action chosen, while the cost of the shifts depend on both the vehicle that performs it (van 1/1, ship 2/3, plane 5/4) and the distance between the two cities. 
+
+Some journeys are not viable by all means of transport and therefore not all cities are directly connected to each other.
 
 
-Following image rapresent the routes that can be traveled with the various types of vehicles (can also be found in the legend):
+Following image rapresent the routes that can be traveled with the various types of vehicles 
+
+(can also be found in the legend):
 <p align="center">
   <img src="https://github.com/CesareIurlaro/clips-project/blob/master/stuff/route.PNG"/>
 </p>
@@ -76,8 +81,8 @@ If the heuristic is admissible, then the algorithm is optimal.
 
 Despite this, even A* can not find a solution quickly.
 
-## Heuristics
-We have implemented an admissible heuristic, which means that it is never wrong for excess and that it is consistent (or monotonic) for graph search applications.
+## Heuristic
+We have implemented an **admissible heuristic**, which means that it is *never wrong for excess* and that it is *consistent* (or *monotonic*) for graph search applications. [Artificial Intelligence: A Modern Approach, S.J. Russel & P. Norvig]
 
 Our heuristic associates to each node a cost that depends on the sum of:
 - cost of operations (load or unload) on wares,
