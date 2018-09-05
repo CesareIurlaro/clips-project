@@ -219,6 +219,10 @@ The sub-problems were satitisfied with the following actions:
 
 **1. TO**
 
+<p align="center">
+  <img src="https://github.com/CesareIurlaro/clips-project/blob/master/stuff/1_TO.PNG"/>
+</p>
+
 **2. MI**
 
 **3. VE**
