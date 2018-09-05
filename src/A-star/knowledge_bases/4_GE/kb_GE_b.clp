@@ -3,7 +3,6 @@
 ;; Soddisfiamo le necessità di GE attraverso l'obiettivo che prevede l'utilizzo
 ;; di un van (vehicle_1) fermo a BO per il trasporto delle merci di tipo B.
 
-;; Ho messo 5B a TO altrimenti succede un pastrocchio (RICORDATI DI AGGIUSTARE).
 
 (deffacts MAIN::state
     (state
