@@ -49,9 +49,9 @@ The following image rapresent the crow flies distances between the different cit
 # Project management
 
 The project, contained within the 'A-star' folder, has been divided into three main parts:
-- `alghorithm` which contains all the CLIPS modules related to the algorithm used,
-- `domain` that contains functions, facts, rules and templates used specifically for the domain,
-- `knowledge_bases` that contains the knowledge bases used for the project.
+- `alghorithm`, which contains all the CLIPS modules related to the algorithm used,
+- `domain`, that contains functions, facts, rules and templates used specifically for the domain,
+- `knowledge_bases`, that contains the knowledge bases used for the project.
 
 
 There are also three other files necessary for the correct execution of the program.
@@ -105,11 +105,10 @@ Where we have not considered necessary such constructs, we used not ordered fact
 ## The A* implementation in CLIPS
 The A* implementation in the CLIPS language was done through the subdivision in the following modules:
 
-- **Main**, which is responsible for instantiating the initial node and printing the total cost
-   and the costs of the individual actions of the solution
+- **Main**, which is responsible for instantiating the initial node and printing the total cost and the costs of the individual actions of the solution
 - **Expand**, that ensures the aciclicity of the graph and that there is not more than one path that leads to equal open nodes. 
 In case this was not respected, then the node of the most expensive path in terms of costs, is closed
-- **Check**, which deals with checking whether within the various facts 'status' the desired goal is contained
+- **Check**, which deals with checking whether within the various facts `status` the desired goal is contained
 - **New**, that deals both with updating the statistics (closed, worse, better) related to the algorithm and with adding nodes to the path taken into consideration.
 
 
@@ -121,14 +120,14 @@ They are:
 - `newnode`, which expand, after making a action, the new nodes
 - `been`, which configure the environment through the a priori knowledge bases
 - `status`, which maintain informations about cities and means of transport. 
-A precise configuration of a state of the state space is represented by the set of ordered facts 'status' having the same value as the `ident` slot.
+A precise configuration of a state of the state space is represented by the set of ordered facts `status` having the same value as the `ident` slot.
 
-For goal modeling purpose, an ordered fact called 'goal' was used.
+For goal modeling purpose, an ordered fact called `goal` was used.
 By necessity, two goals have been modeled: one concerning cities and the other concerning means of transport.
 
 ## Knowledge Bases
 The knowledge bases contain the cities and the vehicles necessary for satisfaction of the various sub-elements. 
-They are contained, as described above, in an ordered fact called 'state', which represents the root of the graph on which we perform the search in the states space.
+They are contained, as described above, in an ordered fact called `state`, which represents the **root** of the graph on which we perform the search in the states space.
 
 ## Sottobiettivi
 I sottobiettivi prodotti sono:
@@ -180,7 +179,7 @@ I sottobiettivi prodotti sono:
 ;; di un van (vehicle_5) fermo a NA per il trasporto delle merci di tipo B
 
 ## Domain actions
-The domain actions are contained in the 'domain_rules.clp' file. 
+The domain actions are contained in the `domain_rules.clp` file. 
 They have been modeled using the means of transport as the subject. They are:
 - apply-load-prod
 - exec-load-prod 
@@ -214,11 +213,11 @@ They are:
 The resulting string is representative of the configuration of that state.
 - `sum_up_costs` is responsible for calculating the total cost of the solution and the costs of the sub-solutions.
 
-The **rules** are contained within the 'rules.clp' file, responsible of producing facts and performing calculations, supporting the calculation of the heuristic.
+The **rules** are contained within the `rules.clp` file, responsible of producing facts and performing calculations, supporting the calculation of the heuristic.
 
 The `cf_distances.clp` file contains:
 - `h_distance`, ordered fact which represents the crow flies distance; used for the calculation of the heuristic
-- `distance`, not ordered facts which represents the crow flies distance that can actually be traveled and the specific means of transport which can be used to do it. 
+- `distance`, not ordered facts which represents the crow flies distance that can actually be traveled and the specific means of transport which can be used to do it.
 
 # Conclusions
 
