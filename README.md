@@ -219,12 +219,7 @@ The sub-problems were satitisfied with the following actions:
 
 **1. TO**
 
-<p align="center">
-  <img src="https://github.com/CesareIurlaro/clips-project/blob/master/stuff/1_TO.PNG"/>
-</p>
-
-**2. MI**
-
+ ```
  Eseguo azione unload-need con costo 60 (transport plane 1 TO 6 city TO 10 B 6 A 0 C carries 6 6 A)
  Eseguo azione shift con costo 836 (transport plane 1 RM 6 city RM 0 A 5 C 0 B city TO 10 B 6 A 0 C)
  Eseguo azione load-prod con costo 60 (transport plane 7 RM 6 city RM 6 A 5 C 0 B)
@@ -240,36 +235,208 @@ The sub-problems were satitisfied with the following actions:
  Eseguo azione unload-need con costo 70 (transport plane 0 TO 6 city TO 10 B 20 A 0 C carries 6 7 A)
  Eseguo azione shift con costo 745 (transport plane 0 PA 6 city PA 3 A 5 C 0 B city TO 10 B 20 A 0 C)
  Eseguo azione load-prod con costo 70 (transport plane 7 PA 6 city PA 10 A 5 C 0 B)
+ ```
+ 
+ `Esiste soluzione con costo 7229`
+
+**2. MI**
+
+- subproblem a.
+
+```
+Eseguo azione unload-store con costo 40 (transport van 0 NA 5 city NA 5 B 5 C 16 A carries 5 4 C)
+Eseguo azione shift con costo 462 (transport van 0 RC 5 city RC 0 A 5 B 0 C city NA 5 B 5 C 16 A)
+Eseguo azione load-prod con costo 40 (transport van 4 RC 5 city RC 4 A 5 B 0 C)
+Eseguo azione shift con costo 462 (transport van 4 NA 5 city NA 5 B 5 C 16 A city RC 4 A 5 B 0 C)
+Eseguo azione unload-store con costo 40 (transport van 0 NA 5 city NA 5 B 5 C 12 A carries 5 4 C)
+Eseguo azione shift con costo 462 (transport van 0 RC 5 city RC 4 A 5 B 0 C city NA 5 B 5 C 12 A)
+Eseguo azione load-prod con costo 40 (transport van 4 RC 5 city RC 8 A 5 B 0 C)
+Eseguo azione shift con costo 462 (transport van 4 NA 5 city NA 5 B 5 C 12 A city RC 8 A 5 B 0 C)
+Eseguo azione unload-store con costo 40 (transport van 0 NA 5 city NA 5 B 5 C 8 A carries 5 4 C)
+Eseguo azione shift con costo 462 (transport van 0 RC 5 city RC 8 A 5 B 0 C city NA 5 B 5 C 8 A)
+Eseguo azione load-prod con costo 40 (transport van 4 RC 5 city RC 12 A 5 B 0 C)
+Eseguo azione shift con costo 462 (transport van 4 NA 5 city NA 5 B 5 C 8 A city RC 12 A 5 B 0 C)
+Eseguo azione unload-store con costo 40 (transport van 0 NA 5 city NA 5 B 5 C 4 A carries 5 4 C)
+Eseguo azione shift con costo 462 (transport van 0 RC 5 city RC 12 A 5 B 0 C city NA 5 B 5 C 4 A)
+Eseguo azione load-prod con costo 40 (transport van 4 RC 5 city RC 16 A 5 B 0 C)
+Eseguo azione shift con costo 462 (transport van 4 NA 5 city NA 5 B 5 C 4 A city RC 16 A 5 B 0 C)
+Eseguo azione unload-store con costo 40 (transport van 0 NA 5 city NA 5 B 5 C 0 A carries 5 4 C)
+Eseguo azione shift con costo 462 (transport van 0 RC 5 city RC 16 A 5 B 0 C city NA 5 B 5 C 0 A)
+Eseguo azione load-prod con costo 40 (transport van 4 RC 5 city RC 20 A 5 B 0 C)
+Eseguo azione shift con costo 462 (transport van 4 NA 5 city NA 5 B 5 C 0 A city RC 20 A 5 B 0 C)
+Eseguo azione shift con costo 219 (transport van 4 RM 5 city RM 0 A 5 C 0 B city NA 5 B 5 C 0 A)
+```
+ 
+`Esiste soluzione con costo 5239`
+
+- subproblem b.
+
+```
+Eseguo azione unload-need con costo 30 (transport plane 4 MI 7 city MI 5 C 23 A 0 B carries 7 3 A)
+ Eseguo azione shift con costo 888 (transport plane 4 BA 7 city BA 0 A 5 B 0 C city MI 5 C 23 A 0 B)
+ Eseguo azione load-prod con costo 30 (transport plane 7 BA 7 city BA 3 A 5 B 0 C)
+ Eseguo azione shift con costo 888 (transport plane 7 MI 7 city MI 5 C 23 A 0 B city BA 3 A 5 B 0 C)
+ Eseguo azione unload-need con costo 70 (transport plane 0 MI 7 city MI 5 C 30 A 0 B carries 7 7 A)
+ Eseguo azione shift con costo 888 (transport plane 0 BA 7 city BA 3 A 5 B 0 C city MI 5 C 30 A 0 B)
+ Eseguo azione load-prod con costo 70 (transport plane 7 BA 7 city BA 10 A 5 B 0 C)
+ Eseguo azione shift con costo 888 (transport plane 7 MI 7 city MI 5 C 30 A 0 B city BA 10 A 5 B 0 C)
+ ```
+ 
+`Esiste soluzione con costo 3752`
+
+- subproblem c.
+
+```
+Eseguo azione unload-need con costo 60 (transport plane 1 MI 7 city MI 5 C 6 A 0 B carries 7 6 A)
+ Eseguo azione shift con costo 955 (transport plane 1 NA 7 city NA 5 B 5 C 0 A city MI 5 C 6 A 0 B)
+ Eseguo azione load-store con costo 60 (transport plane 7 NA 7 city NA 5 B 5 C 6 A)
+ Eseguo azione shift con costo 955 (transport plane 7 MI 7 city MI 5 C 6 A 0 B city NA 5 B 5 C 6 A)
+ Eseguo azione unload-need con costo 70 (transport plane 0 MI 7 city MI 5 C 13 A 0 B carries 7 7 A)
+ Eseguo azione shift con costo 955 (transport plane 0 NA 7 city NA 5 B 5 C 6 A city MI 5 C 13 A 0 B)
+ Eseguo azione load-store con costo 70 (transport plane 7 NA 7 city NA 5 B 5 C 13 A)
+ Eseguo azione shift con costo 955 (transport plane 7 MI 7 city MI 5 C 13 A 0 B city NA 5 B 5 C 13 A)
+ Eseguo azione unload-need con costo 70 (transport plane 0 MI 7 city MI 5 C 20 A 0 B carries 7 7 A)
+ Eseguo azione shift con costo 955 (transport plane 0 NA 7 city NA 5 B 5 C 13 A city MI 5 C 20 A 0 B)
+ Eseguo azione load-store con costo 70 (transport plane 7 NA 7 city NA 5 B 5 C 20 A)
+ Eseguo azione shift con costo 955 (transport plane 7 MI 7 city MI 5 C 20 A 0 B city NA 5 B 5 C 20 A)
+```
+ 
+`Esiste soluzione con costo 6130`
 
 **3. VE**
 
- ```Eseguo azione unload-need con costo 60 (transport plane 1 TO 6 city TO 10 B 6 A 0 C carries 6 6 A)
- Eseguo azione shift con costo 836 (transport plane 1 RM 6 city RM 0 A 5 C 0 B city TO 10 B 6 A 0 C)
- Eseguo azione load-prod con costo 60 (transport plane 7 RM 6 city RM 6 A 5 C 0 B)
- Eseguo azione shift con costo 836 (transport plane 7 TO 6 city TO 10 B 6 A 0 C city RM 6 A 5 C 0 B)
- Eseguo azione unload-need con costo 40 (transport plane 3 TO 6 city TO 10 B 10 A 0 C carries 6 4 A)
- Eseguo azione unload-need con costo 30 (transport plane 0 TO 6 city TO 10 B 13 A 0 C carries 6 3 A)
- Eseguo azione shift con costo 836 (transport plane 0 RM 6 city RM 6 A 5 C 0 B city TO 10 B 13 A 0 C)
- Eseguo azione load-prod con costo 40 (transport plane 4 RM 6 city RM 10 A 5 C 0 B)
- Eseguo azione shift con costo 836 (transport plane 4 TO 6 city TO 10 B 13 A 0 C city RM 10 A 5 C 0 B)
- Eseguo azione shift con costo 745 (transport plane 4 PA 6 city PA 0 A 5 C 0 B city TO 10 B 13 A 0 C)
- Eseguo azione load-prod con costo 30 (transport plane 7 PA 6 city PA 3 A 5 C 0 B)
- Eseguo azione shift con costo 1995 (transport plane 7 TO 6 city TO 10 B 13 A 0 C city PA 3 A 5 C 0 B)
- Eseguo azione unload-need con costo 70 (transport plane 0 TO 6 city TO 10 B 20 A 0 C carries 6 7 A)
- Eseguo azione shift con costo 745 (transport plane 0 PA 6 city PA 3 A 5 C 0 B city TO 10 B 20 A 0 C)
- Eseguo azione load-prod con costo 70 (transport plane 7 PA 6 city PA 10 A 5 C 0 B)```
+```
+Eseguo azione unload-need con costo 10 (transport van 3 VE 2 city VE 10 C 1 B 0 A carries 2 1 B)
+ Eseguo azione shift con costo 158 (transport van 3 BO 2 city BO 0 B 10 C 0 A city VE 10 C 1 B 0 A)
+ Eseguo azione load-prod con costo 10 (transport van 4 BO 2 city BO 1 B 10 C 0 A)
+ Eseguo azione shift con costo 158 (transport van 4 VE 2 city VE 10 C 1 B 0 A city BO 1 B 10 C 0 A)
+ Eseguo azione unload-need con costo 40 (transport van 0 VE 2 city VE 10 C 5 B 0 A carries 2 4 B)
+ Eseguo azione shift con costo 158 (transport van 0 BO 2 city BO 1 B 10 C 0 A city VE 10 C 5 B 0 A)
+ Eseguo azione load-prod con costo 40 (transport van 4 BO 2 city BO 5 B 10 C 0 A)
+ ```
+ 
+`Esiste soluzione con costo 574`
 
 **4. GE**
 
+- subproblem a.
+
+```
+Eseguo azione shift con costo 138 (transport van 4 MI 1 city MI 5 C 0 A 0 B city TO 10 B 0 A 0 C)
+ Eseguo azione shift con costo 206 (transport van 4 BO 1 city BO 5 B 10 C 0 A city MI 5 C 0 A 0 B)
+```
+ 
+`Esiste soluzione con costo 344`
+
+- subproblem b.
+
+```
+Eseguo azione unload-need con costo 10 (transport van 3 GE 1 city GE 10 C 1 B 0 A carries 1 1 B)
+ Eseguo azione shift con costo 170 (transport van 3 TO 1 city TO 0 B 0 A 0 C city GE 10 C 1 B 0 A)
+ Eseguo azione load-prod con costo 10 (transport van 4 TO 1 city TO 1 B 0 A 0 C)
+ Eseguo azione shift con costo 170 (transport van 4 GE 1 city GE 10 C 1 B 0 A city TO 1 B 0 A 0 C)
+ Eseguo azione unload-need con costo 40 (transport van 0 GE 1 city GE 10 C 5 B 0 A carries 1 4 B)
+ Eseguo azione shift con costo 170 (transport van 0 TO 1 city TO 1 B 0 A 0 C city GE 10 C 5 B 0 A)
+ Eseguo azione load-prod con costo 40 (transport van 4 TO 1 city TO 5 B 0 A 0 C)
+```
+ 
+`Esiste soluzione con costo 610`
+
 **5. BO**
+
+```
+Eseguo azione unload-need con costo 20 (transport van 2 BO 2 city BO 0 B 2 C 0 A carries 2 2 C)
+ Eseguo azione shift con costo 158 (transport van 2 VE 2 city VE 0 C 0 B 0 A city BO 0 B 2 C 0 A)
+ Eseguo azione load-prod con costo 20 (transport van 4 VE 2 city VE 2 C 0 B 0 A)
+ Eseguo azione shift con costo 158 (transport van 4 BO 2 city BO 0 B 2 C 0 A city VE 2 C 0 B 0 A)
+ Eseguo azione unload-need con costo 40 (transport van 0 BO 2 city BO 0 B 6 C 0 A carries 2 4 C)
+ Eseguo azione shift con costo 158 (transport van 0 VE 2 city VE 2 C 0 B 0 A city BO 0 B 6 C 0 A)
+ Eseguo azione load-prod con costo 40 (transport van 4 VE 2 city VE 6 C 0 B 0 A)
+ Eseguo azione shift con costo 158 (transport van 4 BO 2 city BO 0 B 6 C 0 A city VE 6 C 0 B 0 A)
+ Eseguo azione unload-need con costo 40 (transport van 0 BO 2 city BO 0 B 10 C 0 A carries 2 4 C)
+ Eseguo azione shift con costo 158 (transport van 0 VE 2 city VE 6 C 0 B 0 A city BO 0 B 10 C 0 A)
+ Eseguo azione load-prod con costo 40 (transport van 4 VE 2 city VE 10 C 0 B 0 A)
+```
+ 
+`Esiste soluzione con costo 990`
 
 **6. RM**
 
+- subproblem a.
+
+```
+Eseguo azione unload-store con costo 10 (transport van 3 TO 3 city TO 0 B 0 A 4 C carries 3 1 A)
+ Eseguo azione shift con costo 138 (transport van 3 MI 3 city MI 0 C 0 A 0 B city TO 0 B 0 A 4 C)
+ Eseguo azione load-prod con costo 10 (transport van 4 MI 3 city MI 1 C 0 A 0 B)
+ Eseguo azione shift con costo 138 (transport van 4 TO 3 city TO 0 B 0 A 4 C city MI 1 C 0 A 0 B)
+ Eseguo azione unload-store con costo 40 (transport van 0 TO 3 city TO 0 B 0 A 0 C carries 3 4 A)
+ Eseguo azione shift con costo 138 (transport van 0 MI 3 city MI 1 C 0 A 0 B city TO 0 B 0 A 0 C)
+ Eseguo azione load-prod con costo 40 (transport van 4 MI 3 city MI 5 C 0 A 0 B)
+```
+ 
+`Esiste soluzione con costo 514`
+
+- subproblem b.
+
+```
+Eseguo azione unload-need con costo 50 (transport plane 2 RM 6 city RM 0 A 5 C 0 B carries 6 5 C)
+ Eseguo azione shift con costo 836 (transport plane 2 TO 6 city TO 0 B 0 A 0 C city RM 0 A 5 C 0 B)
+ Eseguo azione load-store con costo 50 (transport plane 7 TO 6 city TO 0 B 0 A 5 C)
+```
+ 
+`Esiste soluzione con costo 936`
+
 **7. NA_PA**
+
+```
+Eseguo azione unload-need con costo 50 (transport ship 6 NA 8 city NA 0 B 5 C 0 A carries 8 5 C)
+ Eseguo azione shift con costo 493 (transport ship 6 PA 8 city PA 0 A 0 C 0 B city NA 0 B 5 C 0 A)
+ Eseguo azione unload-need con costo 50 (transport ship 1 PA 8 city PA 0 A 5 C 0 B carries 8 10 C)
+ Eseguo azione shift con costo 941 (transport ship 1 GE 8 city GE 0 C 0 B 0 A city PA 0 A 5 C 0 B)
+ Eseguo azione load-prod con costo 100 (transport ship 11 GE 8 city GE 10 C 0 B 0 A)
+```
+ 
+`Esiste soluzione con costo 1634`
 
 **8. BA**
 
+- subproblem a.
+
+```
+Eseguo azione unload-store con costo 10 (transport van 3 MI 3 city MI 5 C 0 A 4 B carries 3 1 A)
+ Eseguo azione shift con costo 206 (transport van 3 BO 3 city BO 0 B 10 C 0 A city MI 5 C 0 A 4 B)
+ Eseguo azione load-prod con costo 10 (transport van 4 BO 3 city BO 1 B 10 C 0 A)
+ Eseguo azione shift con costo 206 (transport van 4 MI 3 city MI 5 C 0 A 4 B city BO 1 B 10 C 0 A)
+ Eseguo azione unload-store con costo 40 (transport van 0 MI 3 city MI 5 C 0 A 0 B carries 3 4 A)
+ Eseguo azione shift con costo 206 (transport van 0 BO 3 city BO 1 B 10 C 0 A city MI 5 C 0 A 0 B)
+ Eseguo azione load-prod con costo 40 (transport van 4 BO 3 city BO 5 B 10 C 0 A)
+```
+ 
+`Esiste soluzione con costo 718`
+
+- subproblem b.
+
+```
+Eseguo azione unload-need con costo 50 (transport plane 2 BA 7 city BA 0 A 5 B 0 C carries 7 5 B)
+ Eseguo azione shift con costo 888 (transport plane 2 MI 7 city MI 5 C 0 A 0 B city BA 0 A 5 B 0 C)
+ Eseguo azione load-store con costo 50 (transport plane 7 MI 7 city MI 5 C 0 A 5 B)
+```
+ 
+`Esiste soluzione con costo 988`
+
 **9. RC**
+
+```
+Eseguo azione unload-need con costo 10 (transport van 3 RC 5 city RC 0 A 1 B 0 C carries 5 1 B)
+ Eseguo azione shift con costo 462 (transport van 3 NA 5 city NA 0 B 5 C 0 A city RC 0 A 1 B 0 C)
+ Eseguo azione load-prod con costo 10 (transport van 4 NA 5 city NA 1 B 5 C 0 A)
+ Eseguo azione shift con costo 462 (transport van 4 RC 5 city RC 0 A 1 B 0 C city NA 1 B 5 C 0 A)
+ Eseguo azione unload-need con costo 40 (transport van 0 RC 5 city RC 0 A 5 B 0 C carries 5 4 B)
+ Eseguo azione shift con costo 462 (transport van 0 NA 5 city NA 1 B 5 C 0 A city RC 0 A 5 B 0 C)
+ Eseguo azione load-prod con costo 40 (transport van 4 NA 5 city NA 5 B 5 C 0 A)
+```
+ 
+`Esiste soluzione con costo 1486`
 
 Each of the subproblem solutions save an ordered fact named `file_total_cost`
 
