@@ -79,7 +79,7 @@ This one has a better behavior than the previous algorithm, either because
 - it is helped by a heuristic
 If the heuristic is admissible, then the algorithm is optimal.
 
-Despite this, even A* can not find a solution quickly.
+Despite this, **even A* can not find a solution quickly.**
 
 ## Heuristic
 We have implemented an **admissible heuristic**, which means that it is *never wrong for excess* and that it is *consistent* (or *monotonic*) for graph search applications. [Artificial Intelligence: A Modern Approach, S.J. Russel & P. Norvig]
