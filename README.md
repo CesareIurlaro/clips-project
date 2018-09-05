@@ -87,9 +87,9 @@ His implementation is contained within the `no_evaluation_function` folder.
 
 Because of this, we opted for the **A*** algorithm implementation.
 
-**A\*:** This one has a better behavior than the previous algorithm, either because
-- of the linear spatial complexity in the depth of the deepest optimal solution
-- it is helped by a heuristic
+**A\*:** this algorithm has a better behavior than the previous one, either because
+- of the **linear spatial complexity** in the depth of the deepest optimal solution
+- it is helped by a **heuristic**
 **If the heuristic is admissible, then the algorithm is optimal.**
 
 Despite this, **even A\* can not find a solution quickly.**
@@ -149,56 +149,45 @@ Our sub-problems were divided into:
 **1. TO**: subgraph with Turin (TO), Rome (RM) and Palermo (PA). 
 We meet Turin object A needs by plane (`vehicle_6`) which is located in PA.
 
-**2. MI**: subgraph with Milan (MI), Rome (RM), Naples (NA), Bari (BA) and Reggio Calabria (RC). 
-
-We meet Milan object A needs using two vans (`vehicle_4` and `vehicle_5`) which are located in RM and by plane (`vehicle_7`) located in MI. 
+**2. MI**: subgraph with Milan (MI), Rome (RM), Naples (NA), Bari (BA) and Reggio Calabria (RC). We meet Milan object A needs using two vans (`vehicle_4` and `vehicle_5`) which are located in RM and by plane (`vehicle_7`) located in MI. 
 
 The original subproblem was divided into:
 
-**- a.** Transfer of type A goods from RC to NA,
-**- b.** Transfer of 10 A goods to MI,
-**- c.** Transfer of remaining 20 A goods to MI.
+  **- a.** Transfer of type A goods from RC to NA,
+  
+  **- b.** Transfer of 10 A goods to MI,
+  
+  **- c.** Transfer of remaining 20 A goods to MI.
 
-**3. VE**: subgraph with Venice (VE) and Bologna (BO). 
+**3. VE**: subgraph with Venice (VE) and Bologna (BO). We meet Venice object B needs by van (`vehicle_2`) located in BO. 
 
-We meet Venice object B needs by van (`vehicle_2`) located in BO. 
-
-**4. GE**: subgraph with Genoa (GE), Turin (TO), Milan (MI) and Bologna (BO). 
-
-We meet Genoa object B need by van (`vehicle_1`) located in BO. The original subproblem was divided into:
+**4. GE**: subgraph with Genoa (GE), Turin (TO), Milan (MI) and Bologna (BO). We meet Genoa object B need by van (`vehicle_1`) located in BO. The original subproblem was divided into:
 
 **- a.** Shift of van (`vehicle_1`) from BO to TO,
+
 **- b.** Transfer of B goods with `vehicle_1` from TO to GE.
 
-**5. BO**: subgraph with Bologna (BO) and Venice (VE). 
+**5. BO**: subgraph with Bologna (BO) and Venice (VE). We meet Bologna object C needs by van (`vehicle_2`) located in VE. 
 
-We meet Bologna object C needs by van (`vehicle_2`) located in VE. 
-
-**6. RM**: subgraph with Rome (RM), Turin (TO) and Milan (MI). 
-
-We meet Rome object C needs by plane (`vehicle_6`) which is located in TO. 
+**6. RM**: subgraph with Rome (RM), Turin (TO) and Milan (MI). We meet Rome object C needs by plane (`vehicle_6`) which is located in TO. 
 
 The original subproblem was divided into:
 
-**- a.** Transfer of type C goods from MI to TO with van (`vehicle_3`),
-**- b.** Transfer by plane (`vehicle_6`) of previously displaced goods from TO to RM
+  **- a.** Transfer of type C goods from MI to TO with van (`vehicle_3`),
+  
+  **- b.** Transfer by plane (`vehicle_6`) of previously displaced goods from TO to RM
 
-**7. NA_PA**: subgraph with Naples (NA), Palermo (PA) and Genoa (GE). 
+**7. NA_PA**: subgraph with Naples (NA), Palermo (PA) and Genoa (GE). We meet both Naples and Genoa object needs by ship (`vehicle_8`) which is located in GE.
 
-We meet both Naples and Genoa object needs by ship (`vehicle_8`) which is located in GE.
-
-**8. BA**: subgraph with Bari (BA), Milano (MI) and Bologna (BO). 
-
-We meet Bari object B needs by van (`vehicle_3`) located in BO and by plane (`vehicle_7`) located in MI. 
+**8. BA**: subgraph with Bari (BA), Milano (MI) and Bologna (BO). We meet Bari object B needs by van (`vehicle_3`) located in BO and by plane (`vehicle_7`) located in MI. 
 
 The original subproblem was divided into:
 
-**- a.** Transfer of type B goods from BO to MI with van (`vehicle_3`),
-**- b.** Transfer by plane (`vehicle_7`) of previously displaced goods from MI to BA.
+  **- a.** Transfer of type B goods from BO to MI with van (`vehicle_3`),
+  
+  **- b.** Transfer by plane (`vehicle_7`) of previously displaced goods from MI to BA.
 
-**9. RC**: subgraph with Reggio Calabria (RC) and Naples (NA). 
-
-We meet Reggio Calabria object B needs by van (`vehicle_5`) located in NA.
+**9. RC**: subgraph with Reggio Calabria (RC) and Naples (NA). We meet Reggio Calabria object B needs by van (`vehicle_5`) located in NA.
 
 ## Domain actions
 The domain actions are contained in the `domain_rules.clp` file. 
