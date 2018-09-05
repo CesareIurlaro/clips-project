@@ -7,7 +7,7 @@ The project consists in trying to meet the needs of various Italian cities wares
 
 For simplicity it is assumed that each of the cities produces and needs only one type of product.
 
-The following image report the methods of production and consumption of each city: 
+The following image reports the methods of production and consumption of each city: 
 <p align="center">
   <img src="https://github.com/CesareIurlaro/clips-project/blob/master/stuff/initCIties.PNG"/>
 </p>
@@ -30,18 +30,19 @@ Each of the means can perform three basic actions:
 - *shift* (move between linked cities)
 
 Each of these actions has a cost dependent on one or more parameters; in the case of loads and unloads the parameter is the quantity
-of goods that is treated by the action chosen, while the cost of the shifts depend on both the vehicle that performs it (van 1/1, ship 2/3, plane 5/4) and the distance between the two cities. 
+of goods that is treated by the action chosen, while the cost of the shifts depend on both the vehicle that performs it 
+and the distance between the two cities. The costs 
 
 Some journeys are not viable by all means of transport and therefore not all cities are directly connected to each other.
 
 
-Following image rapresent the routes that can be traveled with the various types of vehicles 
+Following image represents the routes that can be traveled with the various types of vehicles 
 (can also be found in the legend):
 <p align="center">
   <img src="https://github.com/CesareIurlaro/clips-project/blob/master/stuff/route.PNG"/>
 </p>
 
-The following image rapresent the crow flies distances between the different cities:
+The following image represents the crow flies distances between the different cities:
 <p align="center">
   <img src="https://github.com/CesareIurlaro/clips-project/blob/master/stuff/crow_flies_distances.PNG"/>
 </p>
@@ -118,7 +119,7 @@ To realize them in CLIPS, ordered facts has been used.
 They are:
 - `node`, which represent the node currently examined
 - `newnode`, which expand, after making a action, the new nodes
-- `been`, which configure the environment through the a priori knowledge bases
+- `state`, which configure the environment through the a priori knowledge bases
 - `status`, which maintain informations about cities and means of transport. 
 A precise configuration of a state of the state space is represented by the set of ordered facts `status` having the same value as the `ident` slot.
 
@@ -129,7 +130,7 @@ By necessity, two goals have been modeled: one concerning cities and the other c
 The knowledge bases contain the cities and the vehicles necessary for satisfaction of the various sub-elements. 
 They are contained, as described above, in an ordered fact called `state`, which represents the **root** of the graph on which we perform the search in the states space.
 
-## Sottobiettivi
+## Modeling sub-problems
 I sottobiettivi prodotti sono:
 - Sottografo con tre città: Torino (TO), Roma (RM) e Palermo (PA). 
   Soddisfiamo le necessità di TO attraverso l'obiettivo che prevede l'utilizzo
