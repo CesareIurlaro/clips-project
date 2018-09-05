@@ -1,4 +1,4 @@
-;; Sottografo con duce città: Napoli (NA) e Reggio Calabria (RC).
+;; Sottografo con due città: Napoli (NA) e Reggio Calabria (RC).
 ;; Soddisfiamo le necessità di RC attraverso l'obiettivo che prevede l'utilizzo
 ;; di un van (vehicle_5) fermo a NA per il trasporto delle merci di tipo B
 
