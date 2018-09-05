@@ -153,16 +153,16 @@ We meet Turin object A needs by plane (`vehicle_6`) which is located in PA.
 
 The original subproblem was divided into:
 
-  **-** Transfer of type A goods from RC to NA,
-  **-** Transfer of 10 A goods to MI,
-  **-** Transfer of remaining 20 A goods to MI.
+- Transfer of type A goods from RC to NA,
+- Transfer of 10 A goods to MI,
+- Transfer of remaining 20 A goods to MI.
 
 **3. VE**: subgraph with Venice (VE) and Bologna (BO). We meet Venice object B needs by van (`vehicle_2`) located in BO. 
 
 **4. GE**: subgraph with Genoa (GE), Turin (TO), Milan (MI) and Bologna (BO). We meet Genoa object B need by van (`vehicle_1`) located in BO. The original subproblem was divided into:
 
-  **-** Shift of van (`vehicle_1`) from BO to TO,
-  **-** Transfer of B goods with `vehicle_1` from TO to GE.
+- Shift of van (`vehicle_1`) from BO to TO,
+- Transfer of B goods with `vehicle_1` from TO to GE.
 
 **5. BO**: subgraph with Bologna (BO) and Venice (VE). We meet Bologna object C needs by van (`vehicle_2`) located in VE. 
 
@@ -170,8 +170,8 @@ The original subproblem was divided into:
 
 The original subproblem was divided into:
 
-  **-** Transfer of type C goods from MI to TO with van (`vehicle_3`),
-  **-** Transfer by plane (`vehicle_6`) of previously displaced goods from TO to RM
+- Transfer of type C goods from MI to TO with van (`vehicle_3`),
+- Transfer by plane (`vehicle_6`) of previously displaced goods from TO to RM
 
 **7. NA_PA**: subgraph with Naples (NA), Palermo (PA) and Genoa (GE). We meet both Naples and Genoa object needs by ship (`vehicle_8`) which is located in GE.
 
@@ -179,8 +179,8 @@ The original subproblem was divided into:
 
 The original subproblem was divided into:
 
-  **-** Transfer of type B goods from BO to MI with van (`vehicle_3`),
-  **-** Transfer by plane (`vehicle_7`) of previously displaced goods from MI to BA.
+- Transfer of type B goods from BO to MI with van (`vehicle_3`),
+- Transfer by plane (`vehicle_7`) of previously displaced goods from MI to BA.
 
 **9. RC**: subgraph with Reggio Calabria (RC) and Naples (NA). We meet Reggio Calabria object B needs by van (`vehicle_5`) located in NA.
 
