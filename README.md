@@ -453,7 +453,7 @@ The overall cost is obtained in this way:
 </p>
 
 <p align="center">
-  <img src="http://latex.codecogs.com/gif.latex?overall%5C_%20%5C%20cost%5C%20%3D%20%5Csum_%7Bcity%3A%5C%3Acities%7Dcity"/>
+  <img src="http://latex.codecogs.com/gif.latex?overall%5C_%20%5C%20cost%5C%20%3D%20%5Csum_%7Bcity%3A%5C%3Acities%7Dsubproblem%5C_%20%5C%20cost%28city%29"/>
 </p>
 
 
