@@ -1,15 +1,5 @@
 (defmodule NEW (import CHECK ?ALL) (export ?ALL))
 
-(defrule dummy_rule (declare (salience 100))
-
-    ?f <- (prev_next (ident ?id))
-
-    =>
-
-    (retract ?f)
-    (prepare_string ?id)
-)
-
 (defrule check-closed (declare (salience 50))
 
     ?f1 <- (newnode (ident ?id))
@@ -24,10 +14,10 @@
 
 =>
 
-        (assert (alreadyclosed (+ ?a 1)))
-        (retract ?f1 ?f2)
-        (pop-focus)
-        (pop-focus)
+    (assert (alreadyclosed (+ ?a 1)))
+    (retract ?f1 ?f2)
+    (pop-focus)
+    (pop-focus)
 )
 
 
@@ -52,7 +42,7 @@
     (retract ?f1)
     (retract ?f2)
     (pop-focus)
-    )
+)
 
 
 (defrule check-open-better (declare (salience 50))
@@ -80,8 +70,6 @@
     )
 
 
-
-
 (defrule add-open (declare (salience 25))
 
     ?f1 <- (newnode (ident ?id) (gcost ?g) (fcost ?f)(father ?anc))
@@ -95,3 +83,14 @@
     (retract ?f1 ?f2)
     (pop-focus)
     (pop-focus))
+
+
+
+(defrule remove_prev_next (declare (salience 100))
+
+    ?f <- (prev_next (ident ?id))
+
+=>
+    (retract ?f)
+    (prepare_string ?id)
+)
