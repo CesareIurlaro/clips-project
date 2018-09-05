@@ -12,21 +12,21 @@ The following image report the methods of production and consumption of each cit
 </p>
 
 We have several vehicles available: 
-- 5 vans with capacity 4
-- 2 aircraft with capacity 7 
-- 2 ships with capacity 11 
+- 5 *vans* with capacity 4
+- 2 *aircraft* with capacity 7 
+- 2 *ships* with capacity 11 
 (where capacity is the maximum number of wares transportable from each vehicle).
 
 Each vehicle is located in a prior known location: 
-- 3 vans are in Bologna and 2 are in Rome
-- 1 ship is in Genoa and the other is in Venice
-- 1 plane is in Palermo, the other in Milan.
+- 3 *vans* are in Bologna and 2 are in Rome
+- 1 *ship* is in Genoa and the other is in Venice
+- 1 *plane* is in Palermo, the other in Milan.
 
 
 Each of the means can perform three basic actions: 
-- load (take goods) 
-- unload (drop goods) 
-- shift (move between linked cities)
+- *load* (take goods) 
+- *unload* (drop goods) 
+- *shift* (move between linked cities)
 
 Each of these actions has a cost dependent on one or more parameters; in the case of loads and unloads the parameter is the quantity
 of goods that is treated by the action chosen, while the cost of the shifts depend on both the vehicle that performs it (van 1/1, ship 2/3, plane 5/4) and the distance between the two cities. Some journeys are not viable by all means of transport and therefore not all cities are directly connected to each other.
@@ -45,16 +45,16 @@ The following image rapresent the crow flies distances between the different cit
 # Project management
 
 The project, contained within the 'A-star' folder, has been divided into three main parts:
-- 'alghorithm' which contains all the CLIPS modules related to the algorithm used,
-- 'domain' that contains functions, facts, rules and templates used specifically for the domain,
-- 'knowledge_bases' that contains the knowledge bases used for the project.
+- `alghorithm` which contains all the CLIPS modules related to the algorithm used,
+- `domain` that contains functions, facts, rules and templates used specifically for the domain,
+- `knowledge_bases` that contains the knowledge bases used for the project.
 
 
 There are also three other files necessary for the correct execution of the program.
 They are:
-- 'loads', which contains the instructions necessary to configure the execution environment
-- 'projectCosts', on which they are saved progressively the partial costs of the solution
-- 'run', used to open the CLIPS shell where to run the program.
+- `loads`, which contains the instructions necessary to configure the execution environment
+- `projectCosts`, on which they are saved progressively the partial costs of the solution
+- `run`, used to open the CLIPS shell where to run the program.
 
 ```To run the program open 'run.bat' file (or use the tool 'CLIPSIDE') and type '(batch loads)' command .```
 
@@ -66,7 +66,7 @@ Both have been implemented and applied to perform the research on a graph in the
 drastically reducing the size of the problem it was possible to conclude the computation in a short time.
 However, the addition of only a few facts to the knowledge base worsened of much the performances. 
 
-His implementation is contained within the 'no_evaluation' folder.
+His implementation is contained within the `no_evaluation` folder.
 
 Because of this, we opted for the **A*** algorithm implementation.
 This one has a better behavior than the previous algorithm, either because
@@ -74,7 +74,7 @@ This one has a better behavior than the previous algorithm, either because
 - it is helped by a heuristic
 If the heuristic is admissible, then the algorithm is optimal.
 
-Despite this, even A * can not find a solution quickly.
+Despite this, even A* can not find a solution quickly.
 
 ## Heuristics
 We have implemented an admissible heuristic, which means that it is never wrong for excess and that it is consistent (or monotonic) for graph search applications.
@@ -89,12 +89,12 @@ The algorithm will choose the optimal path based on this heuristic.
 To solve the non-termination due to the great complexity of the problem, it was necessary to divide it into several sub-problems, each of which deals with satisfying one of the previously mentioned cities.
 
 The number of sub-problems into which the original problem has been divided appears to be
-equal to the number of cities to be met; some of them were further subdivided in such a way as to contain the 'branching factor'.
+equal to the number of cities to be met; some of them were further subdivided in such a way as to contain the `branching factor`.
 
 This has precluded the possibility of finding the optimal solution of the whole problem but it guaranteed us the optimality of the sub-solutions. Therefore, the solution proposed by us turns out to be sub-optimal.
 
 # Modeling the problem
-The problem was modeled using, in combination, both ordered facts and unordered facts, contained within the 'templates.clp' file, with prevalence of the first kind. The reason for this is to be found in the varied number of constructs usable only with ordered facts made available by CLIPS itself.
+The problem was modeled using, in combination, both ordered facts and unordered facts, contained within the `templates.clp` file, with prevalence of the first kind. The reason for this is to be found in the varied number of constructs usable only with ordered facts made available by CLIPS itself.
 
 Where we have not considered necessary such constructs, we used not ordered facts.
 
@@ -113,11 +113,11 @@ Basic data structures are needed to implement the A* algorithm.
 To realize them in CLIPS, ordered facts has been used.
 
 They are:
-- 'node', which represent the node currently examined
-- 'newnode', which expand, after making a action, the new nodes
-- 'been', which configure the environment through the a priori knowledge bases
-- 'status', which maintain informations about cities and means of transport. 
-A precise configuration of a state of the state space is represented by the set of ordered facts 'status' having the same value as the 'ident' slot.
+- `node`, which represent the node currently examined
+- `newnode`, which expand, after making a action, the new nodes
+- `been`, which configure the environment through the a priori knowledge bases
+- `status`, which maintain informations about cities and means of transport. 
+A precise configuration of a state of the state space is represented by the set of ordered facts 'status' having the same value as the `ident` slot.
 
 For goal modeling purpose, an ordered fact called 'goal' was used.
 By necessity, two goals have been modeled: one concerning cities and the other concerning means of transport.
@@ -199,22 +199,22 @@ They have been modeled using the means of transport as the subject. They are:
 - shift_newnode 
 
 # Utilities
-They are contained within the 'utils' folder.
+They are contained within the `utils` folder.
 
-The **functions** are contained within the 'functions.clp' file.
+The **functions** are contained within the `functions.clp` file.
 They are:
-- travel_cost_evaluation calculates, given the means of transport used and the distance from travel, the cost of the shift
-- find_heuristic_costs takes care of calculating the value of the heuristic used
-- string_comparator compares two strings passed as parameters
-- prepare_string produces a string that concatenates all of their 'status' having the same value as the 'ident' slot. 
+- `travel_cost_evaluation` calculates, given the means of transport used and the distance from travel, the cost of the shift
+- `find_heuristic_costs` takes care of calculating the value of the heuristic used
+- `string_comparator` compares two strings passed as parameters
+- `prepare_string` produces a string that concatenates all of their `status` having the same value as the `ident` slot. 
 The resulting string is representative of the configuration of that state.
-- sum_up_costs is responsible for calculating the total cost of the solution and the costs of the sub-solutions.
+- `sum_up_costs` is responsible for calculating the total cost of the solution and the costs of the sub-solutions.
 
 The **rules** are contained within the 'rules.clp' file, responsible of producing facts and performing calculations, supporting the calculation of the heuristic.
 
-The 'cf_distances.clp' file contains:
-- 'h_distance', ordered fact which represents the crow flies distance; used for the calculation of the heuristic
-- 'distance', not ordered facts which represents the crow flies distance that can actually be traveled and the specific means of transport which can be used to do it.
+The `cf_distances.clp` file contains:
+- `h_distance`, ordered fact which represents the crow flies distance; used for the calculation of the heuristic
+- `distance`, not ordered facts which represents the crow flies distance that can actually be traveled and the specific means of transport which can be used to do it.
 
 # Conclusions
 
