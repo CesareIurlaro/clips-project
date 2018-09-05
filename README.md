@@ -33,8 +33,6 @@ Each of these actions has a cost dependent on one or more parameters; in the cas
 of goods that is treated by the action chosen, while the cost of the shifts depend on both the vehicle that performs it 
 and the distance between the two cities. The following is the function used to calculate each cost:
 
-![cost_function](http://latex.codecogs.com/gif.latex?f%28type%2C%20distance%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20distance%2C%26%20%5C%3A%20if%20%5C%3A%20type%20%3D%20%22van%22%20%5C%5C%20%5Cfrac%7B2%7D%7B3%7Ddistance%2C%26%20%5C%3A%20if%20%5C%3A%20type%20%3D%20%22ship%22%20%5C%5C%20%5Cfrac%7B5%7D%7B4%7Ddistance%2C%26%20%5C%3A%20if%20%5C%3A%20type%20%3D%20%22plane%22%20%5C%5C%20%5Cend%7Bmatrix%7D%5Cright.)
-
 <p align="center">
   <img src="http://latex.codecogs.com/gif.latex?f%28type%2C%20distance%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20distance%2C%26%20%5C%3A%20if%20%5C%3A%20type%20%3D%20%22van%22%20%5C%5C%20%5Cfrac%7B2%7D%7B3%7Ddistance%2C%26%20%5C%3A%20if%20%5C%3A%20type%20%3D%20%22ship%22%20%5C%5C%20%5Cfrac%7B5%7D%7B4%7Ddistance%2C%26%20%5C%3A%20if%20%5C%3A%20type%20%3D%20%22plane%22%20%5C%5C%20%5Cend%7Bmatrix%7D%5Cright."/>
 </p>
