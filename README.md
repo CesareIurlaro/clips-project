@@ -449,10 +449,9 @@ Eseguo azione unload-need con costo 20 (transport van 2 BO 2 city BO 0 B 2 C 0 A
 `Esiste soluzione con costo 990`
 
 
-Each of the subproblem solutions writes, in append, an ordered fact named `file_total_cost` that contains the cost for that solution in the `projectCosts.fct` file.
-The total cost is calculated by a function named `sum_up_costs` contained in `functions.clp` file. This function sums all over the `file_total_cost` facts and calculate the overall cost:
-
-The overall cost is obtained in this way:
+For each subproblem, once the program find the solution, it asserts an ordered fact named `file_total_cost` that contains the cost for that solution and write it in the `projectCosts.fct` file.
+The total cost is then calculated, by a function named `sum_up_costs` contained in `functions.clp` file. 
+This function sums all over the `file_total_cost` facts and calculate the overall cost in this way:
 
 <p align="center">
   <img src="http://latex.codecogs.com/gif.latex?cities%20%3D%20%5Cleft%20%5C%7BTO%2C%20%5C%3A%20MI%2C%5C%3A%20VE%2C%5C%3A%20GE%2C%5C%3A%20BO%2C%5C%3A%20RM%2C%5C%3A%20NA%2C%5C%3A%20PA%2C%5C%3A%20BA%2C%5C%3A%20RC%20%5Cright%20%5C%7D%20%5C%5C%20%5C%5C"/>
@@ -461,7 +460,6 @@ The overall cost is obtained in this way:
 <p align="center">
   <img src="http://latex.codecogs.com/gif.latex?overall%5C_%20%5C%20cost%5C%20%3D%20%5Csum_%7Bcity%3A%5C%3Acities%7Dsubproblem%5C_%20%5C%20cost%28city%29"/>
 </p>
-
 
 ```
 Il costo totale è : 31144
