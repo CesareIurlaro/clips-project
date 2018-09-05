@@ -5,7 +5,7 @@ This CLIPS project has been written for the exam of Artificial Intelligence Labo
 
 The project consists in trying to meet the needs of various Italian cities wares (product type can be A, B, C).
 
-For simplicity it is assumed that each of the cities produces and considers only one type of product.
+For simplicity it is assumed that each of the cities produces and needs only one type of product.
 
 The following image report the methods of production and consumption of each city: 
 <p align="center">
@@ -36,7 +36,6 @@ Some journeys are not viable by all means of transport and therefore not all cit
 
 
 Following image rapresent the routes that can be traveled with the various types of vehicles 
-
 (can also be found in the legend):
 <p align="center">
   <img src="https://github.com/CesareIurlaro/clips-project/blob/master/stuff/route.PNG"/>
@@ -77,7 +76,7 @@ Because of this, we opted for the **A*** algorithm implementation.
 This one has a better behavior than the previous algorithm, either because
 - of the linear spatial complexity in the depth of the deepest optimal solution
 - it is helped by a heuristic
-If the heuristic is admissible, then the algorithm is optimal.
+**If the heuristic is admissible, then the algorithm is optimal.**
 
 Despite this, **even A* can not find a solution quickly.**
 
