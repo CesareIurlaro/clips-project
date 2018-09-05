@@ -2,7 +2,7 @@
 This CLIPS project has been written for the exam of Artificial Intelligence Laboratory at the University of Turin.
 
 # Project Description
-The project consists in trying to meet the needs of various Italian cities wares (product type can be A, B, C).
+The project consists in trying to meet the needs of various Italian cities wares (product type can be *A*, *B*, *C*).
 
 For simplicity it is assumed that each of the cities produces and needs only one type of product.
 
@@ -24,12 +24,12 @@ Each vehicle is located in a prior known location:
 
 
 Each of the means can perform three basic actions: 
-- *load* (take goods),
-- *unload* (drop goods), 
-- *shift* (move between linked cities).
+- **load** (take goods),
+- **unload** (drop goods), 
+- **shift** (move between linked cities).
 
 Each of these actions has a cost dependent on one or more parameters: 
-- **loads and unloads**, the parameter is the *quantity of goods* that is treated by the action chosen, 
+- **loads** and **unloads**, the parameter is the *quantity of goods* that is treated by the action chosen, 
 - **shifts**, the parameters are both the *vehicle type* that performs it and the *distance* between the two cities. 
 
 The following are the functions used to calculate each cost:
@@ -121,7 +121,7 @@ The A* implementation in the CLIPS language was done through the subdivision in 
 - **Expand**, that ensures the aciclicity of the graph and that there is not more than one path that leads to equal open nodes. 
 In case this was not respected, then the node of the most expensive path in terms of costs, is closed,
 - **Check**, which deals with checking whether within the various facts `status` the desired goal is contained,
-- **New**, that deals both with updating the statistics (closed, worse, better) related to the algorithm and with adding nodes to the path taken into consideration.
+- **New**, that deals both with updating the statistics (*closed*, *worse*, *better*) related to the algorithm and with adding nodes to the path taken into consideration.
 
 
 Basic data structures are needed to implement the A* algorithm. 
@@ -215,6 +215,30 @@ The `cf_distances.clp` file contains:
 - `distance`, not ordered facts which represents the crow flies distance that can actually be traveled and the specific means of transport which can be used to do it.
 
 # Conclusions
+The sub-problems were satitisfied with the following actions:
+
+**1. TO**
+
+**2. MI**
+
+**3. VE**
+
+**4. GE**
+
+**5. BO**
+
+**6. RM**
+
+**7. NA_PA**
+
+**8. BA**
+
+**9. RC**
+
+Each of the subproblem solutions save an ordered fact named `file_total_cost`
+
+The total cost is calculated by a function named `sum_up_costs` contained in `functions.clp` file.
+
 
 ## Authors
 
