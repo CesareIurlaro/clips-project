@@ -22,12 +22,12 @@ di merce che viene trattata dall'azione scelta mentre il costo della shift dipen
 sono collegate direttamente tra loro.
 Di seguito i tragitti percorribili con i vari tipi di veicoli (presenti nella legenda):
 <p align="center">
-  <img src="https://raw.githubusercontent.com/CesareIurlaro/clips-project/master/stuff/route.png"/>
+  <img src="https://github.com/CesareIurlaro/clips-project/blob/master/stuff/route.PNG"/>
 </p>
 
 Sono note le distanze in linea d'aria tra le diverse città prese in esame: 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/CesareIurlaro/clips-project/master/stuff/crow_flies_distances.png"/>
+  <img src="https://github.com/CesareIurlaro/clips-project/blob/master/stuff/crow_flies_distances.PNG"/>
 </p>
 
 # Gestione file
