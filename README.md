@@ -13,17 +13,17 @@ The following image reports the methods of production and consumption of each ci
 
 We have several vehicles available: 
 - 5 *vans* with capacity 4,
-- 2 *plane* with capacity 7,
+- 2 *planes* with capacity 7,
 - 2 *ships* with capacity 11 
 (where capacity is the maximum number of wares transportable from each vehicle).
 
 Each vehicle is located in a prior known location: 
 - 3 *vans* are in Bologna and 2 are in Rome,
-- 1 *ship* is in Genoa and the other is in Venice,
-- 1 *plane* is in Palermo, the other in Milan.
+- 1 *ships* is in Genoa and the other is in Venice,
+- 1 *planes* is in Palermo, the other in Milan.
 
 
-Each of the means can perform three basic actions: 
+Each of the vehicles can perform three basic actions: 
 - **load** (take goods),
 - **unload** (drop goods), 
 - **shift** (move between linked cities).
@@ -105,7 +105,7 @@ The algorithm will choose the optimal path based on this heuristic.
 To solve the non-termination due to the great complexity of the problem, it was necessary to divide it into several sub-problems, each of which deals with satisfying one of the previously mentioned cities.
 
 The number of sub-problems into which the original problem has been divided appears to be
-equal to the number of cities to be met; some of them were further subdivided in such a way as to contain the `branching factor`.
+equal to the number of cities to be met; some of them have been further subdivided in such a way as to contain the `branching factor`.
 
 This has precluded the possibility of finding the optimal solution of the whole problem but it guaranteed us the optimality of the sub-solutions. Therefore, the solution proposed by us turns out to be sub-optimal.
 
@@ -147,7 +147,7 @@ The knowledge bases contain the cities and the vehicles necessary for satisfacti
 They are contained, as described above, in an ordered fact called `state`, which represents the **root** of the graph on which we perform the search in the states space.
 
 ## Modeling sub-problems
-Our sub-problems were divided into:
+Our sub-problems have been divided into:
 
 **1. TO**: subgraph with Turin (TO), Rome (RM) and Palermo (PA). 
 We meet Turin object A needs by plane (`vehicle_6`) which is located in PA.
@@ -224,7 +224,7 @@ The `cf_distances.clp` file contains:
 - `distance`, not ordered facts which represents the crow flies distance that can actually be traveled and the specific means of transport which can be used to do it.
 
 # Conclusions
-The sub-problems were satitisfied with the following actions:
+The sub-problems have been satitisfied with the following actions:
 
 **1. TO**
 
