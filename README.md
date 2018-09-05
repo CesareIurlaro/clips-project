@@ -167,25 +167,29 @@ The original subproblem was divided into:
 - Shift of van (`vehicle_1`) from BO to TO,
 - Transfer of B goods with `vehicle_1` from TO to GE.
 
-**5. BO**: subgraph with Bologna (BO) and Venice (VE). We meet Bologna object C needs by van (`vehicle_2`) located in VE. 
 
-**6. RM**: subgraph with Rome (RM), Turin (TO) and Milan (MI). We meet Rome object C needs by plane (`vehicle_6`) which is located in TO. 
-
-The original subproblem was divided into:
-
-- Transfer of type C goods from MI to TO with van (`vehicle_3`),
-- Transfer by plane (`vehicle_6`) of previously displaced goods from TO to RM.
-
-**7. NA_PA**: subgraph with Naples (NA), Palermo (PA) and Genoa (GE). We meet both Naples and Genoa object needs by ship (`vehicle_8`) which is located in GE.
-
-**8. BA**: subgraph with Bari (BA), Milano (MI) and Bologna (BO). We meet Bari object B needs by van (`vehicle_3`) located in BO and by plane (`vehicle_7`) located in MI. 
+**5. BA**: subgraph with Bari (BA), Milano (MI) and Bologna (BO). We meet Bari object B needs by van (`vehicle_3`) located in BO and by plane (`vehicle_7`) located in MI. 
 
 The original subproblem was divided into:
 
 - Transfer of type B goods from BO to MI with van (`vehicle_3`),
 - Transfer by plane (`vehicle_7`) of previously displaced goods from MI to BA.
 
-**9. RC**: subgraph with Reggio Calabria (RC) and Naples (NA). We meet Reggio Calabria object B needs by van (`vehicle_5`) located in NA.
+**6. RC**: subgraph with Reggio Calabria (RC) and Naples (NA). We meet Reggio Calabria object B needs by van (`vehicle_5`) located in NA.
+
+**7. NA_PA**: subgraph with Naples (NA), Palermo (PA) and Genoa (GE). We meet both Naples and Genoa object needs by ship (`vehicle_8`) which is located in GE.
+
+
+**8. RM**: subgraph with Rome (RM), Turin (TO) and Milan (MI). We meet Rome object C needs by plane (`vehicle_6`) which is located in TO. 
+
+**9. BO**: subgraph with Bologna (BO) and Venice (VE). We meet Bologna object C needs by van (`vehicle_2`) located in VE. 
+
+
+The original subproblem was divided into:
+
+- Transfer of type C goods from MI to TO with van (`vehicle_3`),
+- Transfer by plane (`vehicle_6`) of previously displaced goods from TO to RM.
+
 
 ## Domain rules
 The domain rules are contained in the `domain_rules.clp` file.
@@ -347,63 +351,7 @@ Eseguo azione unload-need con costo 10 (transport van 3 GE 1 city GE 10 C 1 B 0 
  
 `Esiste soluzione con costo 610`
 
-**5. BO**
-
-```
-Eseguo azione unload-need con costo 20 (transport van 2 BO 2 city BO 0 B 2 C 0 A carries 2 2 C)
- Eseguo azione shift con costo 158 (transport van 2 VE 2 city VE 0 C 0 B 0 A city BO 0 B 2 C 0 A)
- Eseguo azione load-prod con costo 20 (transport van 4 VE 2 city VE 2 C 0 B 0 A)
- Eseguo azione shift con costo 158 (transport van 4 BO 2 city BO 0 B 2 C 0 A city VE 2 C 0 B 0 A)
- Eseguo azione unload-need con costo 40 (transport van 0 BO 2 city BO 0 B 6 C 0 A carries 2 4 C)
- Eseguo azione shift con costo 158 (transport van 0 VE 2 city VE 2 C 0 B 0 A city BO 0 B 6 C 0 A)
- Eseguo azione load-prod con costo 40 (transport van 4 VE 2 city VE 6 C 0 B 0 A)
- Eseguo azione shift con costo 158 (transport van 4 BO 2 city BO 0 B 6 C 0 A city VE 6 C 0 B 0 A)
- Eseguo azione unload-need con costo 40 (transport van 0 BO 2 city BO 0 B 10 C 0 A carries 2 4 C)
- Eseguo azione shift con costo 158 (transport van 0 VE 2 city VE 6 C 0 B 0 A city BO 0 B 10 C 0 A)
- Eseguo azione load-prod con costo 40 (transport van 4 VE 2 city VE 10 C 0 B 0 A)
-```
- 
-`Esiste soluzione con costo 990`
-
-**6. RM**
-
-- subproblem a.
-
-```
-Eseguo azione unload-store con costo 10 (transport van 3 TO 3 city TO 0 B 0 A 4 C carries 3 1 A)
- Eseguo azione shift con costo 138 (transport van 3 MI 3 city MI 0 C 0 A 0 B city TO 0 B 0 A 4 C)
- Eseguo azione load-prod con costo 10 (transport van 4 MI 3 city MI 1 C 0 A 0 B)
- Eseguo azione shift con costo 138 (transport van 4 TO 3 city TO 0 B 0 A 4 C city MI 1 C 0 A 0 B)
- Eseguo azione unload-store con costo 40 (transport van 0 TO 3 city TO 0 B 0 A 0 C carries 3 4 A)
- Eseguo azione shift con costo 138 (transport van 0 MI 3 city MI 1 C 0 A 0 B city TO 0 B 0 A 0 C)
- Eseguo azione load-prod con costo 40 (transport van 4 MI 3 city MI 5 C 0 A 0 B)
-```
- 
-`Esiste soluzione con costo 514`
-
-- subproblem b.
-
-```
-Eseguo azione unload-need con costo 50 (transport plane 2 RM 6 city RM 0 A 5 C 0 B carries 6 5 C)
- Eseguo azione shift con costo 836 (transport plane 2 TO 6 city TO 0 B 0 A 0 C city RM 0 A 5 C 0 B)
- Eseguo azione load-store con costo 50 (transport plane 7 TO 6 city TO 0 B 0 A 5 C)
-```
- 
-`Esiste soluzione con costo 936`
-
-**7. NA_PA**
-
-```
-Eseguo azione unload-need con costo 50 (transport ship 6 NA 8 city NA 0 B 5 C 0 A carries 8 5 C)
- Eseguo azione shift con costo 493 (transport ship 6 PA 8 city PA 0 A 0 C 0 B city NA 0 B 5 C 0 A)
- Eseguo azione unload-need con costo 50 (transport ship 1 PA 8 city PA 0 A 5 C 0 B carries 8 10 C)
- Eseguo azione shift con costo 941 (transport ship 1 GE 8 city GE 0 C 0 B 0 A city PA 0 A 5 C 0 B)
- Eseguo azione load-prod con costo 100 (transport ship 11 GE 8 city GE 10 C 0 B 0 A)
-```
- 
-`Esiste soluzione con costo 1634`
-
-**8. BA**
+**5. BA**
 
 - subproblem a.
 
@@ -429,7 +377,7 @@ Eseguo azione unload-need con costo 50 (transport plane 2 BA 7 city BA 0 A 5 B 0
  
 `Esiste soluzione con costo 988`
 
-**9. RC**
+**6. RC**
 
 ```
 Eseguo azione unload-need con costo 10 (transport van 3 RC 5 city RC 0 A 1 B 0 C carries 5 1 B)
@@ -442,6 +390,64 @@ Eseguo azione unload-need con costo 10 (transport van 3 RC 5 city RC 0 A 1 B 0 C
 ```
  
 `Esiste soluzione con costo 1486`
+
+**7. NA_PA**
+
+```
+Eseguo azione unload-need con costo 50 (transport ship 6 NA 8 city NA 0 B 5 C 0 A carries 8 5 C)
+ Eseguo azione shift con costo 493 (transport ship 6 PA 8 city PA 0 A 0 C 0 B city NA 0 B 5 C 0 A)
+ Eseguo azione unload-need con costo 50 (transport ship 1 PA 8 city PA 0 A 5 C 0 B carries 8 10 C)
+ Eseguo azione shift con costo 941 (transport ship 1 GE 8 city GE 0 C 0 B 0 A city PA 0 A 5 C 0 B)
+ Eseguo azione load-prod con costo 100 (transport ship 11 GE 8 city GE 10 C 0 B 0 A)
+```
+ 
+`Esiste soluzione con costo 1634`
+
+
+**8. RM**
+
+- subproblem a.
+
+```
+Eseguo azione unload-store con costo 10 (transport van 3 TO 3 city TO 0 B 0 A 4 C carries 3 1 A)
+ Eseguo azione shift con costo 138 (transport van 3 MI 3 city MI 0 C 0 A 0 B city TO 0 B 0 A 4 C)
+ Eseguo azione load-prod con costo 10 (transport van 4 MI 3 city MI 1 C 0 A 0 B)
+ Eseguo azione shift con costo 138 (transport van 4 TO 3 city TO 0 B 0 A 4 C city MI 1 C 0 A 0 B)
+ Eseguo azione unload-store con costo 40 (transport van 0 TO 3 city TO 0 B 0 A 0 C carries 3 4 A)
+ Eseguo azione shift con costo 138 (transport van 0 MI 3 city MI 1 C 0 A 0 B city TO 0 B 0 A 0 C)
+ Eseguo azione load-prod con costo 40 (transport van 4 MI 3 city MI 5 C 0 A 0 B)
+```
+ 
+`Esiste soluzione con costo 514`
+
+- subproblem b.
+
+```
+Eseguo azione unload-need con costo 50 (transport plane 2 RM 6 city RM 0 A 5 C 0 B carries 6 5 C)
+ Eseguo azione shift con costo 836 (transport plane 2 TO 6 city TO 0 B 0 A 0 C city RM 0 A 5 C 0 B)
+ Eseguo azione load-store con costo 50 (transport plane 7 TO 6 city TO 0 B 0 A 5 C)
+```
+ 
+`Esiste soluzione con costo 936`
+
+**9. BO**
+
+```
+Eseguo azione unload-need con costo 20 (transport van 2 BO 2 city BO 0 B 2 C 0 A carries 2 2 C)
+ Eseguo azione shift con costo 158 (transport van 2 VE 2 city VE 0 C 0 B 0 A city BO 0 B 2 C 0 A)
+ Eseguo azione load-prod con costo 20 (transport van 4 VE 2 city VE 2 C 0 B 0 A)
+ Eseguo azione shift con costo 158 (transport van 4 BO 2 city BO 0 B 2 C 0 A city VE 2 C 0 B 0 A)
+ Eseguo azione unload-need con costo 40 (transport van 0 BO 2 city BO 0 B 6 C 0 A carries 2 4 C)
+ Eseguo azione shift con costo 158 (transport van 0 VE 2 city VE 2 C 0 B 0 A city BO 0 B 6 C 0 A)
+ Eseguo azione load-prod con costo 40 (transport van 4 VE 2 city VE 6 C 0 B 0 A)
+ Eseguo azione shift con costo 158 (transport van 4 BO 2 city BO 0 B 6 C 0 A city VE 6 C 0 B 0 A)
+ Eseguo azione unload-need con costo 40 (transport van 0 BO 2 city BO 0 B 10 C 0 A carries 2 4 C)
+ Eseguo azione shift con costo 158 (transport van 0 VE 2 city VE 6 C 0 B 0 A city BO 0 B 10 C 0 A)
+ Eseguo azione load-prod con costo 40 (transport van 4 VE 2 city VE 10 C 0 B 0 A)
+```
+ 
+`Esiste soluzione con costo 990`
+
 
 Each of the subproblem solutions writes, in append, an ordered fact named `file_total_cost` that contains the cost for that solution in the `projectCosts.fct` file.
 The total cost is calculated by a function named `sum_up_costs` contained in `functions.clp` file. This function sums all over the `file_total_cost` facts and calculate the overall cost:
