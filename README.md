@@ -2,66 +2,76 @@
 This CLIPS project has been written for the exam of Artificial Intelligence Laboratory at the University of Turin.
 
 # Project Description
+The project consists in trying to meet the needs of various Italian cities wares (product type can be *A*, *B*, *C*).
 
-The project consists in trying to meet the needs of various Italian cities wares (product type can be A, B, C).
+For simplicity it is assumed that each of the cities produces and needs only one type of product.
 
-For simplicity it is assumed that each of the cities produces and considers only one type of product.
-
-The following image report the methods of production and consumption of each city: 
+The following image reports the methods of production and consumption of each city: 
 <p align="center">
   <img src="https://github.com/CesareIurlaro/clips-project/blob/master/stuff/initCIties.PNG"/>
 </p>
 
 We have several vehicles available: 
-- 5 *vans* with capacity 4
-- 2 *aircraft* with capacity 7 
+- 5 *vans* with capacity 4,
+- 2 *aircraft* with capacity 7,
 - 2 *ships* with capacity 11 
 (where capacity is the maximum number of wares transportable from each vehicle).
 
 Each vehicle is located in a prior known location: 
-- 3 *vans* are in Bologna and 2 are in Rome
-- 1 *ship* is in Genoa and the other is in Venice
+- 3 *vans* are in Bologna and 2 are in Rome,
+- 1 *ship* is in Genoa and the other is in Venice,
 - 1 *plane* is in Palermo, the other in Milan.
 
 
 Each of the means can perform three basic actions: 
-- *load* (take goods) 
-- *unload* (drop goods) 
-- *shift* (move between linked cities)
+- **load** (take goods),
+- **unload** (drop goods), 
+- **shift** (move between linked cities).
 
-Each of these actions has a cost dependent on one or more parameters; in the case of loads and unloads the parameter is the quantity
-of goods that is treated by the action chosen, while the cost of the shifts depend on both the vehicle that performs it (van 1/1, ship 2/3, plane 5/4) and the distance between the two cities. 
+Each of these actions has a cost dependent on one or more parameters: 
+- **loads** and **unloads**, the parameter is the *quantity of goods* that is treated by the action chosen, 
+- **shifts**, the parameters are both the *vehicle type* that performs it and the *distance* between the two cities. 
+
+The following are the functions used to calculate each cost:
+
+
+<p align="center">
+<img src="http://latex.codecogs.com/gif.latex?wares%5C_%5C%20cost%28quantity%29%20%3D%20quantity%20*%2010"/>
+</p>
+
+
+<p align="center">
+  <img src="http://latex.codecogs.com/gif.latex?travel%5C_%5C%20cost%28type%2C%20distance%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20distance%2C%26%20%5C%3A%20if%20%5C%3A%20type%20%3D%20%22van%22%20%5C%5C%5B2pt%5D%20%5Cfrac%7B2%7D%7B3%7Ddistance%2C%26%20%5C%3A%20if%20%5C%3A%20type%20%3D%20%22ship%22%20%5C%5C%5B4pt%5D%20%5Cfrac%7B5%7D%7B4%7Ddistance%2C%26%20%5C%3A%20if%20%5C%3A%20type%20%3D%20%22plane%22%20%5C%5C%5B2pt%5D%20%5Cend%7Bmatrix%7D%5Cright."/>
+</p>
 
 Some journeys are not viable by all means of transport and therefore not all cities are directly connected to each other.
 
 
-Following image rapresent the routes that can be traveled with the various types of vehicles 
-
+The following image represents the routes that can be traveled with the various types of vehicles 
 (can also be found in the legend):
 <p align="center">
   <img src="https://github.com/CesareIurlaro/clips-project/blob/master/stuff/route.PNG"/>
 </p>
 
-The following image rapresent the crow flies distances between the different cities:
+The following image represents the crow flies distances between the different cities:
 <p align="center">
   <img src="https://github.com/CesareIurlaro/clips-project/blob/master/stuff/crow_flies_distances.PNG"/>
 </p>
 
 # Project management
-
 The project, contained within the 'A-star' folder, has been divided into three main parts:
-- `alghorithm` which contains all the CLIPS modules related to the algorithm used,
-- `domain` that contains functions, facts, rules and templates used specifically for the domain,
-- `knowledge_bases` that contains the knowledge bases used for the project.
+- `algorithm`, which contains all the CLIPS modules related to the algorithm used,
+- `domain`, that contains functions, facts, rules and templates used specifically for the domain,
+- `knowledge_bases`, that contains the knowledge bases used for the project.
 
 
 There are also three other files necessary for the correct execution of the program.
 They are:
-- `loads`, which contains the instructions necessary to configure the execution environment
-- `projectCosts`, on which they are saved progressively the partial costs of the solution
+- `loads`, which contains the instructions necessary to configure the execution environment,
+- `projectCosts`, on which they are saved progressively the partial costs of the solution,
 - `run`, used to open the CLIPS shell where to run the program.
 
-```To run the program open 'run.bat' file (or use the tool 'CLIPSIDE') and type '(batch loads)' command .```
+To run the program open `run.bat` file (or use the tool **CLIPSIDE**) and type `(batch loads)` command.
 
 # Planning Algorithm
 The suggested algorithms for solving the problem have been **Iterative Deepening** and **A***. 
@@ -71,15 +81,16 @@ Both have been implemented and applied to perform the research on a graph in the
 drastically reducing the size of the problem it was possible to conclude the computation in a short time.
 However, the addition of only a few facts to the knowledge base worsened of much the performances. 
 
-His implementation is contained within the `no_evaluation` folder.
+His implementation is contained within the `no_evaluation_function` folder.
 
 Because of this, we opted for the **A*** algorithm implementation.
-This one has a better behavior than the previous algorithm, either because
-- of the linear spatial complexity in the depth of the deepest optimal solution
-- it is helped by a heuristic
-If the heuristic is admissible, then the algorithm is optimal.
 
-Despite this, **even A* can not find a solution quickly.**
+**A\*:** this algorithm has a better behavior than the previous one, either because
+- of the **linear spatial complexity** in the depth of the deepest optimal solution,
+- it is helped by a **heuristic**.
+**If the heuristic is admissible, then the algorithm is optimal.**
+
+Despite this, **even A\* can not find a solution quickly.**
 
 ## Heuristic
 We have implemented an **admissible heuristic**, which means that it is *never wrong for excess* and that it is *consistent* (or *monotonic*) for graph search applications. [Artificial Intelligence: A Modern Approach, S.J. Russel & P. Norvig]
@@ -99,109 +110,91 @@ equal to the number of cities to be met; some of them were further subdivided in
 This has precluded the possibility of finding the optimal solution of the whole problem but it guaranteed us the optimality of the sub-solutions. Therefore, the solution proposed by us turns out to be sub-optimal.
 
 # Modeling the problem
-The problem was modeled using, in combination, both ordered facts and unordered facts, contained within the `templates.clp` file, with prevalence of the first kind. The reason for this is to be found in the varied number of constructs usable only with ordered facts made available by CLIPS itself.
+The problem was modeled using, in combination, both ordered facts and non-ordered facts, contained within the `templates.clp` file, with prevalence of the first kind. The reason for this is to be found in the varied number of constructs usable only with ordered facts made available by CLIPS itself.
 
-Where we have not considered necessary such constructs, we used not ordered facts.
+Where we have not considered necessary such constructs, we used non-ordered facts.
 
 ## The A* implementation in CLIPS
 The A* implementation in the CLIPS language was done through the subdivision in the following modules:
 
-- **Main**, which is responsible for instantiating the initial node and printing the total cost
-   and the costs of the individual actions of the solution
+- **Main**, which is responsible for instantiating the initial node and printing the total cost and the costs of the individual actions of the solution,
 - **Expand**, that ensures the aciclicity of the graph and that there is not more than one path that leads to equal open nodes. 
-In case this was not respected, then the node of the most expensive path in terms of costs, is closed
-- **Check**, which deals with checking whether within the various facts 'status' the desired goal is contained
-- **New**, that deals both with updating the statistics (closed, worse, better) related to the algorithm and with adding nodes to the path taken into consideration.
+In case this was not respected, then the node of the most expensive path in terms of costs, is closed,
+- **Check**, which deals with checking whether within the various facts `status` the desired goal is contained,
+- **New**, that deals both with updating the statistics (*closed*, *worse*, *better*) related to the algorithm and with adding nodes to the path taken into consideration.
 
 
 Basic data structures are needed to implement the A* algorithm. 
 To realize them in CLIPS, ordered facts has been used.
 
 They are:
-- `node`, which represent the node currently examined
-- `newnode`, which expand, after making a action, the new nodes
-- `been`, which configure the environment through the a priori knowledge bases
+- `node`, which represent the node currently examined,
+- `newnode`, which expand, after making a action, the new nodes,
+- `state`, which configure the environment through the a priori knowledge bases,
 - `status`, which maintain informations about cities and means of transport. 
-A precise configuration of a state of the state space is represented by the set of ordered facts 'status' having the same value as the `ident` slot.
+A precise configuration of a state of the state space is represented by the set of ordered facts `status` having the same value as the `ident` slot.
 
-For goal modeling purpose, an ordered fact called 'goal' was used.
+For goal modeling purpose, an ordered fact called `goal` was used.
 By necessity, two goals have been modeled: one concerning cities and the other concerning means of transport.
 
 ## Knowledge Bases
 The knowledge bases contain the cities and the vehicles necessary for satisfaction of the various sub-elements. 
-They are contained, as described above, in an ordered fact called 'state', which represents the root of the graph on which we perform the search in the states space.
+They are contained, as described above, in an ordered fact called `state`, which represents the **root** of the graph on which we perform the search in the states space.
 
-## Sottobiettivi
-I sottobiettivi prodotti sono:
-- Sottografo con tre città: Torino (TO), Roma (RM) e Palermo (PA). 
-  Soddisfiamo le necessità di TO attraverso l'obiettivo che prevede l'utilizzo
- di un aereo (vehicle_6) fermo a PA per il trasporto delle merci di tipo A
+## Modeling sub-problems
+Our sub-problems were divided into:
 
-- ;; Sottografo con tre città: Roma (RM), Napoli (NA) e Reggio Calabria (RC).
-;; Soddisfiamo le necessità di MI attraverso l'utilizzo di tre sotto-obiettivi:
-;; 1. Trasferimento delle merci di tipo A da RC verso NA,
-;; 2. Trasferimento parziale di 10 A verso MI,
-;; 3. Trasferimento delle rimanenti 20 A verso MI.
+**1. TO**: subgraph with Turin (TO), Rome (RM) and Palermo (PA). 
+We meet Turin object A needs by plane (`vehicle_6`) which is located in PA.
 
+**2. MI**: subgraph with Milan (MI), Rome (RM), Naples (NA), Bari (BA) and Reggio Calabria (RC). We meet Milan object A needs using two vans (`vehicle_4` and `vehicle_5`) which are located in RM and by plane (`vehicle_7`) located in MI. 
 
-- ;; Sottografo con due città: Venezia (VE) e Bologna (BO).
-;; Soddisfiamo le necessità di VE attraverso l'obiettivo che prevede l'utilizzo
-;; di un van (vehicle_2) fermo a BO per il trasporto delle merci di tipo B.
+The original subproblem was divided into:
 
-- ;; Sottografo con tre città: Torino (TO), Milano (MI) e Bologna (BO).
-;; Soddisfiamo le necessità di GE attraverso l'utilizzo di due sottoobiettivi:
-;; 1. Trasferimento di un van (vehicle_1) da BO a TO,
-;; 2. Trasferimento delle merci di tipo B con l'utilizzo del van (vehicle_1) da
-;;    TO verso GE.
+- Transfer of type A goods from RC to NA,
+- Transfer of 10 A goods to MI,
+- Transfer of remaining 20 A goods to MI.
 
-- ;; Sottografo con due città: Venezia (VE) e Bologna (BO).
-;; Soddisfiamo le necessità di BO attraverso l'obiettivo che prevede l'utilizzo
-;; di un van (vehicle_2) fermo a VE per il trasporto delle merci di tipo C
+**3. VE**: subgraph with Venice (VE) and Bologna (BO). We meet Venice object B needs by van (`vehicle_2`) located in BO. 
 
-- ;; Sottografo con due città: Torino (TO), Milano (MI) e Roma (RM).
-;; Soddisfiamo le necessità di RM attraverso l'utilizzo di due sotto-obiettivi:
-;; 1. Trasferimento delle merci di tipo C da MI verso TO con l'utilizzo
-;;    di un van (vehicle_3) fermo a MI,
-;; 2. Trasferimento delle merci precedentemente trattate verso RM con l'utilizzo
-;;    di un plane (vehicle_6) fermo a TO,
+**4. GE**: subgraph with Genoa (GE), Turin (TO), Milan (MI) and Bologna (BO). We meet Genoa object B need by van (`vehicle_1`) located in BO. The original subproblem was divided into:
 
-- ;; Sottografo con tre città: Genova (GE), Napoli (NA) e Palermo (PA).
-;; Soddisfiamo le necessità di NA e PA attraverso l'utilizzo di una nave
-;; (vehicle_8).
+- Shift of van (`vehicle_1`) from BO to TO,
+- Transfer of B goods with `vehicle_1` from TO to GE.
 
-- ;; Sottografo con tre città: Milano (MI), Bologna (BO) e Bari (BA).
-;; Soddisfiamo le necessità di BA attraverso l'utilizzo di due sottoobiettivi:
-;; 1. Trasferimento delle merci di tipo A da BO verso MI con l'utilizzo
-;;    di un van (vehicle_3) fermo a BO,
-;; 2. Trasferimento delle merci precedentemente trattate verso BA con l'utilizzo
-;;    di un van (vehicle_7) fermo a MI,
+**5. BO**: subgraph with Bologna (BO) and Venice (VE). We meet Bologna object C needs by van (`vehicle_2`) located in VE. 
 
-- ;; Sottografo con duce città: Napoli (NA) e Reggio Calabria (RC).
-;; Soddisfiamo le necessità di RC attraverso l'obiettivo che prevede l'utilizzo
-;; di un van (vehicle_5) fermo a NA per il trasporto delle merci di tipo B
+**6. RM**: subgraph with Rome (RM), Turin (TO) and Milan (MI). We meet Rome object C needs by plane (`vehicle_6`) which is located in TO. 
 
-## Domain actions
-The domain actions are contained in the 'domain_rules.clp' file. 
-They have been modeled using the means of transport as the subject. They are:
-- apply-load-prod
-- exec-load-prod 
-- load-prod_newnode
+The original subproblem was divided into:
 
-- apply-load-store
-- exec-load-store
-- load-store_newnode
+- Transfer of type C goods from MI to TO with van (`vehicle_3`),
+- Transfer by plane (`vehicle_6`) of previously displaced goods from TO to RM.
 
-- apply-unload-need
-- exec-unload-need 
-- unload-need_newnode
+**7. NA_PA**: subgraph with Naples (NA), Palermo (PA) and Genoa (GE). We meet both Naples and Genoa object needs by ship (`vehicle_8`) which is located in GE.
 
-- apply-unload-store
-- exec-unload-store
-- unload-store_newnode
+**8. BA**: subgraph with Bari (BA), Milano (MI) and Bologna (BO). We meet Bari object B needs by van (`vehicle_3`) located in BO and by plane (`vehicle_7`) located in MI. 
 
-- apply-shift 
-- exec-shift
-- shift_newnode 
+The original subproblem was divided into:
+
+- Transfer of type B goods from BO to MI with van (`vehicle_3`),
+- Transfer by plane (`vehicle_7`) of previously displaced goods from MI to BA.
+
+**9. RC**: subgraph with Reggio Calabria (RC) and Naples (NA). We meet Reggio Calabria object B needs by van (`vehicle_5`) located in NA.
+
+## Domain rules
+The domain rules are contained in the `domain_rules.clp` file. The basic actions, previously showed, are `load`, `unload` and `shift`.
+
+In practice, we divided each of them in the following way:
+- `load-prod` and `load-store` are the rules involved in the **load** action. 
+  - `load-prod` is used to load any of the object **produced** by the cities into any means of transport which is located in those cities,
+  - `load-store` is used to load any of the object **stored** by the cities into any means of transport which is located in those cities.
+  
+- `unload-need` and `unload-store` are the rules involved in the **unload** action.
+  - `unload-need` is used to unload any of the object **needed** by each cities referred by our goals, 
+  - `unload-store` is used to unload any of the object **not produced** and **not needed** by the cities to store them.
+  
+- `shift` is the rule involved in the **shift** action which is used to change the location of any means of transport. 
 
 # Utilities
 They are contained within the `utils` folder.
@@ -215,13 +208,37 @@ They are:
 The resulting string is representative of the configuration of that state.
 - `sum_up_costs` is responsible for calculating the total cost of the solution and the costs of the sub-solutions.
 
-The **rules** are contained within the 'rules.clp' file, responsible of producing facts and performing calculations, supporting the calculation of the heuristic.
+The **rules** are contained within the `rules.clp` file, responsible of producing facts and performing calculations, supporting the calculation of the heuristic.
 
 The `cf_distances.clp` file contains:
 - `h_distance`, ordered fact which represents the crow flies distance; used for the calculation of the heuristic
 - `distance`, not ordered facts which represents the crow flies distance that can actually be traveled and the specific means of transport which can be used to do it.
 
 # Conclusions
+The sub-problems were satitisfied with the following actions:
+
+**1. TO**
+
+**2. MI**
+
+**3. VE**
+
+**4. GE**
+
+**5. BO**
+
+**6. RM**
+
+**7. NA_PA**
+
+**8. BA**
+
+**9. RC**
+
+Each of the subproblem solutions save an ordered fact named `file_total_cost`
+
+The total cost is calculated by a function named `sum_up_costs` contained in `functions.clp` file.
+
 
 ## Authors
 
