@@ -13,7 +13,7 @@ The following image reports the methods of production and consumption of each ci
 
 We have several vehicles available: 
 - 5 *vans* with capacity 4,
-- 2 *aircraft* with capacity 7,
+- 2 *plane* with capacity 7,
 - 2 *ships* with capacity 11 
 (where capacity is the maximum number of wares transportable from each vehicle).
 
@@ -118,10 +118,12 @@ Where we have not considered necessary such constructs, we used non-ordered fact
 The A* implementation in the CLIPS language was done through the subdivision in the following modules:
 
 - **Main**, which is responsible for instantiating the initial node and printing the total cost and the costs of the individual actions of the solution,
-- **Expand**, that ensures the aciclicity of the graph and that there is not more than one path that leads to equal open nodes. 
-In case this was not respected, then the node of the most expensive path in terms of costs, is closed,
+- **Expand**, that focus the algorithm node expansion on the actual best path cost,
 - **Check**, which deals with checking whether within the various facts `status` the desired goal is contained,
-- **New**, that deals both with updating the statistics (*closed*, *worse*, *better*) related to the algorithm and with adding nodes to the path taken into consideration.
+- **New**, that:
+  - deals both with updating the statistics (*closed*, *worse*, *better*) related to the algorithm,
+  - ensures the aciclicity of the graph,
+  - ensures that there is not more than one path that leads to equal open nodes. 
 
 
 Basic data structures are needed to implement the A* algorithm. 
@@ -136,6 +138,9 @@ A precise configuration of a state of the state space is represented by the set 
 
 For goal modeling purpose, an ordered fact called `goal` was used.
 By necessity, two goals have been modeled: one concerning cities and the other concerning means of transport.
+
+## Frame Problem and its resolution in CLIPS
+To solve the frame problem we have decided to use the `do-for-all-facts` CLIPS construct which cycles over any facts contained into the CLIPS Agenda matching a specified template. Each iteration duplicates any `status` fact present in the parent node that was and which still is `TRUE` in the child node.
 
 ## Knowledge Bases
 The knowledge bases contain the cities and the vehicles necessary for satisfaction of the various sub-elements. 
