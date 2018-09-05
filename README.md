@@ -42,7 +42,7 @@ The following are the functions used to calculate each cost:
 
 
 <p align="center">
-  <img src="http://latex.codecogs.com/gif.latex?travel%5C_%5C%20cost%28type%2C%20distance%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20distance%2C%26%20%5C%3A%20if%20%5C%3A%20type%20%3D%20%22van%22%20%5C%5C%20%5Cfrac%7B2%7D%7B3%7Ddistance%2C%26%20%5C%3A%20if%20%5C%3A%20type%20%3D%20%22ship%22%20%5C%5C%20%5Cfrac%7B5%7D%7B4%7Ddistance%2C%26%20%5C%3A%20if%20%5C%3A%20type%20%3D%20%22plane%22%20%5C%5C%20%5Cend%7Bmatrix%7D%5Cright."/>
+  <img src="http://latex.codecogs.com/gif.latex?travel%5C_%5C%20cost%28type%2C%20distance%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20distance%2C%26%20%5C%3A%20if%20%5C%3A%20type%20%3D%20%22van%22%20%5C%5C%5B2pt%5D%20%5Cfrac%7B2%7D%7B3%7Ddistance%2C%26%20%5C%3A%20if%20%5C%3A%20type%20%3D%20%22ship%22%20%5C%5C%5B4pt%5D%20%5Cfrac%7B5%7D%7B4%7Ddistance%2C%26%20%5C%3A%20if%20%5C%3A%20type%20%3D%20%22plane%22%20%5C%5C%5B2pt%5D%20%5Cend%7Bmatrix%7D%5Cright."/>
 </p>
 
 Some journeys are not viable by all means of transport and therefore not all cities are directly connected to each other.
@@ -62,7 +62,7 @@ The following image represents the crow flies distances between the different ci
 # Project management
 
 The project, contained within the 'A-star' folder, has been divided into three main parts:
-- `alghorithm`, which contains all the CLIPS modules related to the algorithm used,
+- `algorithm`, which contains all the CLIPS modules related to the algorithm used,
 - `domain`, that contains functions, facts, rules and templates used specifically for the domain,
 - `knowledge_bases`, that contains the knowledge bases used for the project.
 
