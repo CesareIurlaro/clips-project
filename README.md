@@ -139,8 +139,8 @@ A precise configuration of a state of the state space is represented by the set 
 For goal modeling purpose, an ordered fact called `goal` was used.
 By necessity, two goals have been modeled: one concerning cities and the other concerning means of transport.
 
-## Frame Problem and its resolution in CLIPS
-To solve the frame problem we have decided to use the `do-for-all-facts` CLIPS construct which cycles over any facts contained into the CLIPS Agenda matching a specified template. Each iteration duplicates any `status` fact present in the parent node that was and which still is `TRUE` in the child node.
+## Persistency Problem and its resolution in CLIPS
+To solve the persistency problem we have decided to use the `do-for-all-facts` CLIPS construct which cycles over any facts contained into the CLIPS Agenda matching a specified template. Each iteration duplicates any `status` fact present in the parent node that was and which still is `TRUE` in the child node.
 
 ## Knowledge Bases
 The knowledge bases contain the cities and the vehicles necessary for satisfaction of the various sub-elements. 
