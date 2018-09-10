@@ -73,7 +73,7 @@ They are:
 
 To run the program open `run.bat` file (or use the tool **CLIPSIDE**) and type `(batch loads)` command.
 
-# Planning Algorithm
+# Search Algorithm
 The suggested algorithms for solving the problem have been **Iterative Deepening** and **A***. 
 Both have been implemented and applied to perform the research on a graph in the space of the states.
 
