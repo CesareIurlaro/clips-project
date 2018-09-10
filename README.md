@@ -74,7 +74,7 @@ They are:
 To run the program open `run.bat` file (or use the tool **CLIPSIDE**) and type `(batch loads)` command.
 
 # Search Algorithm
-The suggested algorithms for solving the problem have been **Iterative Deepening** and **A***. 
+The suggested algorithms for solving the problem were **Iterative Deepening** and **A***. 
 Both have been implemented and applied to perform the research on a graph in the space of the states.
 
 **Iterative Deepening**: the algorithm proved to be unsuitable for the resolution of the problem, as it is unable to find a solution within a reasonable time. However, it was possible to make some observations:
