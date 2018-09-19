@@ -154,7 +154,7 @@ We meet Turin object A needs by plane (`vehicle_6`) which is located in PA.
 
 **2. MI**: subgraph with Milan (MI), Rome (RM), Naples (NA), Bari (BA) and Reggio Calabria (RC). We meet Milan object A needs using two vans (`vehicle_4` and `vehicle_5`) which are located in RM and by plane (`vehicle_7`) located in MI. 
 
-The original subproblem was divided into:
+The original subproblem has been divided into:
 
 - Transfer of type A goods from RC to NA,
 - Transfer of 10 A goods to MI,
@@ -162,15 +162,15 @@ The original subproblem was divided into:
 
 **3. VE**: subgraph with Venice (VE) and Bologna (BO). We meet Venice object B needs by van (`vehicle_2`) located in BO. 
 
-**4. GE**: subgraph with Genoa (GE), Turin (TO), Milan (MI) and Bologna (BO). We meet Genoa object B need by van (`vehicle_1`) located in BO. The original subproblem was divided into:
+**4. GE**: subgraph with Genoa (GE), Turin (TO), Milan (MI) and Bologna (BO). We meet Genoa object B need by van (`vehicle_1`) located in BO. The original subproblem has been divided into:
 
-- Shift of van (`vehicle_1`) from BO to TO,
+- Shift van (`vehicle_1`) from BO to TO,
 - Transfer of B goods with `vehicle_1` from TO to GE.
 
 
 **5. BA**: subgraph with Bari (BA), Milano (MI) and Bologna (BO). We meet Bari object B needs by van (`vehicle_3`) located in BO and by plane (`vehicle_7`) located in MI. 
 
-The original subproblem was divided into:
+The original subproblem has been divided into:
 
 - Transfer of type B goods from BO to MI with van (`vehicle_3`),
 - Transfer by plane (`vehicle_7`) of previously displaced goods from MI to BA.
@@ -185,7 +185,7 @@ The original subproblem was divided into:
 **9. BO**: subgraph with Bologna (BO) and Venice (VE). We meet Bologna object C needs by van (`vehicle_2`) located in VE. 
 
 
-The original subproblem was divided into:
+The original subproblem has been divided into:
 
 - Transfer of type C goods from MI to TO with van (`vehicle_3`),
 - Transfer by plane (`vehicle_6`) of previously displaced goods from TO to RM.
