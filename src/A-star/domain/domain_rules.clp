@@ -60,8 +60,7 @@
     (assert (exec ?curr ?new load-prod ?gcost
              transport ?type ?capacity ?location ?id
              city ?location ?quantityP ?objP ?quantityN ?objN ?quantityS ?objS)
-            (prev_next (ident ?curr))
-            (prev_next (ident ?new))))
+    ))
 
 
 (defrule EXPAND::load-prod_newnode (declare (salience 50))
@@ -150,8 +149,7 @@
     (assert (exec ?curr ?new load-store ?gcost
              transport ?type ?capacity ?location ?id
              city ?location ?quantityP ?objP ?quantityN ?objN ?quantityS ?objS)
-             (prev_next (ident ?curr))
-             (prev_next (ident ?new)))
+    )
 )
 
 
@@ -260,8 +258,7 @@
              transport ?type ?capacity ?location ?id
              city ?location ?quantityP ?objP ?quantityN1 ?objN ?quantityS ?objS
              carries ?id ?quantityN2 ?objN)
-             (prev_next (ident ?curr))
-             (prev_next (ident ?new))))
+    ))
 
 
 
@@ -351,8 +348,7 @@
              carries ?id ?quantityS2 ?objN)
             (status (ident ?new) (subject transport) (data ?type (+ ?capacity ?quantityS2) ?location ?id))
             (status (ident ?new) (subject city) (data ?location ?quantityP ?objP ?quantityN ?objN (+ ?quantityS1 ?quantityS2) ?objS))
-            (prev_next (ident ?curr))
-            (prev_next (ident ?new))))
+    ))
 
 
 
@@ -447,8 +443,7 @@
              city ?location1 $?x
              city ?location2 $?y)
              (status (ident ?new) (subject transport) (data ?type ?capacity ?location2 ?id))
-             (prev_next (ident ?curr))
-             (prev_next (ident ?new))))
+    ))
 
 (defrule EXPAND::shift_newnode (declare (salience 50))
 

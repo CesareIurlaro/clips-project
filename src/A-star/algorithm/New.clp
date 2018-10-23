@@ -1,16 +1,25 @@
 (defmodule NEW (import CHECK ?ALL) (export ?ALL))
 
+(defrule check-nodes (declare (salience 100))
+
+    (newnode (ident ?id))
+    (node (ident ?old))
+
+    (status (ident ?id) (subject ?subject) (data $?eqL))
+    (not (status (ident ?old) (subject ?subject) (data $?eqL)))
+
+=> (assert (different (id1 ?old) (id2 ?id)))
+)
+
+
 (defrule check-closed (declare (salience 50))
 
     ?f1 <- (newnode (ident ?id))
+           (node (ident ?old) (open no))
+
     ?f2 <- (alreadyclosed ?a)
 
-    (status (ident ?id) (subject ?subject) (data $?eqL))
-    (status (ident ?old) (subject ?subject) (data $?eqL))
-    (node (ident ?old) (open no))
-
-    ?d1 <- (dummy_string (ident ?id) (string $?string))
-    ?d2 <- (dummy_string (ident ?old) (string $?string))
+    (not (different (id1 ?old) (id2 ?id)) )
 
 =>
 
@@ -24,17 +33,12 @@
 (defrule check-open-worse (declare (salience 50))
 
     ?f1 <- (newnode (ident ?id) (gcost ?g) (father ?anc))
+           (node (ident ?old) (gcost ?g-old) (open yes))
 
-    (status (ident ?id) (subject ?subject) (data $?eqL))
-    (status (ident ?old) (subject ?subject) (data $?eqL))
-    (node (ident ?old) (gcost ?g-old) (open yes))
-
+    (not (different (id1 ?old) (id2 ?id)) )
     (test (or (> ?g ?g-old) (= ?g-old ?g)))
 
     ?f2 <- (open-worse ?a)
-
-    ?d1 <- (dummy_string (ident ?id) (string $?string))
-    ?d2 <- (dummy_string (ident ?old) (string $?string))
 
 =>
 
@@ -47,32 +51,26 @@
 
 (defrule check-open-better (declare (salience 50))
     ?f1 <- (newnode (ident ?id) (gcost ?g) (fcost ?f) (father ?anc))
+    ?f2 <- (node (ident ?old) (gcost ?g-old) (open yes))
 
-           (status (ident ?id) (subject ?subject) (data $?eqL))
-    ?f2 <- (status (ident ?old) (subject ?subject) (data $?eqL))
-
-    ?f3 <- (node (ident ?old) (gcost ?g-old) (open yes))
-
+    (not (different (id1 ?old) (id2 ?id)) )
     (test (< ?g ?g-old))
-
     ?f4 <- (open-better ?a)
-
-    ?d1 <- (dummy_string (ident ?id) (string $?string))
-    ?d2 <- (dummy_string (ident ?old) (string $?string))
 
 =>
 
     (assert (node (ident ?id) (gcost ?g) (fcost ?f) (father ?anc) (open yes)))
     (assert (open-better (+ ?a 1)))
-    (retract ?f1 ?f2 ?f3 ?f4)
+    (retract ?f1 ?f2 ?f4)
     (pop-focus)
-    (pop-focus)
-    )
+    (pop-focus))
 
 
 (defrule add-open (declare (salience 25))
 
     ?f1 <- (newnode (ident ?id) (gcost ?g) (fcost ?f)(father ?anc))
+           (node (ident ?old) (gcost ?g-old) (open yes))
+
     ?f2 <- (numberofnodes ?a)
 
     (status (ident ?id) (subject ?subject) (data $?))
@@ -83,14 +81,3 @@
     (retract ?f1 ?f2)
     (pop-focus)
     (pop-focus))
-
-
-
-(defrule remove_prev_next (declare (salience 100))
-
-    ?f <- (prev_next (ident ?id))
-
-=>
-    (retract ?f)
-    (prepare_string ?id)
-)

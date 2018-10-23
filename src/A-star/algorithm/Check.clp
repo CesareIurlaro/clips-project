@@ -14,16 +14,19 @@
 (defrule solution-city-exist (declare (salience 25))
     ?f <- (newnode (ident ?id) (father ?father))
     (node (ident ?father)  (gcost ?g))
-    (goal (subject city) (data $?eqL))
+    ?f2 <- (goal (subject city) (data $?eqL))
     (status (ident ?id) (subject city) (data $?eqL))
 
 =>
-
     (assert (node
             (ident ?id) (father ?father) (gcost ?g) (fcost 0) (open no)))
     (assert (total_cost 0))
+    (assert (solution $?eqL))
     (assert (stampa ?id))
-    (retract ?f)
+    (remove_diff)
+    (delete_old_status ?id)
+    (assert (solved_goal (subject city) (data $?eqL)))
+    (retract ?f ?f2)
     (pop-focus)
     (pop-focus))
 
@@ -34,7 +37,6 @@
     (not (status (ident ?id) (subject transport) (data $?eqL)))
 
 =>
-
     (focus NEW))
 
 
@@ -50,6 +52,9 @@
             (ident ?id) (father ?father) (gcost ?g) (fcost 0) (open no)))
     (assert (total_cost 0))
     (assert (stampa ?id))
+    (remove_diff)
+    (delete_old_status ?id)
+    (assert (solved_goal (subject transport) (data $?eqL)))
     (retract ?f)
     (pop-focus)
     (pop-focus))

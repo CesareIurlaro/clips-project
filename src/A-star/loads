@@ -17,101 +17,103 @@
 (load ./algorithm/New.clp)
 
 (reset)
-(run)
+;;(run)
+
+(load-facts "projectCosts.fct")
 
  ;; ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~
 
-(reset)
-(load ./knowledge_bases/2_MI/kb_MI_a.clp)
-(reset)
-(run)
-
+;;(reset)
+;;(load ./knowledge_bases/2_MI/kb_MI_a.clp)
+;;(reset)
+;;(run)
+;;
 ;; ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~
-
-(reset)
-(load ./knowledge_bases/2_MI/kb_MI_b.clp)
-(reset)
-(run)
-
+;;
+;;(reset)
+;;(load ./knowledge_bases/2_MI/kb_MI_b.clp)
+;;(reset)
+;;(run)
+;;
 ;; ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~
-
-(reset)
-(load ./knowledge_bases/2_MI/kb_MI_c.clp)
-(reset)
-(run)
-
+;;
+;;(reset)
+;;(load ./knowledge_bases/2_MI/kb_MI_c.clp)
+;;(reset)
+;;(run)
+;;
 ;; ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~
-
-(reset)
-(load ./knowledge_bases/3_VE/kb_VE.clp)
-(reset)
-(run)
-
+;;
+;;(reset)
+;;(load ./knowledge_bases/3_VE/kb_VE.clp)
+;;(reset)
+;;(run)
+;;
 ;; ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~
-
-(reset)
-(load ./knowledge_bases/4_GE/kb_GE_a.clp)
-(reset)
-(run)
-
+;;
+;;(reset)
+;;(load ./knowledge_bases/4_GE/kb_GE_a.clp)
+;;(reset)
+;;(run)
+;;
 ;; ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~
-
-(reset)
-(load ./knowledge_bases/4_GE/kb_GE_b.clp)
-(reset)
-(run)
-
+;;
+;;(reset)
+;;(load ./knowledge_bases/4_GE/kb_GE_b.clp)
+;;(reset)
+;;(run)
+;;
 ;; ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~
-
-(reset)
-(load ./knowledge_bases/8_BA/kb_BA_a.clp)
-(reset)
-(run)
-
+;;
+;;(reset)
+;;(load ./knowledge_bases/8_BA/kb_BA_a.clp)
+;;(reset)
+;;(run)
+;;
 ;; ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~
-
-(reset)
-(load ./knowledge_bases/8_BA/kb_BA_b.clp)
-(reset)
-(run)
-
+;;
+;;(reset)
+;;(load ./knowledge_bases/8_BA/kb_BA_b.clp)
+;;(reset)
+;;(run)
+;;
 ;; ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~
-
-(reset)
-(load ./knowledge_bases/9_RC/kb_RC.clp)
-(reset)
-(run)
-
+;;
+;;(reset)
+;;(load ./knowledge_bases/9_RC/kb_RC.clp)
+;;(reset)
+;;(run)
+;;
 ;; ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~
-
-(reset)
-(load ./knowledge_bases/7_NA_PA/kb_NA_PA.clp)
-(reset)
-(run)
-
-
+;;
+;;(reset)
+;;(load ./knowledge_bases/7_NA_PA/kb_NA_PA.clp)
+;;(reset)
+;;(run)
+;;
+;;
 ;; ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~
-
-(reset)
-(load ./knowledge_bases/6_RM/kb_RM_a.clp)
-(reset)
-(run)
-
+;;
+;;(reset)
+;;(load ./knowledge_bases/6_RM/kb_RM_a.clp)
+;;(reset)
+;;(run)
+;;
 ;; ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~
-
-(reset)
-(load ./knowledge_bases/6_RM/kb_RM_b.clp)
-(reset)
-(run)
-
+;;
+;;(reset)
+;;(load ./knowledge_bases/6_RM/kb_RM_b.clp)
+;;(reset)
+;;(run)
+;;
 ;; ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~
-
-(reset)
-(load ./knowledge_bases/5_BO/kb_BO.clp)
-(reset)
-(run)
-
+;;
+;;(reset)
+;;(load ./knowledge_bases/5_BO/kb_BO.clp)
+;;(reset)
+;;(run)
+;;
 ;; ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~  ~~~~~~~~~~
-
-(reset)
-(sum_up_costs)
+;;
+;;(reset)
+;;(sum_up_costs)

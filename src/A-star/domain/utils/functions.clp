@@ -30,14 +30,11 @@
 (deffunction MAIN::string_comparator (?a ?b)
     (< (str-compare ?a ?b) 0))
 
-
-(deffunction MAIN::prepare_string (?id)
-    (bind ?s_facts "")
-    (do-for-all-facts ((?f status)) (eq ?f:ident ?id)
-        (bind ?s_facts (sort string_comparator ?s_facts ?f:subject (implode$ ?f:data))))
-
-    (assert (dummy_string (ident ?id) (string (implode$ ?s_facts))))
-)
+    (deffunction remove_file_total_cost ()
+      (do-for-all-facts ((?f file_total_cost)) TRUE
+        (retract ?f)
+      )
+    )
 
 (deffunction sum_up_costs ()
   (load-facts "projectCosts.fct")
@@ -46,4 +43,16 @@
     (bind ?tc (+ ?tc ?f:f_total_cost))
   )
   (printout t crlf " Il costo totale è : " ?tc crlf)
+)
+
+(deffunction remove_diff ()
+  (do-for-all-facts ((?d different)) TRUE
+    (retract ?d)
+  )
+)
+
+(deffunction delete_old_status (?lastIDStatus)
+  (do-for-all-facts ((?s status)) (neq ?s:ident ?lastIDStatus)
+    (retract ?s)
+  )
 )

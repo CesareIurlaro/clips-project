@@ -10,7 +10,6 @@
 
     (bind ?o_cost (find_heuristic_costs))
     (bind ?fcost ?o_cost)
-
     (assert
        (node (ident ?id)
            (gcost 0) (fcost ?fcost)
@@ -50,4 +49,47 @@
     (printout t " stati generati gia` in closed " ?closed crlf)
     (printout t " stati generati gia` in (open-worse) " ?worse crlf)
     (printout t " stati generati gia` in (open-better) " ?better crlf)
-    (halt))
+)
+
+(defrule make_new_city_state_configuration (declare (salience 99))
+ ?f <- (city_state
+          (name     ?name)
+          (qtyProd  ?qtyProd)
+          (objProd  ?objProd)
+          (qtyNeed  ?qtyNeed)
+          (objNeed  ?objNeed)
+          (qtyStore ?qtyStore)
+          (objStore ?objStore)
+      )
+
+      (status (ident ?ident) (subject city)
+              (data ?name ?status_qtyProd ?status_objProd
+                                 ?status_qtyNeed ?status_objNeed
+                                 ?status_qtyStore ?status_objStore))
+ =>
+   (modify ?f
+     (qtyProd  ?status_qtyProd)
+     (objProd  ?status_objProd)
+     (qtyNeed  ?status_qtyNeed)
+     (objNeed  ?status_objNeed)
+     (qtyStore ?status_qtyStore)
+     (objStore ?status_objStore)
+   )
+
+)
+
+(defrule make_vehicle_state_configuration (declare (salience 99))
+ ?f <- (vehicle_state
+         (type ?type)
+         (capacity ?capacity)
+         (location ?location)
+         (id ?id)
+      )
+
+      (status (ident ?ident) (subject transport) (data ?status_type ?status_capacity ?status_location ?id))
+ =>
+   (modify ?f
+     (type ?status_type) (capacity ?status_capacity) (location ?status_location)
+   )
+
+)
