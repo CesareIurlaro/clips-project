@@ -491,7 +491,7 @@ The algorithm, for each sub-problem, carries out the following steps:
 3) Removes all the facts.
 
 - **Implemented alternative**: at the end of the resolution of a single sub-problem, the knowledge necessary to solve the sub-problem of the next iteration is saved in the unordered fact `state`, which acts as a container of useful information to the subsequent iteration of the algorithm. Every other fact is then retracted.
-`state`'s is then used as beginning of the following iteration and its content act as the initial state of the next sub-problem.
+`state` is so used as beginning of the following iteration and its content act as the initial state of the next sub-problem.
 In this way, the writing of the individual knowledge bases of each sub-problem is no longer **manual**, but is delegated to the resolution algorithm itself starting from the initial state, and thus becomes **automatic**.
 
 ## **Removal of the hard coding related to the knowledge bases of the sub-objectives**
