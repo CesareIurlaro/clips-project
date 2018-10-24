@@ -467,44 +467,43 @@ Il costo totale è : 31144
 
 # Post exam
 
-Following the comparison regarding the project with the teacher, two critical issues emerged. 
-So we stopped to reflect on the appropriate changes that could remedy and implemented them.
+Some critical issues emerged, so we reflected on the appropriate changes that could remedy and implemented them.
 
 In particular:
 
-**Status comparison:**
+## **Status comparison**
 
 Each state is identified by the set of facts having the same id.
 
-- Current approach: the comparison takes place in the following steps:
+- **Current approach**: the comparison takes place in the following steps:
 1) Concatenation of strings related to the same state
 2) Comparison of single strings to check for duplicates
 
-- Implemented alternative: comparison with rules.
+- **Implemented alternative**: comparison with rules.
 If there is at least one fact for which this is not valid, then the two states are different.
 Otherwise they are the same.
 
-**Iteration between the sub-problems of the algorithm:**
+## **Iteration between the sub-problems of the algorithm**
 
-- Current approach: the knowledge necessary to solve every single sub-problem is written in a file related to it.
+- **Current approach**: the knowledge necessary to solve every single sub-problem is written in a file related to it.
 The algorithm, for each sub-problem, carries out the following steps:
 1) Read the facts necessary to solve the iteration of the current sub-problem
 2) Resolve the sub-problem
 3) Removes all the facts.
 
-- Implemented alternative: at the end of the resolution of a single sub-problem, the knowledge necessary to solve the sub-problem of the next iteration is saved in the unordered fact `state`, which acts as a container of useful information to the subsequent iteration of the algorithm.
+- **Implemented alternative**: at the end of the resolution of a single sub-problem, the knowledge necessary to solve the sub-problem of the next iteration is saved in the unordered fact `state`, which acts as a container of useful information to the subsequent iteration of the algorithm.
 
 This fact must be read at the beginning of the following iteration; its contents will act as the initial state of the next sub-problem.
 
 In this way, the writing of the individual knowledge bases of each sub-problem is no longer **manual**, but is delegated to the resolution algorithm itself starting from the initial state, and thus becomes **automatic**.
 
-**Removal of the hard coding related to the knowledge bases of the sub-objectives:**
+## **Removal of the hard coding related to the knowledge bases of the sub-objectives**
 
-- Current approach: the individual sub-objectives have been written hardcoded to solve the problem of the enormous branch factor of the state space graph.
+- **Current approach**: the individual sub-objectives have been written hardcoded to solve the problem of the enormous branch factor of the state space graph.
 
 Correcting this inelegant approach would require, due to the specific modeling adopted for the domain and the algorithm, a non-indifferent effort in terms of changes to large parts of the project, therefore only a hypothetical workaround will be presented in words below.
 
-- Not implemented alternative: the problem should be decomposed into objectives such as "satisfy (bring to 0 needs) a given city *c*".
+- **Not implemented alternative**: the problem should be decomposed into objectives such as "satisfy (bring to 0 needs) a given city *c*".
 
 Each of these sub-objectives can further be broken down through the use of some heuristics into the following sub-objectives:
 1) identify the city with the greatest quantity of the necessary good to the city *c*
