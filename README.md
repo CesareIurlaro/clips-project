@@ -480,7 +480,8 @@ Each state is identified by the set of facts having the same id.
 2) Comparison of single strings to check for duplicates
 
 - **Implemented alternative**: comparison with rules.
-If there is at least one fact for which this is not valid, then the two states are different.
+
+If there is at least one fact which is not valid for the two states, then they are different.
 Otherwise they are the same.
 
 ## **Iteration between the sub-problems of the algorithm**
@@ -492,20 +493,15 @@ The algorithm, for each sub-problem, carries out the following steps:
 3) Removes all the facts.
 
 - **Implemented alternative**: at the end of the resolution of a single sub-problem, the knowledge necessary to solve the sub-problem of the next iteration is saved in the unordered fact `state`, which acts as a container of useful information to the subsequent iteration of the algorithm.
-
 This fact must be read at the beginning of the following iteration; its contents will act as the initial state of the next sub-problem.
-
 In this way, the writing of the individual knowledge bases of each sub-problem is no longer **manual**, but is delegated to the resolution algorithm itself starting from the initial state, and thus becomes **automatic**.
 
 ## **Removal of the hard coding related to the knowledge bases of the sub-objectives**
 
 - **Current approach**: the individual sub-objectives have been written hardcoded to solve the problem of the enormous branch factor of the state space graph.
-
 Correcting this inelegant approach would require, due to the specific modeling adopted for the domain and the algorithm, a non-indifferent effort in terms of changes to large parts of the project, therefore only a hypothetical workaround will be presented in words below.
 
-- **Not implemented alternative**: the problem should be decomposed into objectives such as "satisfy (bring to 0 needs) a given city *c*".
-
-Each of these sub-objectives can further be broken down through the use of some heuristics into the following sub-objectives:
+- **Not implemented alternative**: the problem should be decomposed into objectives such as "satisfy (bring to 0 needs) a given city *c*". Each of these sub-objectives can further be broken down through the use of some heuristics into the following sub-objectives:
 1) identify the city with the greatest quantity of the necessary good to the city *c*
 2) identify the means of transport that takes less road to transport that good between the two cities and use it to do it
 3) repeat (1) and (2) until the resources of the city that exports are exhausted
