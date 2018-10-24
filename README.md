@@ -469,11 +469,9 @@ Il costo totale è : 31144
 
 Some critical issues emerged, so we reflected on the appropriate changes that could remedy and implemented them.
 
-In particular:
-
 ## **Status comparison**
 
-Each state is identified by the set of facts having the same id.
+Each state of the space is identified by the set of facts having the same id.
 
 - **Current approach**: the comparison takes place in the following steps:
 1) Concatenation of strings related to the same state
@@ -481,7 +479,7 @@ Each state is identified by the set of facts having the same id.
 
 - **Implemented alternative**: comparison with rules.
 
-If there is at least one fact which is not valid for the two states, then they are different.
+If there is at least one fact which is not valid for the two states at the same time, then the states are different.
 Otherwise they are the same.
 
 ## **Iteration between the sub-problems of the algorithm**
@@ -492,20 +490,20 @@ The algorithm, for each sub-problem, carries out the following steps:
 2) Resolve the sub-problem
 3) Removes all the facts.
 
-- **Implemented alternative**: at the end of the resolution of a single sub-problem, the knowledge necessary to solve the sub-problem of the next iteration is saved in the unordered fact `state`, which acts as a container of useful information to the subsequent iteration of the algorithm.
-This fact must be read at the beginning of the following iteration; its contents will act as the initial state of the next sub-problem.
+- **Implemented alternative**: at the end of the resolution of a single sub-problem, the knowledge necessary to solve the sub-problem of the next iteration is saved in the unordered fact `state`, which acts as a container of useful information to the subsequent iteration of the algorithm. Every other fact is then retracted.
+`state`'s is then used as beginning of the following iteration and its content act as the initial state of the next sub-problem.
 In this way, the writing of the individual knowledge bases of each sub-problem is no longer **manual**, but is delegated to the resolution algorithm itself starting from the initial state, and thus becomes **automatic**.
 
 ## **Removal of the hard coding related to the knowledge bases of the sub-objectives**
 
-- **Current approach**: the individual sub-objectives have been written hardcoded to solve the problem of the enormous branch factor of the state space graph.
-Correcting this inelegant approach would require, due to the specific modeling adopted for the domain and the algorithm, a non-indifferent effort in terms of changes to large parts of the project, therefore only a hypothetical workaround will be presented in words below.
+- **Current approach**: the individual sub-objectives have been hardcoded to solve the problem of the enormous branch factor of the state space graph.
+Correcting this inelegant approach would require, due to the specific modeling adopted for the domain and the algorithm, a non-indifferent effort in terms of changes to large parts of the project, therefore only a hypothetical workaround in words will be presented below.
 
-- **Not implemented alternative**: the problem should be decomposed into objectives such as "satisfy (bring to 0 needs) a given city *c*". Each of these sub-objectives can further be broken down through the use of some heuristics into the following sub-objectives:
+- **Not implemented alternative**: the problem should be decomposed into objectives such as "satisfy (bring to 0 needs) a given city *c*". Each of these sub-objectives could further be broken down through the use of some heuristics into the following sub-objectives:
 1) identify the city with the greatest quantity of the necessary good to the city *c*
 2) identify the means of transport that takes less road to transport that good between the two cities and use it to do it
 3) repeat (1) and (2) until the resources of the city that exports are exhausted
-4) return to (a) if I have not yet satisfied *c*
+4) return to (a) if *c* has not been satisfied yet 
 
 ## Authors
 
